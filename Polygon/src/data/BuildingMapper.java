@@ -18,15 +18,32 @@ public class BuildingMapper {
 		
 		while (rs.next()) {
 			
+			int building_id = rs.getInt(1);
 			String building_name = rs.getString(2);
 			String street_address = rs.getString(3);
-			int building_id = rs.getInt(1);
 			int zip = rs.getInt(4);
+			int build_year = rs.getInt(5);
+			int floor_area = rs.getInt(6);
 			
-			result.add(new Building(building_name, street_address, building_id, zip));
+			result.add(new Building(building_name, street_address, building_id, zip, build_year, floor_area));
 		}
-		
+		Connector.cleanUp(statement, rs);
 		return result;
+	}
+	
+	void createBuilding(Building b) throws SQLException {
+		
+		String SQLString = "INSERT INTO buildings (building_name, street_address, zipcode, build_year, floor_area) VALUES (?,?,?,?,?)";
+		
+		PreparedStatement statement = Connector.prepare(SQLString);
+		
+		statement.setString(1, b.getBuilding_name());
+		statement.setString(2, b.getStreet_address());
+		statement.setInt(3, b.getZip());
+		statement.setInt(4, b.getBuild_year());
+		statement.setInt(5, b.getFloor_area());
+		
+		statement.executeUpdate();
 	}
 	
 }
