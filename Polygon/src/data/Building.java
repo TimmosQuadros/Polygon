@@ -1,8 +1,17 @@
 package data;
 
 class Building {
+		
 	String building_name, street_address;
 	int building_id, zip;
+	
+	public Building(String building_name, String street_address, int building_id, int zip) {
+		super();
+		this.building_name = building_name;
+		this.street_address = street_address;
+		this.building_id = building_id;
+		this.zip = zip;
+	}
 
 	public int getZip() {
 		return zip;
