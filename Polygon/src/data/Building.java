@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 class Building {
 	String building_name, street_address;
