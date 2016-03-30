@@ -26,7 +26,9 @@ CREATE TABLE `buildings` (
   `building_id` decimal(8,0) NOT NULL,
   `building_name` varchar(32) DEFAULT NULL,
   `street_address` varchar(64) DEFAULT NULL,
-  `zip` decimal(8,0) DEFAULT NULL,
+  `zipcode` decimal(8,0) DEFAULT NULL,
+  `build_year` decimal(4,0) DEFAULT NULL,
+  `floor_area` decimal(8,0) DEFAULT NULL,
   PRIMARY KEY (`building_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-30 10:25:51
+-- Dump completed on 2016-03-30 10:28:05

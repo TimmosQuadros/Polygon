@@ -9,17 +9,17 @@ import java.sql.SQLException;
 //=== encapsulates code to get and release a connection
 //=== Encapsulates handling of connections and 
 //=== SQL-statements
-public class DB {
+public class Connector {
 
 	private Connection con;
-	private static DB instance;
+	private static Connector instance;
 	private static PreparedStatement stmt;
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String URL = "jdbc:mysql://localhost:3306/polygon";
 	private static String id = "root";			
 	private static String pw = "hFHA3YsT,@:p";
 
-	private DB() {
+	private Connector() {
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(URL, id, pw);  // The connection will be released upon program 
@@ -30,9 +30,9 @@ public class DB {
 		}
 	}
 
-	private static DB getInstance() {
+	private static Connector getInstance() {
 		if (instance == null) {
-			instance = new DB();
+			instance = new Connector();
 		}
 		return instance;
 	}
