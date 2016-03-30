@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class BuildingMapper {
 
 	ArrayList<Building> getBuildings() throws SQLException {
-		ArrayList result = new ArrayList<>();
+		ArrayList<Building> result = new ArrayList<>();
 		
 		String SQLString = "SELECT * FROM Buildings;";
 		
