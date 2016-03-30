@@ -12,17 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import data.Building;
 import data.BuildingMapper;
 
-/**
- * Servlet implementation class CreateBuilding
- */
+
 @WebServlet("/CreateBuilding")
 public class CreateBuilding extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BuildingMapper buildingMapper;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public CreateBuilding() {
         super();
         // TODO Auto-generated constructor stub
@@ -35,9 +30,6 @@ public class CreateBuilding extends HttpServlet {
     	buildingMapper = new BuildingMapper();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
@@ -58,9 +50,6 @@ public class CreateBuilding extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
