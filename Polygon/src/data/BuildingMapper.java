@@ -45,5 +45,14 @@ public class BuildingMapper {
 		
 		statement.executeUpdate();
 	}
+	void deleteBuilding(int id) throws SQLException {
+		
+		String SQLString = "DELETE FROM Buildings WHERE building_id = ?";
+		
+		PreparedStatement statement = Connector.prepare(SQLString);
+		
+		statement.executeUpdate();
+		
+	}
 	
 }
