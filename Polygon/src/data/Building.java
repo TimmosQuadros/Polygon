@@ -1,6 +1,6 @@
 package data;
 
-class Building {
+public class Building {
 
 	String building_name, street_address;
 	int building_id, zip, build_year, floor_area;
