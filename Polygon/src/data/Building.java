@@ -1,10 +1,10 @@
 package data;
 
 class Building {
-		
+
 	String building_name, street_address;
 	int building_id, zip, build_year, floor_area;
-	
+
 	public Building(String building_name, String street_address, int building_id, int zip, int build_year,
 			int floor_area) {
 		super();
@@ -30,14 +30,6 @@ class Building {
 
 	public void setFloor_area(int floor_area) {
 		this.floor_area = floor_area;
-	}
-
-	public Building(String building_name, String street_address, int building_id, int zip) {
-		super();
-		this.building_name = building_name;
-		this.street_address = street_address;
-		this.building_id = building_id;
-		this.zip = zip;
 	}
 
 	public int getZip() {
