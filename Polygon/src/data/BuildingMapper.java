@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class BuildingMapper {
 
-	ArrayList<Building> getBuildings() throws SQLException {
+	public ArrayList<Building> getBuildings() throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
 		
 		String SQLString = "SELECT * FROM Buildings;";
@@ -31,7 +31,7 @@ public class BuildingMapper {
 		return result;
 	}
 	
-	void createBuilding(Building b) throws SQLException {
+	public void createBuilding(Building b) throws SQLException {
 		
 		String SQLString = "INSERT INTO buildings (building_name, street_address, zipcode, build_year, floor_area) VALUES (?,?,?,?,?)";
 		
@@ -45,7 +45,7 @@ public class BuildingMapper {
 		
 		statement.executeUpdate();
 	}
-	void deleteBuilding(int id) throws SQLException {
+	public void deleteBuilding(int id) throws SQLException {
 		
 		String SQLString = "DELETE FROM Buildings WHERE building_id = ?";
 		
