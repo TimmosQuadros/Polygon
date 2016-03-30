@@ -3,8 +3,24 @@ package data;
 class Building {
 		
 	String building_name, street_address;
-	int building_id, zip;
+	int building_id, zip, build_year, floor_area;
 	
+	public int getBuild_year() {
+		return build_year;
+	}
+
+	public void setBuild_year(int build_year) {
+		this.build_year = build_year;
+	}
+
+	public int getFloor_area() {
+		return floor_area;
+	}
+
+	public void setFloor_area(int floor_area) {
+		this.floor_area = floor_area;
+	}
+
 	public Building(String building_name, String street_address, int building_id, int zip) {
 		super();
 		this.building_name = building_name;
