@@ -51,6 +51,8 @@ public class BuildingMapper {
 		
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
+		statement.setInt(1, id);
+		
 		statement.executeUpdate();
 		
 	}
