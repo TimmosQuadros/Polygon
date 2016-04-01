@@ -13,7 +13,7 @@
 	<table>
 		<tr>
 			<th>ID</th>
-			<th>Name</th>
+			<th>Name</th"WebContent/adminPage.jsp">
 			<th>Address</th>
 			<th>Zip</th>
 			<th>Build Year</th>
@@ -22,7 +22,8 @@
 		<%
 			ArrayList<Building> userBuildings = new ArrayList<>();
 			BuildingMapper bmap = new BuildingMapper();
-			userBuildings = bmap.getUserBuildings(((data.User) session.getAttribute("user")).getUser_id());
+			data.User user = (data.User)session.getAttribute("user.customer");
+			userBuildings = bmap.getUserBuildings(user.getUser_id());
 			for (Building b : userBuildings) {
 		%>
 		<tr>
