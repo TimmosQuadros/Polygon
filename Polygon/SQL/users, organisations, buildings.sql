@@ -34,11 +34,12 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `polygon`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `polygon`.`users` (
-  `user_id` INT(11) NOT NULL,
+  `user_id` INT(11) NOT NULL AUTO_INCREMENT,
   `organisation_name` VARCHAR(45) NULL DEFAULT NULL,
-  `user_type` ENUM('ADMIN', 'TECH', 'CUST') NOT NULL,
+  `user_type` ENUM('admin', 'tech', 'cust') NOT NULL,
   `username` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(45) NULL DEFAULT NULL,
+  `user_email` VARCHAR(45) NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -48,23 +49,24 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `polygon`.`organisations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
-  `organisations_id` INT NOT NULL,
+  `organisations_id` INT(11) NOT NULL AUTO_INCREMENT,
   `users_user_id` INT(11) NOT NULL,
   `buildings_building_id` INT(11) NOT NULL,
   PRIMARY KEY (`organisations_id`),
   INDEX `fk_organisations_users_idx` (`users_user_id` ASC),
   INDEX `fk_organisations_buildings1_idx` (`buildings_building_id` ASC),
-  CONSTRAINT `fk_organisations_users`
-    FOREIGN KEY (`users_user_id`)
-    REFERENCES `polygon`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_organisations_buildings1`
     FOREIGN KEY (`buildings_building_id`)
     REFERENCES `polygon`.`buildings` (`building_id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_organisations_users`
+    FOREIGN KEY (`users_user_id`)
+    REFERENCES `polygon`.`users` (`user_id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
