@@ -15,7 +15,7 @@ CREATE SCHEMA IF NOT EXISTS `polygon` DEFAULT CHARACTER SET utf8 ;
 USE `polygon` ;
 
 -- -----------------------------------------------------
--- Table `polygon`.`buildings` timm er en abe
+-- Table `polygon`.`buildings`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `polygon`.`buildings` (
   `building_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `user_type` ENUM('admin', 'tech', 'cust') NOT NULL,
   `username` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(45) NULL DEFAULT NULL,
-  `user_email` VARCHAR(45) NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -52,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
   `organisations_id` INT(11) NOT NULL AUTO_INCREMENT,
   `users_user_id` INT(11) NOT NULL,
   `buildings_building_id` INT(11) NOT NULL,
+  `organisation_name` VARCHAR(45) NULL,
   PRIMARY KEY (`organisations_id`),
   INDEX `fk_organisations_users_idx` (`users_user_id` ASC),
   INDEX `fk_organisations_buildings1_idx` (`buildings_building_id` ASC),
