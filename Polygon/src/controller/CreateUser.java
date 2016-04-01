@@ -42,26 +42,28 @@ public class CreateUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String organisation_name = request.getParameter("organisation_name");
+		String organisation_name = request.getParameter("organization");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String user_email = request.getParameter("user_email");
+		String user_email = request.getParameter("email");
+		String usertype = request.getParameter("usertype");
+		
 		User.User_type user_type = null;
 
-		if (request.getParameter("user_type").equalsIgnoreCase("ADMIN")) {
+		if (usertype.equalsIgnoreCase("ADMIN")) {
 			user_type = User_type.valueOf("ADMIN");
 		}
-		if (request.getParameter("user_type").equalsIgnoreCase("TECH")) {
+		if (usertype.equalsIgnoreCase("TECH")) {
 			user_type = User_type.valueOf("TECH");
 		}
-		if (request.getParameter("user_type").equalsIgnoreCase("CUST")) {
+		if (usertype.equalsIgnoreCase("CUST")) {
 			user_type = User_type.valueOf("CUST");
 		} else {
 			// execption her? fejlmeddelelse eller termination?
 		}
 
 		try {
-			userMapper.createUser(new User(organisation_name, username, password, user_type, user_email));
+			userMapper.createUser(new User(user_type, username, password, user_email),organisation_name);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

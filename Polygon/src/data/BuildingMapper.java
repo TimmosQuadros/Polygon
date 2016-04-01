@@ -9,52 +9,82 @@ public class BuildingMapper {
 
 	public ArrayList<Building> getBuildings() throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
-		
+
 		String SQLString = "SELECT * FROM Buildings;";
-		
+
 		PreparedStatement statement = Connector.prepare(SQLString);
-		
+
 		ResultSet rs = statement.executeQuery();
-		
+
 		while (rs.next()) {
-			
+
 			int building_id = rs.getInt(1);
-			String building_name = rs.getString(2);
-			String street_address = rs.getString(3);
-			int zip = rs.getInt(4);
-			int build_year = rs.getInt(5);
-			int floor_area = rs.getInt(6);
-			
-			result.add(new Building(building_name, street_address, building_id, zip, build_year, floor_area));
+			int organisation_id = rs.getInt(2);
+			String building_name = rs.getString(3);
+			String street_address = rs.getString(4);
+			int zip = rs.getInt(5);
+			int build_year = rs.getInt(6);
+			int floor_area = rs.getInt(7);
+
+			result.add(new Building(building_id, organisation_id, building_name, street_address, zip, build_year, floor_area));
 		}
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
-	
-	public void createBuilding(Building b) throws SQLException {
-		
-		String SQLString = "INSERT INTO buildings (building_name, street_address, zipcode, build_year, floor_area) VALUES (?,?,?,?,?)";
-		
+
+	public void createBuilding(Building b, int organisation_id) throws SQLException {
+
+		String SQLString = "INSERT INTO buildings (organisations_id, building_name, street_address, zipcode, build_year, floor_area) VALUES (?,?,?,?,?,?)";
+
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
-		statement.setString(1, b.getBuilding_name());
-		statement.setString(2, b.getStreet_address());
-		statement.setInt(3, b.getZip());
-		statement.setInt(4, b.getBuild_year());
-		statement.setInt(5, b.getFloor_area());
-		
+		statement.setInt(1, organisation_id);
+		statement.setString(2, b.getBuilding_name());
+		statement.setString(3, b.getStreet_address());
+		statement.setInt(4, b.getZip());
+		statement.setInt(5, b.getBuild_year());
+		statement.setInt(6, b.getFloor_area());
+
 		statement.executeUpdate();
 	}
+	
+	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
+		ArrayList<Building> result = new ArrayList<>();
+
+		String SQLString = "select building_id,organisations_id,building_name,street_address,zipcode,build_year,floor_area from buildings natural join users where organisations_id=(select organisations_id from users where user_id=?);";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+		
+		statement.setInt(1, user_id);
+
+		ResultSet rs = statement.executeQuery();
+
+		while (rs.next()) {
+
+			int building_id = rs.getInt(1);
+			int organisation_id = rs.getInt(2);
+			String building_name = rs.getString(3);
+			String street_address = rs.getString(4);
+			int zip = rs.getInt(5);
+			int build_year = rs.getInt(6);
+			int floor_area = rs.getInt(7);
+
+			result.add(new Building(building_id, organisation_id, building_name, street_address, zip, build_year, floor_area)); 
+		}
+		Connector.cleanUp(statement, rs);
+		return result;
+	}
+
 	public void deleteBuilding(int id) throws SQLException {
-		
+
 		String SQLString = "DELETE FROM Buildings WHERE building_id = ?";
-		
+
 		PreparedStatement statement = Connector.prepare(SQLString);
-		
+
 		statement.setInt(1, id);
-		
+
 		statement.executeUpdate();
-		
+
 	}
-	
+
 }

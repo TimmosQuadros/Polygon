@@ -36,20 +36,52 @@ public class OrganisationMapper {
 		
 		statement.setString(1, organisation.getName());
 
-		
 		statement.executeUpdate();
 	}
 	
-	public void deleteBuilding(int id) throws SQLException {
+	/**
+	 * Helper method so you can get the organization id from the unique name.
+	 * @param organisation_name
+	 * @return
+	 * @throws SQLException
+	 */
+	public int getID(String organisation_name) throws SQLException{
 		
-		String SQLString = "DELETE FROM organisations WHERE user_id = ?";
+		ArrayList<Organisation> organisations;
 		
+		organisations = getOrganisations();
+		
+		for (Organisation organisation : organisations) {
+			if(organisation.getName().equalsIgnoreCase(organisation_name)){
+				return organisation.id;
+			}
+		}
+		
+		return 0;
+	}
+	
+	/**
+	 * Helper method so you doesn't add multiple organizations with the same name.
+	 * @param organisation_name
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean organisationExists(String organisation_name) throws SQLException{
+
+		String SQLString = "SELECT * FROM organisations WHERE organisation_name=?";
+
 		PreparedStatement statement = Connector.prepare(SQLString);
+
+		statement.setString(1, organisation_name);
 		
-		statement.setInt(1, id);
-		
-		statement.executeUpdate();
-		
+		ResultSet rs = statement.executeQuery();
+
+		if(!rs.next()){
+			return false;
+		}
+
+		return true;
+
 	}
 	
 }

@@ -2,28 +2,35 @@ package data;
 
 public class User {
 	
-	String organisation_name, username, password, user_email;
-	int user_id;
+	String username, password, user_email;
+	int user_id,organisations_id;
 	public enum User_type {ADMIN, TECH, CUST}
 	User_type user_type;
 	
-	public User(String organisation_name, String username, String password, int user_id, User_type user_type, String user_email) {
+	public User(int user_id ,int organisations_id, User_type user_type, String username, String password, String user_email) {
 		super();
-		this.organisation_name = organisation_name;
+		this.user_id = user_id;
+		this.organisations_id=organisations_id;
+		this.user_type = user_type;
 		this.username = username;
 		this.password = password;
-		this.user_id = user_id;
-		this.user_type = user_type;
 		this.user_email = user_email;
 	}
 	
-	public User(String organisation_name, String username, String password, User_type user_type, String user_email) {
+	public User(User_type user_type, String username, String password, String user_email) {
 		super();
-		this.organisation_name = organisation_name;
+		this.user_type = user_type;
 		this.username = username;
 		this.password = password;
-		this.user_type = user_type;
 		this.user_email = user_email;
+	}
+	
+	public int getOrganisations_id() {
+		return organisations_id;
+	}
+
+	public void setOrganisations_id(int organisations_id) {
+		this.organisations_id = organisations_id;
 	}
 
 	public String getUser_email() {
@@ -32,14 +39,6 @@ public class User {
 
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
-	}
-
-	public String getOrganisation_name() {
-		return organisation_name;
-	}
-
-	public void setOrganisation_name(String organisation_name) {
-		this.organisation_name = organisation_name;
 	}
 
 	public String getUsername() {
@@ -74,8 +73,4 @@ public class User {
 		this.user_type = user_type;
 	}
 	
-	
-
-
-
 }

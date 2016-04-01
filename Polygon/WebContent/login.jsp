@@ -19,14 +19,24 @@
   <button type="submit" value="Check" >Login</button>
   <p class="message">Not registered? <a href="#">Create an account</a></p>
 </form>
-<form class="register">
+<form class="register" action="CreateUser" method="post">
 	  <header>Create account</header>
+	  <label></label>
+  	  <input type="text" name="organization" placeholder="Organization" />
       <label><span></span></label>
       <input type="text" name="username" placeholder="Username"/>
       <label><span></span></label>
   	  <input type="password" name="password" placeholder="Password" />
       <label></label>
   	  <input type="text" name="email" placeholder="Email" />
+  	  <div>
+  	  <label></label>
+  	  <select id="usertype" name="usertype">
+      	<option value="CUST">Customer</option>
+      	<option value="TECH">Technician</option>
+      	<option value="ADMIN">Administrator</option>
+	  </select>
+	  </div>
       <button>Create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
 </form>

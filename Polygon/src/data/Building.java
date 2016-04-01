@@ -3,13 +3,14 @@ package data;
 public class Building {
 
 	String building_name, street_address;
-	int building_id, zip, build_year, floor_area;
+	int building_id,organisation_id, zip, build_year, floor_area;
 
-	public Building(String building_name, String street_address, int building_id, int zip, int build_year, int floor_area) {
+	public Building(int building_id, int organisation_id, String building_name, String street_address, int zip, int build_year, int floor_area) {
 		super();
+		this.building_id = building_id;
+		this.organisation_id = organisation_id;
 		this.building_name = building_name;
 		this.street_address = street_address;
-		this.building_id = building_id;
 		this.zip = zip;
 		this.build_year = build_year;
 		this.floor_area = floor_area;
@@ -63,6 +64,14 @@ public class Building {
 		this.building_name = building_name;
 	}
 
+	public int getOrganisation_id() {
+		return organisation_id;
+	}
+	
+	public void setOrganisation_id(int organisation_id) {
+		this.organisation_id = organisation_id;
+	}
+	
 	public String getStreet_address() {
 		return street_address;
 	}
