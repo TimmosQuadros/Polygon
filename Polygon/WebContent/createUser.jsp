@@ -1,6 +1,7 @@
-<%@page import="model.User"%>
+<%@page import="data.User"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.Organisation" %>
+<%@page import="data.Organisation" %>
+<%@page import="data.OrganisationMapper" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +20,7 @@
 <div id="wrapper">
         	
 <div id="subscribeBox">
-	<h2><span class="thin">Add New</span> Building</h2>
+	<h2><span class="thin">Create new</span> User</h2>
     <p>Please fill out the following information to create a user. If your organisation doesn't appear in the list please contact us.</p>
 
 
@@ -28,12 +29,12 @@
 
 	<select>
 	<%
-                ArrayList<model.Organisation> organisatioins = new ArrayList();
-                organisations =(ArrayList<model.Organisation>) session.getAttribute("list.organisations");
+                OrganisationMapper orgMap = new OrganisationMapper();
+				ArrayList<Organisation> organisatioins = orgMap.getOrganisations();
                 
-                for(int i = 0;i<cupcakes.size();i++){
+                for(int i = 0;i<organisatioins.size();i++){
             %>
-  		<option value="<%=organisations.get(i).getName()%>">organisations.get(i).getName()</option>
+  		<option value="<%=organisatioins.get(i).getName()%>">organisations.get(i).getName()</option>
 	<%
                 }
             %>
