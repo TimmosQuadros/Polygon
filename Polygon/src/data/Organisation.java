@@ -10,6 +10,11 @@ public class Organisation {
 		this.id = id;
 		this.name = name;
 	}
+	
+	public Organisation(String name) {
+		super();
+		this.name = name;
+	}
 
 	public int getId() {
 		return id;

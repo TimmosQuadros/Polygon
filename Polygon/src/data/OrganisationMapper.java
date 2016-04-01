@@ -30,12 +30,11 @@ public class OrganisationMapper {
 
 	public void createOrganisation(Organisation organisation) throws SQLException {
 		
-		String SQLString = "INSERT INTO organisation (organisation_id, organisation_name) VALUES (?,?)";
+		String SQLString = "INSERT INTO organisation (organisation_name) VALUES (?)";
 		
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
-		statement.setInt(1, organisation.id);
-		statement.setString(2, organisation.getName());
+		statement.setString(1, organisation.getName());
 
 		
 		statement.executeUpdate();
