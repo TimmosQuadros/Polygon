@@ -24,13 +24,13 @@ public class UserMapper {
 			
 			int user_id = rs.getInt(1);
 			String organisation_name = rs.getString(2);
-			if(rs.getString(3)=="ADMIN"){
+			if(rs.getString(3).equals("ADMIN")){
 				user_type = User_type.valueOf("ADMIN");
 			}
-			if(rs.getString(3)=="TECH"){
+			if(rs.getString(3).equals("TECH")){
 				user_type = User_type.valueOf("TECH");
 			}
-			if(rs.getString(3)=="CUST"){
+			if(rs.getString(3).equals("CUST")){
 				user_type = User_type.valueOf("CUST");
 			}else {
 				//execption her? fejlmeddelelse eller termination?
