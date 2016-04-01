@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `user_type` ENUM('admin', 'tech', 'cust') NOT NULL,
   `username` VARCHAR(45) NULL DEFAULT NULL,
   `password` VARCHAR(45) NULL DEFAULT NULL,
+  `user_email` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 0
