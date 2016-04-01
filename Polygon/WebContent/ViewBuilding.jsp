@@ -22,13 +22,14 @@
 		<%
 			ArrayList<Building> userBuildings = new ArrayList<>();
 			BuildingMapper bmap = new BuildingMapper();
-			userBuildings =bmap.getUserBuildings(((data.User)session.getAttribute("user")).getUser_id());
+			userBuildings = bmap.getUserBuildings(((data.User) session.getAttribute("user")).getUser_id());
 			for (Building b : userBuildings) {
 		%>
 		<tr>
 			<td><%=b.getBuilding_id()%></td>
 			<td><%=b.getBuilding_name()%></td>
 			<td><%=b.getStreet_address()%></td>
+			<td><%=b.getZip()%></td>
 			<td><%=b.getBuild_year()%></td>
 			<td><%=b.getFloor_area()%></td>
 		</tr>
