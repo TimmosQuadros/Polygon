@@ -15,7 +15,7 @@ CREATE SCHEMA IF NOT EXISTS `polygon` DEFAULT CHARACTER SET utf8 ;
 USE `polygon` ;
 
 -- -----------------------------------------------------
--- Table `polygon`.`buildings`
+-- Table `polygon`.`buildings` timm er en abe
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `polygon`.`buildings` (
   `building_id` INT(11) NOT NULL AUTO_INCREMENT,
