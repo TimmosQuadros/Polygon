@@ -19,10 +19,10 @@ public class OrganisationMapper {
 		ResultSet rs = statement.executeQuery();
 		
 		while (rs.next()) {
+			int organisation_id = rs.getInt(1);
+			String organisation_name = rs.getString(2);
 			
-			String organisation_name = rs.getString(1);
-			
-			result.add(new Organisation(organisation_name)); 
+			result.add(new Organisation(organisation_id, organisation_name)); 
 		}
 		Connector.cleanUp(statement, rs);
 		return result;
@@ -30,11 +30,12 @@ public class OrganisationMapper {
 
 	public void createOrganisation(Organisation organisation) throws SQLException {
 		
-		String SQLString = "INSERT INTO organisation (organisation_name) VALUES (?)";
+		String SQLString = "INSERT INTO organisation (organisation_id, organisation_name) VALUES (?,?)";
 		
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
-		statement.setString(1, organisation.getName());
+		statement.setInt(1, organisation.id);
+		statement.setString(2, organisation.getName());
 
 		
 		statement.executeUpdate();

@@ -13,7 +13,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `polygon` DEFAULT CHARACTER SET utf8 ;
 USE `polygon` ;
-
+DROP TABLE users ;
+DROP TABLE buildings ;
+DROP TABLE organisations ;
 -- -----------------------------------------------------
 -- Table `polygon`.`buildings`
 -- -----------------------------------------------------
@@ -41,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `password` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -49,9 +52,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
   `organisations_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `organisation_name` VARCHAR(45) NULL,
   `users_user_id` INT(11) NOT NULL,
   `buildings_building_id` INT(11) NOT NULL,
-  `organisation_name` VARCHAR(45) NULL,
   PRIMARY KEY (`organisations_id`),
   INDEX `fk_organisations_users_idx` (`users_user_id` ASC),
   INDEX `fk_organisations_buildings1_idx` (`buildings_building_id` ASC),
@@ -66,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
