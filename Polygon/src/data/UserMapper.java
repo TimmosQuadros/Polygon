@@ -37,8 +37,9 @@ public class UserMapper {
 			}
 			String username = rs.getString(4);
 			String password = rs.getString(5);
+			String user_email = rs.getString(6);
 			
-			result.add(new User(organisation_name, username, password, user_id, user_type)); 
+			result.add(new User(organisation_name, username, password, user_id, user_type, user_email)); 
 		}
 		Connector.cleanUp(statement, rs);
 		return result;
@@ -46,7 +47,7 @@ public class UserMapper {
 
 	public void createUser(User user) throws SQLException {
 		
-		String SQLString = "INSERT INTO user (organisation_name, username, password, user_type) VALUES (?,?,?,?)";
+		String SQLString = "INSERT INTO user (organisation_name, username, password, user_type) VALUES (?,?,?,?,?)";
 		
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
@@ -54,6 +55,7 @@ public class UserMapper {
 		statement.setString(2, user.getUsername());
 		statement.setString(3, user.getPassword());
 		statement.setString(4, user.getUser_type().name()); 
+		statement.setString(5, user.getUser_email());
 		
 		statement.executeUpdate();
 	}
