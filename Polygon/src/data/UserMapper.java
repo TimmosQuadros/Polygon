@@ -47,7 +47,7 @@ public class UserMapper {
 
 	public void createUser(User user) throws SQLException {
 		
-		String SQLString = "INSERT INTO user (organisation_name, username, password, user_type, user_email) VALUES (?,?,?,?,?)";
+		String SQLString = "INSERT INTO users (organisation_name, username, password, user_type, user_email) VALUES (?,?,?,?,?)";
 		
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
@@ -72,3 +72,4 @@ public class UserMapper {
 		
 	}
 }
+//
