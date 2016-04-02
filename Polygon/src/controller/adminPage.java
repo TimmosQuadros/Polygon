@@ -17,9 +17,7 @@ import data.OrganisationMapper;
 @WebServlet("/adminPage")
 public class adminPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	UserMapper uMap;
-	BuildingMapper bMap;
-	OrganisationMapper oMap;
+
 	
        
     /**
