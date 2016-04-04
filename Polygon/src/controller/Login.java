@@ -47,9 +47,21 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user;
-		if((user=login.correctPassword(username, password))!=null){
+		if((user = login.correctPassword(username, password))!=null){
 			session.setAttribute("user", user);
-			forward(request, response, "/addbuilding.html");
+			
+			switch (user.getUser_type()) {
+			case ADMIN:
+				forward(request, response, "/adminPage.jsp" );
+				break;
+			case TECH:
+				forward(request, response, "TechPage.jsp");
+			case CUST:
+				forward(request, response, "/addBuilding.jsp");
+			default:
+				break;
+			} 
+			
 		}
 	}
 
