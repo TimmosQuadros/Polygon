@@ -42,13 +42,14 @@ public class Login extends HttpServlet {
 				forward(request, response, "/adminPage.jsp" );
 				break;
 			case TECH:
-				forward(request, response, "TechPage.jsp");
+				forward(request, response, "/TechPage.jsp");
+				break;
 			case CUST:
-				forward(request, response, "/addBuilding.jsp");
+				forward(request, response, "/customerPages/addBuilding.jsp");
+				break;
 			default:
 				break;
 			} 
-			
 		}
 	}
 
