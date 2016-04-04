@@ -23,7 +23,6 @@ public class CreateBuilding extends HttpServlet {
 
     public CreateBuilding() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     @Override
@@ -33,7 +32,6 @@ public class CreateBuilding extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		String building_name = request.getParameter("building_name");
 		String street_address = request.getParameter("street_address");
@@ -44,16 +42,13 @@ public class CreateBuilding extends HttpServlet {
 		try {
 			facade.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getUser_id());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
