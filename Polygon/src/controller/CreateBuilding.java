@@ -12,13 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import data.Building;
 import data.BuildingMapper;
+import data.Facade;
 import data.User;
 
 
 @WebServlet("/CreateBuilding")
 public class CreateBuilding extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BuildingMapper buildingMapper;
+	private Facade facade;
 
     public CreateBuilding() {
         super();
@@ -27,7 +28,7 @@ public class CreateBuilding extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-    	buildingMapper = new BuildingMapper();
+    	facade = new Facade();
     	super.init();
     }
 
@@ -41,7 +42,7 @@ public class CreateBuilding extends HttpServlet {
 		int floor_area = Integer.parseInt(request.getParameter("floor_area"));
 		User user = (User)session.getAttribute("user");
 		try {
-			buildingMapper.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getUser_id());
+			facade.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getUser_id());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
