@@ -9,11 +9,11 @@ public class Facade {
 	private OrganisationMapper om; 
 	private UserMapper um;
 	
-	public Facade(BuildingMapper bm, OrganisationMapper om, UserMapper um) {
+	public Facade() {
 		super();
-		this.bm = bm;
-		this.om = om;
-		this.um = um;
+		this.bm = new BuildingMapper();
+		this.om = new OrganisationMapper();
+		this.um = new UserMapper();
 	}
 	
 	//create
