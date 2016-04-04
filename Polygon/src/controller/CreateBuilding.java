@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import data.Building;
-import data.BuildingMapper;
 import data.Facade;
 import data.User;
 
