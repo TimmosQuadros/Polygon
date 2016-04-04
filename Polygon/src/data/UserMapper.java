@@ -21,7 +21,7 @@ public class UserMapper {
 		while (rs.next()) {
 			int user_id = rs.getInt(1);
 			int organisations_id = rs.getInt(2);
-			User_type user_type = getUserType(rs.getString(3));
+			User_type user_type = User_type.valueOf(rs.getString(3));
 			String username = rs.getString(4);
 			String password = rs.getString(5);
 			String user_email = rs.getString(6);
