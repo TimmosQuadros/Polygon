@@ -13,22 +13,13 @@ import javax.servlet.http.HttpSession;
 
 import data.*;
 
-/**
- * Servlet implementation class Login
- */
-
-
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ILogin login;
 	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Login() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     @Override
@@ -37,11 +28,7 @@ public class Login extends HttpServlet {
     	super.init();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
@@ -65,11 +52,7 @@ public class Login extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	
@@ -78,5 +61,4 @@ public class Login extends HttpServlet {
 		RequestDispatcher rd = sc.getRequestDispatcher(path);
 		rd.forward(req, res);
 	}
-
 }
