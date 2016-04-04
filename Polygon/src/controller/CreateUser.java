@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.Facade;
 import data.User;
 import data.UserMapper;
 import data.User.User_type;
@@ -19,7 +20,7 @@ import data.User.User_type;
 @WebServlet("/CreateUser")
 public class CreateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UserMapper userMapper;
+	private Facade facade;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -32,7 +33,7 @@ public class CreateUser extends HttpServlet {
 	public void init() throws ServletException {
 
 		super.init();
-		userMapper = new UserMapper();
+		facade = new Facade();
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class CreateUser extends HttpServlet {
 		}
 
 		try {
-			userMapper.createUser(new User(user_type, username, password, user_email),organisation_name);
+			facade.createUser(new User(user_type, username, password, user_email),organisation_name);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
