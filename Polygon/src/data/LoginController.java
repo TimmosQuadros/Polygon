@@ -11,8 +11,8 @@ public class LoginController implements ILogin{
 		try {
 			ArrayList<User> users = userMapper.getUsers();
 			for (User user : users) {
-				if(user.getUsername().equalsIgnoreCase(username)){
-					if(user.getPassword().equalsIgnoreCase(password)){
+				if(user.getUsername().equals(username)){
+					if(user.getPassword().equals(password)){
 						return user;
 					}
 				}
