@@ -2,7 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +52,20 @@ public class CreateUserServlet extends HttpServlet {
 		String user_email = request.getParameter("email");
 		String usertype = request.getParameter("usertype");
 		
+		ArrayList<User> users = null;
+		try {
+			users = facade.getUsers();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		for (User u : users){
+			if (u.getUsername().equals(username)) {
+				forward(request, response, "/createUser.jsp");
+				return;
+			}
+		}
+ 		
 		User.User_type user_type = null;
 
 		if (usertype.equalsIgnoreCase("ADMIN")) {
@@ -84,4 +101,10 @@ public class CreateUserServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	private void forward(HttpServletRequest req, HttpServletResponse res, String path) throws IOException, ServletException {
+		ServletContext sc = getServletContext();
+		RequestDispatcher rd = sc.getRequestDispatcher(path);
+		rd.forward(req, res);
+	}
+	
 }
