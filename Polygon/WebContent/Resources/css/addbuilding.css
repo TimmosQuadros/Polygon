@@ -16,6 +16,20 @@ input {
 	font-family: source-sans-pro; sans-serif;
 }
 
+select {
+	border: 2px solid #eeeeee;
+	height: 46px;
+	margin: 10px 0 0 0;
+	padding: 1%;
+	font-size: 1.2em;
+	line-height: 1.5em;
+	color: #333333;
+	letter-spacing: .01em;
+	font-style: normal;
+	font-weight: 300;
+	font-family: source-sans-pro; sans-serif;
+}
+
 #fname{
 	width:100%;
 }

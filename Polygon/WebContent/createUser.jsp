@@ -26,7 +26,7 @@
 
 <form class="addbuilding" name="addbuilding" method="post" action="CreateBuilding">
 
-
+<div class="styled-select">
 	<select>
 	<%
                 OrganisationMapper orgMap = new OrganisationMapper();
@@ -41,6 +41,8 @@
                 }
             %>
 	</select>
+</div>
+	<input id="username" type="text" placeholder="Username*" Name="username" required>
 	<input id="password" type="text" placeholder="Password*" Name="password" required>
 	<input id="confirm_password" type="text" placeholder="confirm password*" Name="confirm_password" required>
 	<input id="email" type="text" placeholder="Email*" Name="email" required>
