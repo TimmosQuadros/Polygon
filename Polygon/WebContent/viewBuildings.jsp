@@ -26,6 +26,10 @@
 	<%
 		Facade fac = new Facade();
 		User user = (User) session.getAttribute("user");
+		if(user==null){
+			%>
+			<jsp:forward page="login.jsp" />
+		<%}
 		ArrayList<Building> buildings = fac.getUserBuildings(user.getUser_id());
 	%>
 
