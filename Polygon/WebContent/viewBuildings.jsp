@@ -45,7 +45,7 @@ for(int i = 0; i<buildings.size(); i++){
         <td><%=buildings.get(i).getZip()%></td>
         <td><%=buildings.get(i).getBuild_year()%></td>
         <td><%=buildings.get(i).getFloor_area()%></td>
-        <td><input type="submit" value="view" name="<%=buildings.get(i).getBuilding_id()%>" /></td>
+        <td><input class="btn-class" type="submit" value="view" name="<%=buildings.get(i).getBuilding_id()%>" /></td>
     </tr>
     </table>
 </form>
