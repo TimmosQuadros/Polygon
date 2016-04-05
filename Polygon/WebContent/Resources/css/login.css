@@ -71,9 +71,6 @@ body {
   text-decoration: none;
 }
 
-.register {
-  display: none;
-}
 .form button {
   position: relative;
   margin-top: 30px;
