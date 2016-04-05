@@ -60,6 +60,23 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `polygon`.`image`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`image` ;
+
+CREATE TABLE IF NOT EXISTS `polygon`.`image` (
+  `image_id` TINYINT(3) NOT NULL DEFAULT '0',
+  `image_type` VARCHAR(25) NULL DEFAULT NULL,
+  `image` LONGBLOB NULL DEFAULT NULL,
+  `image_size` VARCHAR(25) NULL DEFAULT NULL,
+  `image_ctgy` VARCHAR(25) NULL DEFAULT NULL,
+  `image_name` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`image_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `polygon`.`users`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `polygon`.`users` ;
@@ -72,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `password` VARCHAR(45) NULL DEFAULT NULL,
   `user_email` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`, `organisations_id`),
-  INDEX `fk_users_organisations_idx` (`organisations_id` ASC),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
+  INDEX `fk_users_organisations_idx` (`organisations_id` ASC),
   CONSTRAINT `fk_users_organisations`
     FOREIGN KEY (`organisations_id`)
     REFERENCES `polygon`.`organisations` (`organisations_id`)
