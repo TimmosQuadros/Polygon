@@ -7,7 +7,7 @@
 <title>Administrator control panel</title>
 <link href="Resources/css/addbuilding.css" rel="stylesheet" type="text/css"/>
 <nav>
-	<a href="HomeAdmin">Home</a> |
+	<a href="adminPage.jsp">Home</a> |
 	<a href="viewBuildings.jsp">View buildings</a> |
 	<a href="ViewOrders">View orders</a> |
 	<a href="viewCustomers.jsp">View customers</a> |
