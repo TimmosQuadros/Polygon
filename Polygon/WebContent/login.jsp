@@ -29,7 +29,7 @@
 <form class="register" action="CreateUserServlet" method="post">
 	  <header>Create account</header>
 	  <label></label>
-  	  <input type="text" name="organization" placeholder="Organization" />
+  	  <input type="text" name="organisation" placeholder="Organisation" />
       <label><span></span></label>
       <input type="text" name="username" placeholder="Username"/>
       <label><span></span></label>
