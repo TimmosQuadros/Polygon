@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,10 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import data.Facade;
 import data.User;
-import data.UserMapper;
 import data.User.User_type;
 
 /**
@@ -61,7 +58,8 @@ public class CreateUserServlet extends HttpServlet {
 		}
 		for (User u : users){
 			if (u.getUsername().equals(username)) {
-				forward(request, response, "/createUser.jsp");
+				forward(request, response, "/login.jsp");
+
 				return;
 			}
 		}
