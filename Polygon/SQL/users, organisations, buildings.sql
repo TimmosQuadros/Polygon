@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
   PRIMARY KEY (`organisations_id`),
   UNIQUE INDEX `organisation_name_UNIQUE` (`organisation_name` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`buildings` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 15
+AUTO_INCREMENT = 20
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -73,13 +73,14 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `user_email` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`, `organisations_id`),
   INDEX `fk_users_organisations_idx` (`organisations_id` ASC),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   CONSTRAINT `fk_users_organisations`
     FOREIGN KEY (`organisations_id`)
     REFERENCES `polygon`.`organisations` (`organisations_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8;
 
 
