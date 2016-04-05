@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Buildings</title>
 </head>
 <body>
 	<table>
 		<tr>
 			<th>ID</th>
-			<th>Name</th"WebContent/adminPage.jsp">
+			<th>Name</th>
 			<th>Address</th>
 			<th>Zip</th>
 			<th>Build Year</th>

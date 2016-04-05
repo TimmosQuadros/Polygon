@@ -10,7 +10,7 @@
 	<a href="HomeAdmin">Home</a> |
 	<a href="viewBuildings.jsp">View buildings</a> |
 	<a href="ViewOrders">View orders</a> |
-	<a href="ViewCustomers">View customers</a> |
+	<a href="viewCustomers.jsp">View customers</a> |
 	<a href="ViewTechnicians">View technicians</a> |
     <a href="Sendnewsletter">Send newsletter</a>
 </nav>
