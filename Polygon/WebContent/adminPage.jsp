@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrator control panel</title>
+<link href="Resources/css/addbuilding.css" rel="stylesheet" type="text/css"/>
 <nav>
 	<a href="HomeAdmin">Home</a> |
 	<a href="viewBuildings.jsp">View buildings</a> |
