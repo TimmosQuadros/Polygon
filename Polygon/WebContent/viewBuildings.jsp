@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>View building</title>
 <link href="Resources/css/style.css" rel="stylesheet" type="text/css">
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 <script>
@@ -52,11 +52,12 @@
 				<td><input class="btn-class" type="submit" value="view"
 					name="<%=b.getBuilding_id()%>" /></td>
 			</tr>
+			<%
+				}
+			%>
 		</table>
 	</form>
-	<%
-		}
-	%>
+
 
 </body>
 </html>
