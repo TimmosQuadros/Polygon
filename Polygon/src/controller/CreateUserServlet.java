@@ -18,14 +18,14 @@ import data.User.User_type;
  * Servlet implementation class CreateUser
  */
 @WebServlet("/CreateUser")
-public class CreateUser extends HttpServlet {
+public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Facade facade;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CreateUser() {
+	public CreateUserServlet() {
 		super();
 	}
 

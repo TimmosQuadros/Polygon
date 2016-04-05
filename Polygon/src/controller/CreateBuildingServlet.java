@@ -14,11 +14,11 @@ import data.User;
 
 
 @WebServlet("/CreateBuilding")
-public class CreateBuilding extends HttpServlet {
+public class CreateBuildingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Facade facade;
 
-    public CreateBuilding() {
+    public CreateBuildingServlet() {
         super();
     }
     
