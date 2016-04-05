@@ -10,6 +10,9 @@
 <title>Tech Page</title>
 <link href="Resources/css/style.css" rel="stylesheet"
 	type="text/css">
+	<nav>
+	<a href="adminPage.jsp">Home</a>
+</nav>
 </head>
 <body>
 	<h1>Tech Page</h1>

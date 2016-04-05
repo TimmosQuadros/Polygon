@@ -11,6 +11,7 @@
 </head>
 <body>
 	<a href="createUser.jsp">Create User</a>
+	<form action="" method="get">
 	<table>
 		<tr>
 			<th>User ID</th>
@@ -19,6 +20,7 @@
 			<th>User Name</th>
 			<th>Password</th>
 			<th>Email</th>
+			<th>Floorplan</th>
 		</tr>
 		<%
 			ArrayList<User> users = new ArrayList<>();
@@ -33,10 +35,13 @@
 			<td><%=u.getUsername()%></td>
 			<td><%=u.getPassword()%></td>
 			<td><%=u.getUser_email()%></td>
+			<td><input class="btn-class" type="submit" value="view"
+					name="<%=u.getUser_id()%>" /></td>
 		</tr>
 		<%
 			}
 		%>
 	</table>
+	</form>
 </body>
 </html>
