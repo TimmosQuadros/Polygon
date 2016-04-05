@@ -12,11 +12,11 @@ import javax.servlet.http.HttpSession;
 import data.*;
 
 @WebServlet("/Login")
-public class LoginServet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ILogin login;
 	
-    public LoginServet() {
+    public LoginServlet() {
         super();
     }
     
