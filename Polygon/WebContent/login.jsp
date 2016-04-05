@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="form">
-<form class="login" action="LoginServlet" method="post">
+<form class="login" action="Login" method="post">
   <%
   String message = (String)session.getAttribute("user.password");
   if(message == null){
@@ -26,7 +26,7 @@
   <button type="submit" value="Check" >Login</button>
   <p class="message">Not registered? <a href="#">Create an account</a></p>
 </form>
-<form class="register" action="CreateUserServlet" method="post">
+<form class="register" action="CreateUser" method="post">
 	  <header>Create account</header>
 	  <label></label>
   	  <input type="text" name="organisation" placeholder="Organisation" />
