@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+
+body{
+	background-color: WHITE;
+}
+
+tr {
+	border: solid;
+}
+
+td {
+	
+	border: solid;
+	background-color: #00AEEF; 
+}
+
+table{
+	border: solid;
+	
+}
+
+input {
+	
+}
