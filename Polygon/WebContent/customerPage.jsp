@@ -20,8 +20,8 @@
 </form>
 </head>
 <body>
-<a class="click-me" href="customerPages/viewBuildings.jsp">View buildings</a>
-<a class="click-me" href="customerPages/addBuilding.jsp">Add building</a>
+<a class="click-me" href="viewBuildings.jsp">View buildings</a>
+<a class="click-me" href="addBuilding.jsp">Add building</a>
 
 </body>
 </html>
