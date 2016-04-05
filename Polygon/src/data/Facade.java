@@ -33,7 +33,7 @@ public class Facade {
 	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
 		return bm.getUserBuildings(user_id);
 	}
-	public ArrayList<Organisation> getOrganisation() throws SQLException {
+	public ArrayList<Organisation> getOrganisations() throws SQLException {
 		return om.getOrganisations();
 	}
 	public ArrayList<User> getUsers() throws SQLException {
@@ -59,7 +59,5 @@ public class Facade {
 	public void deleteUser(int id) throws SQLException {
 		um.deleteUser(id);
 	}
-	
-	
 	
 }
