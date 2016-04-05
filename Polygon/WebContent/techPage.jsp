@@ -11,7 +11,8 @@
 <link href="Resources/css/style.css" rel="stylesheet"
 	type="text/css">
 	<nav>
-	<a href="adminPage.jsp">Home</a>
+	<a href="techPage.jsp">Home</a>
+	<a href="viewCustomers.jsp">View Customers</a>
 </nav>
 </head>
 <body>
