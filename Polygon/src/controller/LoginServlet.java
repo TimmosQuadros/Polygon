@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 				break;
 			case TECH:
 				session.setAttribute("user.password", "Already logged in");
-				forward(request, response, "/TechPage.jsp");
+				forward(request, response, "/techPage.jsp");
 				break;
 			case CUST:
 				session.setAttribute("user.password", "Already logged in");
