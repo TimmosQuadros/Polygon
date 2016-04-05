@@ -2,13 +2,19 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.sql.SQLException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class imageMapperTest {
+import data.ImageMapper;
+
+public class ImageMapperTest {
+	ImageMapper img;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -20,6 +26,7 @@ public class imageMapperTest {
 
 	@Before
 	public void setUp() throws Exception {
+		img = new ImageMapper();
 	}
 
 	@After
@@ -27,8 +34,10 @@ public class imageMapperTest {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void test() throws SQLException {
+		img.createImage(new File("C:/Users/TimmosQuadros/Desktop/gorilla.png"),"gorilla");
+		
+		
 	}
 
 }
