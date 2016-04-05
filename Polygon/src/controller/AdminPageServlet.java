@@ -15,7 +15,7 @@ import data.OrganisationMapper;
  * Servlet implementation class adminPage
  */
 @WebServlet("/adminPage")
-public class adminPage extends HttpServlet {
+public class AdminPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -23,7 +23,7 @@ public class adminPage extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminPage() {
+    public AdminPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
