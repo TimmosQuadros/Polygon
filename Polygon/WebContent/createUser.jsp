@@ -30,11 +30,13 @@
 	<select>
 	<%
                 OrganisationMapper orgMap = new OrganisationMapper();
-				ArrayList<Organisation> organisatioins = orgMap.getOrganisations();
+				ArrayList<Organisation> organisatioins = new ArrayList<>();//orgMap.getOrganisations();
+				organisatioins.add(new Organisation(1, "test1"));
+				organisatioins.add(new Organisation(2, "test2"));
                 
                 for(int i = 0;i<organisatioins.size();i++){
             %>
-  		<option value="<%=organisatioins.get(i).getName()%>">organisations.get(i).getName()</option>
+  		<option value="<%=organisatioins.get(i).getId()%>"><%=organisatioins.get(i).getName()%></option>
 	<%
                 }
             %>
