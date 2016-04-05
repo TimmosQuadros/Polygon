@@ -38,15 +38,15 @@ public class LoginServlet extends HttpServlet {
 			
 			switch (user.getUser_type()) {
 			case ADMIN:
-				session.setAttribute("user.password", "Already logged in as admin");
+				session.setAttribute("user.password", "Logged in as admin");
 				forward(request, response, "/adminPage.jsp" );
 				break;
 			case TECH:
-				session.setAttribute("user.password", "Already logged in as technician");
+				session.setAttribute("user.password", "Logged in as technician");
 				forward(request, response, "/techPage.jsp");
 				break;
 			case CUST:
-				session.setAttribute("user.password", "Already logged in as customer");
+				session.setAttribute("user.password", "Logged in as customer");
 				forward(request, response, "/customerPage.jsp");
 				break;
 			default:
