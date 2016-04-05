@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
 				forward(request, response, "/TechPage.jsp");
 				break;
 			case CUST:
-				forward(request, response, "/customerPages/addBuilding.jsp");
+				forward(request, response, "/customerPage.jsp");
 				break;
 			default:
 				break;

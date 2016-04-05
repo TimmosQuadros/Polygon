@@ -2,6 +2,7 @@
 <%@page import="data.Building"%>
 <%@page import="data.User"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="data.Facade"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,11 +20,9 @@
 <a class="click-me" href="addBuilding.jsp">Add building</a>
 
 <%
-BuildingMapper bMap = new BuildingMapper();
+Facade fac = new Facade();
 User user = (User)session.getAttribute("user");
-ArrayList<Building> buildings = new ArrayList<>();//bMap.getUserBuildings(user.getUser_id()); 
-buildings.add(new Building("building_name", "street_address", 4444, 1999, 150));
-buildings.add(new Building("test_b", "på mars", 5555, 2000, 1));
+ArrayList<Building> buildings = fac.getUserBuildings(user.getUser_id()); 
 %>
 
 	<form action="" method="get">
