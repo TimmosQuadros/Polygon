@@ -32,12 +32,12 @@
 	<form action="" method="get">
 		<table>
 			<tr>
-				<th>Building name</th>
-				<th>Adresse</th>
-				<th>zip code</th>
-				<th>Build year</th>
-				<th>square meters</th>
-				<th>click to view</th>
+				<th>NAME</th>
+				<th>ADDRESS</th>
+				<th>ZIP CODE</th>
+				<th>BUILD YEAR</th>
+				<th>AREA m<sup>2</sup></th>
+				<th>DETAILS</th>
 			</tr>
 
 			<%
