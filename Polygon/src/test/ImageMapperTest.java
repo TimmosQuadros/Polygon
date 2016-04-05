@@ -1,6 +1,7 @@
 package test;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.junit.After;
@@ -31,8 +32,10 @@ public class ImageMapperTest {
 	}
 
 	@Test
-	public void test() throws SQLException {
-		img.createImage(new File("C:/Users/TimmosQuadros/Desktop/gorilla.png"),"gorilla");
+	public void test() throws SQLException, IOException {
+		//img.createImage(new File("C:/Users/Timm/Desktop/floor_plan_example_2.png"),"Floorplan2");
+		
+		img.getUserImages(12);
 	}
 
 }
