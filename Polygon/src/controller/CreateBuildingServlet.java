@@ -38,7 +38,7 @@ public class CreateBuildingServlet extends HttpServlet {
 		User user = (User)session.getAttribute("user");
 		if(user!=null){
 			try {
-				facade.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getUser_id());
+				facade.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getOrganisations_id());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}catch (NumberFormatException e) {
