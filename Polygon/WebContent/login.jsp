@@ -11,11 +11,18 @@
 <body>
 <div class="form">
 <form class="login" action="Login" method="post">
+  <%
+  String message = (String)session.getAttribute("user.password");
+  if(message == null){
+	  message = "";
+  }
+  %>
   <header>Login</header>
   <label><span></span></label>
   <input type="text" name="username" required="required" placeholder="Username"/>
   <label><span></span></label>
   <input type="password" name="password" pattern=".{6,}" required title="6 characters minimum" required="required" placeholder="Password"/>
+  <p><label><%=message%></label></p>
   <button type="submit" value="Check" >Login</button>
   <p class="message">Not registered? <a href="#">Create an account</a></p>
 </form>
@@ -37,7 +44,7 @@
       	<option value="ADMIN">Administrator</option>
 	  </select>
 	  </div>
-      <button>Create</button>
+      <button type="submit" value="Check" >Create</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
 </form>
 </div>
