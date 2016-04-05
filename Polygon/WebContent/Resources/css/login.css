@@ -58,17 +58,13 @@ body {
 .form .help {
   margin-left: 20px;
   font-size: 0.8em;
-  color: #777;
+  color: #F00;
 }
 
 .form .message {
   margin-left: 20px;
   font-size: 0.8em;
-  color: #777;
-}
-
-.form .message a{
-  text-decoration: none;
+  color: #F00;;
 }
 
 .form button {

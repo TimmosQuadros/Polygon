@@ -22,7 +22,7 @@
   <input type="text" name="username" required="required" placeholder="Username"/>
   <label><span></span></label>
   <input type="password" name="password" pattern=".{6,}" required title="6 characters minimum" required="required" placeholder="Password"/>
-  <p><label><%=message%></label></p>
+  <p><label class="message"><%=message%></label></p>
   <button type="submit" value="Check" >Login</button>
 </form>
 </div>

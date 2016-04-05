@@ -54,6 +54,7 @@ public class LoginServlet extends HttpServlet {
 			} 
 		}else{
 			session.setAttribute("user.password", "Wrong passsword or username.");
+			forward(request, response, "/login.jsp");
 		}
 	}
 
