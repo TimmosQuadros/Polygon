@@ -18,15 +18,15 @@ public class CreateBuildingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Facade facade;
 
-    public CreateBuildingServlet() {
-        super();
-    }
-    
-    @Override
-    public void init() throws ServletException {
-    	facade = new Facade();
-    	super.init();
-    }
+	public CreateBuildingServlet() {
+		super();
+	}
+
+	@Override
+	public void init() throws ServletException {
+		facade = new Facade();
+		super.init();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
@@ -36,10 +36,18 @@ public class CreateBuildingServlet extends HttpServlet {
 		int build_year = Integer.parseInt(request.getParameter("build_year"));
 		int floor_area = Integer.parseInt(request.getParameter("floor_area"));
 		User user = (User)session.getAttribute("user");
-		try {
-			facade.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getUser_id());
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(user!=null){
+			try {
+				facade.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),user.getUser_id());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}catch (NumberFormatException e) {
+				e.printStackTrace();
+			}catch (NullPointerException e) {
+				//
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
