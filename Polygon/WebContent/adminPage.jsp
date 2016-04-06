@@ -15,7 +15,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrator control panel</title>
-<link href="Resources/css/addbuilding.css" rel="stylesheet"
+<link href="Resources/css/style.css" rel="stylesheet"
 	type="text/css" />
 <ul>
 	<li><a href="adminPage.jsp">Home</a></li>
