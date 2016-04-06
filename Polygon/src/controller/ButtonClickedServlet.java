@@ -41,10 +41,12 @@ public class ButtonClickedServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		ArrayList<User> users;
 		try {
-			users = new Facade().getUsers();
+			Facade f = new Facade();
+			users = f.getUsers();
 			for (int i = 0; i < users.size(); i++) {
 				if(request.getParameter(String.valueOf(users.get(i).getUser_id())) !=null){
-					FileUtils.cleanDirectory(new File(""));
+					FileUtils.cleanDirectory(new File("WebContent/Resources/Images/Floorplans"));
+					f.getUserImages(users.get(i).getUser_id());
 				}
 			}
 		} catch (SQLException e) {

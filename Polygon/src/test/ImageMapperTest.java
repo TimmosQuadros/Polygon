@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -35,7 +36,12 @@ public class ImageMapperTest {
 	public void test() throws SQLException, IOException {
 		//img.createImage(new File("C:/Users/TimmosQuadros/Desktop/floor_plan_example.png"),"Floorplan");
 		
-		img.getUserImages(1);
+		//img.getUserImages(1);
+	}
+	
+	@Test
+	public void DeleteFilesFromDirectoryTest() throws IOException{
+		FileUtils.cleanDirectory(new File("WebContent/Resources/Images/Floorplans"));
 	}
 
 }
