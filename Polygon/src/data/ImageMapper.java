@@ -44,7 +44,7 @@ public class ImageMapper {
 	 */
 	public ArrayList<String> getUserImages(int user_id) throws SQLException, IOException{
 
-		String SQLString = "Select image from floorplan natural join image where user_id=?";
+		String SQLString = "Select image from floorplans natural join image where user_id=?";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
@@ -57,7 +57,7 @@ public class ImageMapper {
 		int i = 0;
 		while (resultSet.next()) {
 			String image_path;
-			File image = new File(image_path="C:/Users/Timm/Desktop/floor_plan_example_db"+i+".png");
+			File image = new File(image_path="WebContent/Resources/Images/Floorplans/Floorplan"+i+".png");
 			FileOutputStream fos = new FileOutputStream(image);
 			byte[] buffer = new byte[1];
 			InputStream is = resultSet.getBinaryStream(1);

@@ -33,9 +33,9 @@ public class ImageMapperTest {
 
 	@Test
 	public void test() throws SQLException, IOException {
-		//img.createImage(new File("C:/Users/Timm/Desktop/floor_plan_example_2.png"),"Floorplan2");
+		//img.createImage(new File("C:/Users/TimmosQuadros/Desktop/floor_plan_example.png"),"Floorplan");
 		
-		img.getUserImages(12);
+		img.getUserImages(1);
 	}
 
 }
