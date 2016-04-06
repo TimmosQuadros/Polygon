@@ -1,5 +1,7 @@
 package controller;
 
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 
 import data.Facade;
 import data.User;
@@ -40,7 +44,7 @@ public class ButtonClickedServlet extends HttpServlet {
 			users = new Facade().getUsers();
 			for (int i = 0; i < users.size(); i++) {
 				if(request.getParameter(String.valueOf(users.get(i).getUser_id())) !=null){
-					
+					FileUtils.cleanDirectory(new File(""));
 				}
 			}
 		} catch (SQLException e) {
