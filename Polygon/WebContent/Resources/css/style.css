@@ -27,7 +27,7 @@ td {
 }
 
 .btn-class {
-	background: #5B74A8;
+	background: #00AEEF;
 	background: -moz-linear-gradient(top, #5B74A8 0%, #5B74A8 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5B74A8),
 		color-stop(100%, #5B74A8));
