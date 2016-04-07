@@ -14,14 +14,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrator control panel</title>
 <link href="Resources/css/addbuilding.css" rel="stylesheet" type="text/css"/>
-<nav>
-	<a href="adminPage.jsp">Home</a> |
-	<a href="viewBuildings.jsp">View buildings</a> |
-	<a href="ViewOrders">View orders</a> |
-	<a href="viewCustomers.jsp">View customers</a> |
-	<a href="ViewTechnicians">View technicians</a> |
-    <a href="Sendnewsletter">Send newsletter</a>
-</nav>
+<ul>
+	<li><a href="adminPage.jsp">Home</a></li>
+	<li><a href="viewBuildings.jsp">View buildings</a></li>
+	<li><a href="ViewOrders">View orders</a></li>
+	<li><a href="viewCustomers.jsp">View customers</a></li>
+	<li><a href="ViewTechnicians">View technicians</a></li>
+    <li><a href="Sendnewsletter">Send newsletter</a></li>
+</ul>
 </head>
 <body>
 

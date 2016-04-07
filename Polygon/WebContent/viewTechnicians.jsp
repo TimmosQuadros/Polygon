@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="Resources/css/style.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<a href="login.jsp">Home</a>
+	<a href="adminPage.jsp">Home</a>
 	<form action="" method="get">
 	<table>
 		<tr>
