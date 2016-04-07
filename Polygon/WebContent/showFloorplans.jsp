@@ -7,29 +7,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link href="Resources/css/imageSlider.css" rel="stylesheet" type="text/css">
+<link href="Resources/js/imageSlider.js" type="text/javascript">
+
+
+
 </head>
 <body>
-<!-- All code below this comment tag is the imageslider! -->
-		
 		<%
-		User user = (User) session.getAttribute("user");
-		int user_id = user.getUser_id();
-		Facade facade = new Facade();
-		ArrayList<String> imgPaths = facade.getUserImages(user_id);
+		//User user = (User) session.getAttribute("user");
+		//int user_id = user.getUser_id();
+		//Facade facade = new Facade();
+		//ArrayList<String> imgPaths = facade.getUserImages(user_id);
+		ArrayList<String> testPaths = new ArrayList<>();
+		testPaths.add("Resources/Images/Floorplans/Floorplan0.png");
+		testPaths.add("Resources/Images/Floorplans/Floorplan1.png");
+		testPaths.add("Resources/Images/Floorplans/Floorplan2.png");
 		%>
 		
-		<div class=''>
-		<%
-		int count = 0;
-		for (String p : imgPaths) {
-			if(!p.isEmpty()){
-		%>
-		<input name="cs_anchor1" id='cs_slide1_<%=count%>' type="radio" class='cs_anchor slide' >
-		<%
-					count+=1;
-				}
-			}
-		%>		
-		
+<section class="demo">
+  <button class="next">Next</button>
+  <button class="prev">Previous</button>
+  <div class="container">
+<%
+	int count = 0;
+	//for (String path : imgPaths) {
+	for (String path : testPaths) {
+		if(!path.isEmpty()){
+%>
+    <div>
+      <img src="<%=path%>"/>
+    </div>
+<%
+			count+=1;
+		}
+	}
+%>
+  </div>
+</section>
+
+
 </body>
 </html>
+<script src="Resources/js/min.js"></script>
+<script src="Resources/js/imageSlider.js"></script>
