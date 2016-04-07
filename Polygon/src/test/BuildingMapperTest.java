@@ -80,7 +80,7 @@ public class BuildingMapperTest {
 			assertEquals(floor_area, userB.getFloor_area());
 			assertEquals(organisation_id, userB.getOrganisation_id());
 			//Test getUserBuilding #End#
-
+			
 		//Test SQLException #Start#
 			b.setBuilding_name("DTU");
 			bmapper.createBuilding(b, organisation_id+1);
@@ -90,6 +90,10 @@ public class BuildingMapperTest {
 		assertTrue(didThrowSQLException);
 		//Test SQLException #End#
 
+		//Test updateBuilding #Start#
+		
+		
+		
 		//Test delete building #Start#
 		int id = buildings.get(0).getBuilding_id();
 

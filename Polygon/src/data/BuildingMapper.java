@@ -75,6 +75,24 @@ public class BuildingMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
+	//replaces a Building in the database. retrieve Building -> change attribute(s) -> use this method.
+	public void updateBuilding(Building b) throws SQLException {
+
+		String SQLString = "UPDATE buildings SET organisation_id = ?, building_name = ?, street_address = ?, zipcode = ?, build_year = ?, floor_area = ? WHERE building_id = ?";
+		
+		PreparedStatement statement = Connector.prepare(SQLString);
+		
+		statement.setInt(1, b.getOrganisation_id());
+		statement.setString(2, b.getBuilding_name());
+		statement.setString(3, b.getStreet_address());
+		statement.setInt(4, b.getZip());
+		statement.setInt(5, b.getBuild_year());
+		statement.setInt(6, b.getFloor_area());
+		statement.setInt(7, b.getBuilding_id());
+		
+		statement.executeUpdate();
+	}
+	
 	//removes a user from the database. (consider using User as parameter instead)
 	public void deleteBuilding(int id) throws SQLException {
 
