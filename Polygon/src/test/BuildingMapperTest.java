@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -13,7 +14,10 @@ import org.junit.Test;
 
 import data.Building;
 import data.BuildingMapper;
+import data.Organisation;
+import data.OrganisationMapper;
 import data.User;
+import data.User.User_type;
 import data.UserMapper;
 
 public class BuildingMapperTest {
@@ -32,10 +36,21 @@ public class BuildingMapperTest {
 	public void setUp() throws Exception {
 		bmapper = new BuildingMapper();
 		usermapper = new UserMapper();
+		ArrayList<User> users = usermapper.getUsers();
+		for (User u : users) {
+			usermapper.deleteUser(u.getUser_id());
+		}
+		usermapper.createUser(new User(User_type.ADMIN, "testname", "testpw", "test@mail.com"), "testorg");
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		ArrayList<User> users = usermapper.getUsers();
+		for (User u : users) {
+			if (u.getUsername().equals("testname")) {
+				usermapper.deleteUser(u.getUser_id());
+			}
+		}
 	}
 
 	@Test
@@ -91,7 +106,15 @@ public class BuildingMapperTest {
 		//Test SQLException #End#
 
 		//Test updateBuilding #Start#
-		
+		try {
+			Building b = bmapper.getBuildings().get(0);
+			b.setBuild_year(1111);
+			bmapper.updateBuilding(b);
+			assertTrue(bmapper.getBuildings().get(0).getBuild_year()==1111);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		
 		//Test delete building #Start#
