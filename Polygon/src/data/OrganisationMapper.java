@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import data.User.User_type;
 
 public class OrganisationMapper {
-
+	
+	//returns a list of ALL organisations in the database
 	public ArrayList<Organisation> getOrganisations() throws SQLException {
 		ArrayList<Organisation> result = new ArrayList<>();
 		
@@ -27,7 +28,7 @@ public class OrganisationMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
-
+	//adds a NEW organisation to the database
 	public void createOrganisation(Organisation organisation) throws SQLException {
 		
 		String SQLString = "INSERT INTO organisations (organisation_name) VALUES (?)";
@@ -40,7 +41,7 @@ public class OrganisationMapper {
 	}
 	
 	/**
-	 * Helper method so you can get the organization id from the unique name.
+	 * Helper method so you can get the organisation id from the unique name.
 	 * @param organisation_name
 	 * @return
 	 * @throws SQLException
@@ -61,7 +62,7 @@ public class OrganisationMapper {
 	}
 	
 	/**
-	 * Helper method so you doesn't add multiple organizations with the same name.
+	 * Helper method so you doesn't add multiple organisations with the same name.
 	 * @param organisation_name
 	 * @return
 	 * @throws SQLException

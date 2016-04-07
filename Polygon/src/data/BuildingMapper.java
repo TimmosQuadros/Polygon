@@ -48,6 +48,7 @@ public class BuildingMapper {
 		statement.executeUpdate();
 	}
 	//returns a list of Buildings belonging to a SPECIFIC USER (consider using User object as parameter)
+	//(consider handling this logic at a higher layer. getBuildings() -> then extract Buildings belonging to user)
 	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
 
