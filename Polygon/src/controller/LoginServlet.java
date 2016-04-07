@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,6 +18,7 @@ import data.*;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ILogin login;
+	Facade facade = new Facade();
 	
     public LoginServlet() {
         super();
@@ -31,11 +35,28 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		User user;
+		User user = null;
 		
-		if((user = login.correctPassword(username, password))!=null){
+		ArrayList<User> users = null;
+		try {
+			users = facade.getUsers();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (User u : users) {
+			if(u.getUsername().equals(username)){
+				if(u.getPassword().equals(password)){
+					user = u;
+					break;
+				}
+			}
+		}
+		
+//		if((user = login.correctPassword(username, password))!=null){
+		
 			session.setAttribute("user", user);
-			
+		if (user != null) {
 			switch (user.getUser_type()) {
 			case ADMIN:
 				session.setAttribute("user.password", "Logged in as admin");
