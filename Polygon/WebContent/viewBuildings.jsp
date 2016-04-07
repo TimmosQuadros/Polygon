@@ -21,6 +21,7 @@
 
 </head>
 <body>
+	<a class="click-me" href="adminPage.jsp">Home</a>
 	<a class="click-me" href="addBuilding.jsp">Add building</a>
 
 	<%

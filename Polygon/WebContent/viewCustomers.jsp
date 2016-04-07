@@ -10,6 +10,7 @@
 <title>Users</title>
 </head>
 <body>
+	<a href="adminPage.jsp">Home</a>
 	<a href="createUser.jsp">Create User</a>
 	<form action="" method="get">
 	<table>
