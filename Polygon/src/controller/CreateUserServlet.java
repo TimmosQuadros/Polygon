@@ -86,7 +86,7 @@ public class CreateUserServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		forward(request,response,"adminPage.jsp");
+		forward(request,response,"/adminPage.jsp");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
