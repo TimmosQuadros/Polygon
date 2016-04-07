@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,6 +48,7 @@ public class ButtonClickedServlet extends HttpServlet {
 			for (int i = 0; i < users.size(); i++) {
 				if(request.getParameter(String.valueOf(users.get(i).getUser_id())) !=null){
 					FileUtils.cleanDirectory(new File("WebContent/Resources/Images/Floorplans"));
+					session.setAttribute("user.floorplans", users.get(i));
 					f.getUserImages(users.get(i).getUser_id());
 				}
 			}
@@ -53,7 +56,7 @@ public class ButtonClickedServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
+		forward(request,response,"/showFloorplans.jsp");
 		
 	}
 
@@ -63,6 +66,12 @@ public class ButtonClickedServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void forward(HttpServletRequest req, HttpServletResponse res, String path) throws IOException, ServletException {
+		ServletContext sc = getServletContext();
+		RequestDispatcher rd = sc.getRequestDispatcher(path);
+		rd.forward(req, res);
 	}
 
 }
