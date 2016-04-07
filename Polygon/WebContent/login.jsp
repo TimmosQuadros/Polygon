@@ -31,7 +31,7 @@
 <div class="form">
 <form class="login" action="Login" method="post">
   
-  <h1>Login</h1>
+  <header>Login</header>
   <label><span></span></label>
   <input type="text" name="username" required="required" placeholder="Username"/>
   <label><span></span></label>
