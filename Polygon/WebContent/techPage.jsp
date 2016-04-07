@@ -21,11 +21,11 @@
 				<%
 					OrganisationMapper oMap = new OrganisationMapper();
 					ArrayList<Organisation> orgID = new ArrayList<>();
-					//orgID = oMap.getOrganisations(); 
+					orgID = oMap.getOrganisations(); 
 					// only for testing without DB connection.
-					orgID.add(new Organisation(1, "SAS"));
-					orgID.add(new Organisation(2, "CPH"));
-					orgID.add(new Organisation(3, "ICC"));
+					// orgID.add(new Organisation(1, "SAS"));
+					// orgID.add(new Organisation(2, "CPH"));
+					// orgID.add(new Organisation(3, "ICC"));
 
 					for (Organisation o : orgID) {
 				%>
