@@ -17,8 +17,8 @@ import data.*;
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	ILogin login;
-	Facade facade = new Facade();
+//	ILogin login;
+	Facade facade;
 	
     public LoginServlet() {
         super();
@@ -26,7 +26,8 @@ public class LoginServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-    	login = new data.LoginController();
+//    	login = new data.LoginController();
+    	facade = new Facade();
     	super.init();
     }
 
