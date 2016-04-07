@@ -17,7 +17,7 @@
 <title>Administrator control panel</title>
 <link href="Resources/css/style.css" rel="stylesheet"
 	type="text/css" />
-<%@include file="adminHeader" %>
+<%@include file="adminHeader.jsp" %>
 
 </head>
 <body>
