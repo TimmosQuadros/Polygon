@@ -82,7 +82,5 @@ public class OrganisationMapper {
 		}
 
 		return true;
-
 	}
-	
 }

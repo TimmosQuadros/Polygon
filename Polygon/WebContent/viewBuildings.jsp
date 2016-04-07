@@ -62,7 +62,5 @@
 			%>
 		</table>
 	</form>
-
-
 </body>
 </html>
