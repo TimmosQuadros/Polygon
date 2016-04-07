@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BuildingMapper {
-
+	//returns a list of ALL buildings from the database.
 	public ArrayList<Building> getBuildings() throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class BuildingMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
-
+	//adds a NEW building to the database. (consider adding organisation to Building object at a higher layer)
 	public void createBuilding(Building b, int organisation_id) throws SQLException {
 
 		String SQLString = "INSERT INTO buildings (organisations_id, building_name, street_address, zipcode, build_year, floor_area) VALUES (?,?,?,?,?,?)";
@@ -47,7 +47,7 @@ public class BuildingMapper {
 
 		statement.executeUpdate();
 	}
-	
+	//returns a list of Buildings belonging to a SPECIFIC USER (consider using User object as parameter)
 	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
 
@@ -74,7 +74,7 @@ public class BuildingMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
-
+	//removes a user from the database. (consider using User as parameter instead)
 	public void deleteBuilding(int id) throws SQLException {
 
 		String SQLString = "DELETE FROM Buildings WHERE building_id = ?";

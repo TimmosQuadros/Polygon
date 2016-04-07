@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import data.User.User_type;
 
 public class UserMapper {
-
+	//returns an ArrayList of ALL users in the database
 	public ArrayList<User> getUsers() throws SQLException {
 		ArrayList<User> result = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class UserMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
-
+	//adds a NEW user to the database. (consider adding the organisation to user object at a higher layer?)
 	public void createUser(User user,String organisation_name) throws SQLException {
 
 		String SQLString;
@@ -83,7 +83,7 @@ public class UserMapper {
 		}
 		return user_type;
 	}
-
+	//removes a user from the database (consider using a User object as parameter?)
 	public void deleteUser(int id) throws SQLException {
 
 		String SQLString = "DELETE FROM Users WHERE user_id = ?";
