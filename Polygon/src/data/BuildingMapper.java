@@ -52,7 +52,7 @@ public class BuildingMapper {
 	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
 
-		String SQLString = "select building_id,organisations_id,building_name,street_address,zipcode,build_year,floor_area from buildings natural join users where organisations_id=(select organisations_id from users where user_id=?);";
+		String SQLString = "select building_id,organisations_id,building_name,street_address,zipcode,build_year,floor_area from buildings natural join users where organisations_id=(select organisations_id from users where user_id=?) group by building_id;";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
