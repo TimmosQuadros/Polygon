@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,16 +35,13 @@ public class LogoutServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		  response.setContentType("text/html");  
-          PrintWriter out = response.getWriter();  
             
          //request.getRequestDispatcher("login.jsp").include(request, response);  
             
           HttpSession session=request.getSession();  
           session.invalidate();  
             
-          out.print("You are successfully logged out!");  
-            
-          out.close();  
+          forward(request, response, "/login.jsp"); 
   }  
 	
 
@@ -52,6 +51,12 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void forward(HttpServletRequest req, HttpServletResponse res, String path) throws IOException, ServletException {
+		ServletContext sc = getServletContext();
+		RequestDispatcher rd = sc.getRequestDispatcher(path);
+		rd.forward(req, res);
 	}
 
 }

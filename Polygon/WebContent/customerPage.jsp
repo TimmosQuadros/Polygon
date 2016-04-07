@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<%@include file="techHeader.jsp"%>
+	<%@include file="custHeader.jsp"%>
 
 </body>
 </html>
