@@ -27,6 +27,7 @@
 			Facade facade = new Facade();
 			users = facade.getUsers();
 			for (User u : users) {
+				if(u.getUser_type().name().equalsIgnoreCase("CUST")){
 		%>
 		<tr>
 			<td><%=u.getUser_id()%></td>
@@ -39,6 +40,7 @@
 					name="<%=u.getUser_id()%>" /></td>
 		</tr>
 		<%
+				}
 			}
 		%>
 	</table>
