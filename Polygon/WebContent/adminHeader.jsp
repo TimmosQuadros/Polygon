@@ -9,6 +9,6 @@
 	<li><a href="viewCustomers.jsp">View customers</a></li>
 	<li><a href="viewTechnicians.jsp">View technicians</a></li>
 	<li><a href="Sendnewsletter">Send newsletter</a></li>
-	<li style="float: right"><a class="active" href="LogoutServlet.jsp">Logout</a></li>
+	<li style="float: right"><a class="active" href="LogoutServlet">Logout</a></li>
 </ul>
 

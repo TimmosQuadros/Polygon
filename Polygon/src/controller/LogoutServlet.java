@@ -44,7 +44,7 @@ public class LogoutServlet extends HttpServlet {
             
           out.close();  
   }  
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
