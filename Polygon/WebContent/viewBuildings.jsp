@@ -27,11 +27,19 @@
 	<%
 		Facade fac = new Facade();
 		User user = (User) session.getAttribute("user");
+		ArrayList<Building> buildings = new ArrayList<>();
 		if(user==null){
 			%>
 			<jsp:forward page="login.jsp" />
 		<%}
-		ArrayList<Building> buildings = fac.getUserBuildings(user.getUser_id());
+		if(user.getUser_type().toString().equalsIgnoreCase("ADMIN")){
+			buildings = fac.getAllBuildings();
+		}else if (user.getUser_type().toString().equalsIgnoreCase("CUST")){
+			buildings = fac.getUserBuildings(user.getUser_id());	
+		}else{
+			buildings = fac.getAllBuildings();
+		}
+		
 	%>
 
 	<form action="" method="get">
