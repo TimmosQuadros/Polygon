@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
   PRIMARY KEY (`organisations_id`),
   UNIQUE INDEX `organisation_name_UNIQUE` (`organisation_name` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`buildings` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 20
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -65,7 +65,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `polygon`.`image` ;
 
 CREATE TABLE IF NOT EXISTS `polygon`.`image` (
-  `image_id` TINYINT(3) NOT NULL DEFAULT '0',
+  `image_id` TINYINT(3) NOT NULL AUTO_INCREMENT,
   `image_type` VARCHAR(25) NULL DEFAULT NULL,
   `image` LONGBLOB NULL DEFAULT NULL,
   `image_size` VARCHAR(25) NULL DEFAULT NULL,
@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `polygon`.`image` (
   `image_name` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`image_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -97,7 +98,35 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 0
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `polygon`.`floorplans`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`floorplans` ;
+
+CREATE TABLE IF NOT EXISTS `polygon`.`floorplans` (
+  `idfloorplans` INT(11) NOT NULL AUTO_INCREMENT,
+  `image_id` TINYINT(3) NOT NULL,
+  `user_id` INT(11) NOT NULL,
+  `organisations_id` INT(11) NOT NULL,
+  PRIMARY KEY (`idfloorplans`),
+  INDEX `fk_floorplans_image1_idx` (`image_id` ASC),
+  INDEX `fk_floorplans_users1_idx` (`user_id` ASC, `organisations_id` ASC),
+  CONSTRAINT `fk_floorplans_image1`
+    FOREIGN KEY (`image_id`)
+    REFERENCES `polygon`.`image` (`image_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_floorplans_users1`
+    FOREIGN KEY (`user_id` , `organisations_id`)
+    REFERENCES `polygon`.`users` (`user_id` , `organisations_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
