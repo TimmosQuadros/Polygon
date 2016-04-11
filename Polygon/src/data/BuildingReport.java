@@ -13,7 +13,6 @@ public class BuildingReport {
 	private String outerWallRemark;
 	private File outerWallImage;
 	private ArrayList<RoomReport> roomReports;
-	private ArrayList<RoomConclusion> roomConclusion;
 	private int technicianID;
 	private String facilityManagerName;
 	public enum BuildingCondition {CON0,CON1,CON2,CON3};
@@ -21,8 +20,8 @@ public class BuildingReport {
 	
 	
 	public BuildingReport(int reportID, int buildingID, String roofRemark, File roofImage, String outerWallRemark,
-			File outerWallImage, ArrayList<RoomReport> roomReports, ArrayList<RoomConclusion> roomConclusion,
-			int technicianID, String facilityManagerName, BuildingCondition buildingCondition) {
+			File outerWallImage, ArrayList<RoomReport> roomReports, int technicianID, String facilityManagerName, 
+			BuildingCondition buildingCondition) {
 		super();
 		this.reportID = reportID;
 		this.buildingID = buildingID;
@@ -31,7 +30,6 @@ public class BuildingReport {
 		this.outerWallRemark = outerWallRemark;
 		this.outerWallImage = outerWallImage;
 		this.roomReports = roomReports;
-		this.roomConclusion = roomConclusion;
 		this.technicianID = technicianID;
 		this.facilityManagerName = facilityManagerName;
 		this.buildingCondition = buildingCondition;
@@ -91,14 +89,6 @@ public class BuildingReport {
 
 	public void setRoomReports(ArrayList<RoomReport> roomReports) {
 		this.roomReports = roomReports;
-	}
-
-	public ArrayList<RoomConclusion> getRoomConclusion() {
-		return roomConclusion;
-	}
-
-	public void setRoomConclusion(ArrayList<RoomConclusion> roomConclusion) {
-		this.roomConclusion = roomConclusion;
 	}
 
 	public int getTechnicianID() {

@@ -10,14 +10,15 @@ public class RoomReport {
 
 	int roomNumber;
 	double moistureScanResult;
-	String roomDescription, whatIsDamaged, whatIsRepaired, damageType, MeassurePoint;
+	String roomDescription, whatIsDamaged, whatIsRepaired, damageType, meassurePoint;
 	String wallsRemark, ceilingRemark, floorRemark, windowRemark, doorsRemark;
+	String conclusion;
 	File wallsImage, ceilingImage, floorImage, windowsImage, doorsImage;
 	Boolean damaged, roomRemarks, moistureScan;
 
 	public RoomReport(int roomNumber, double moistureScanResult, String roomDescription, String whatIsDamaged,
 			String whatIsRepaired, String damageType, String meassurePoint, String wallsRemark, String ceilingRemark,
-			String floorRemark, String windowRemark, String doorsRemark, File wallsImage, File ceilingImage,
+			String floorRemark, String windowRemark, String doorsRemark, String conclusion, File wallsImage, File ceilingImage,
 			File floorImage, File windowsImage, File doorsImage, Boolean damaged, Boolean roomRemarks,
 			Boolean moistureScan) {
 		super();
@@ -27,12 +28,13 @@ public class RoomReport {
 		this.whatIsDamaged = whatIsDamaged;
 		this.whatIsRepaired = whatIsRepaired;
 		this.damageType = damageType;
-		MeassurePoint = meassurePoint;
+		this.meassurePoint = meassurePoint;
 		this.wallsRemark = wallsRemark;
 		this.ceilingRemark = ceilingRemark;
 		this.floorRemark = floorRemark;
 		this.windowRemark = windowRemark;
 		this.doorsRemark = doorsRemark;
+		this.conclusion = conclusion;
 		this.wallsImage = wallsImage;
 		this.ceilingImage = ceilingImage;
 		this.floorImage = floorImage;
@@ -92,11 +94,11 @@ public class RoomReport {
 	}
 
 	public String getMeassurePoint() {
-		return MeassurePoint;
+		return meassurePoint;
 	}
 
 	public void setMeassurePoint(String meassurePoint) {
-		MeassurePoint = meassurePoint;
+		this.meassurePoint = meassurePoint;
 	}
 
 	public String getWallsRemark() {
@@ -203,4 +205,13 @@ public class RoomReport {
 		this.moistureScan = moistureScan;
 	}
 
+	public String getConclusion() {
+		return conclusion;
+	}
+
+	public void setConclusion(String conclusion) {
+		this.conclusion = conclusion;
+	}
+
+	
 }
