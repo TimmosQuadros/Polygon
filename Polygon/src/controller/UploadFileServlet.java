@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+
 
 
 /**
@@ -37,21 +39,39 @@ public class UploadFileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final int MAXSIZE = 5000*1024;
+		
 		
 		PrintWriter out = response.getWriter();
-		DiskFileItemFactory factory = new DiskFileItemFactory(MAXSIZE, new File("c:/temp"));
-
-		ServletFileUpload upload = new ServletFileUpload(factory);
 		
-		upload.setSizeMax(MAXSIZE);
-
-		// Parse the request
+		if(!ServletFileUpload.isMultipartContent(request)){
+			out.println("Nothing to upload");
+			return;
+		}
+		FileItemFactory itemfactory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(itemfactory);
 		try {
-			List<FileItem> items = upload.parseRequest((RequestContext) request);
+			List<FileItem> items = upload.parseRequest(request);
+			
+			for (FileItem fileItem : items) {
+				String contentType = fileItem.getContentType();
+				if(!contentType.equals("image/png")){
+					out.println("only png format image files supported");
+					continue;
+				}
+				File uploadDir = new File("c:\\UploadedFiles");
+				File file = File.createTempFile("img", ".png",uploadDir);
+				fileItem.write(file);
+				
+				out.println("File Saved Sucesfully");
+				
+			}
+			
 		} catch (FileUploadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			out.println("Upload fail");
+		} catch (Exception e) {
+			
+			out.println("Can't save");
 		}
 
 	}

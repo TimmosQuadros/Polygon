@@ -29,9 +29,9 @@
 	floorplan later. But notice that technician hours will increse by at least 100%
 	if there doesn't exist a floorplan for the builing.
 	
-		<form action="UploadFileServlet" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
 		
-			<input type="file" name="file" size="50" />
+			<input type="file" name="file" size="50" value="select images..." />
 			<input type="submit" value="Upload File" />
 			
 		</form>
