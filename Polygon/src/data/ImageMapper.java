@@ -42,13 +42,13 @@ public class ImageMapper {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public ArrayList<String> getUserImages(int user_id) throws SQLException, IOException{
+	public ArrayList<String> getUserImages(int building_id) throws SQLException, IOException{
 
-		String SQLString = "Select image from floorplans natural join image where user_id=?";
+		String SQLString = "Select image from floorplans natural join image where building_id=?";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
-		statement.setInt(1, user_id);
+		statement.setInt(1, building_id);
 
 		ResultSet resultSet = statement.executeQuery();
 		
