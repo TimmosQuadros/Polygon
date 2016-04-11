@@ -21,6 +21,22 @@
 	<h2><span class="thin">Add New</span> Building</h2>
     <p>Please fill out the following information to add a new building. please allow 1-2 working days for building to be added to the DB.</p>
 
+<table>
+	<tr><td>
+	<h2>Please make sure to upload a floorplan for the building you want to add!</h2>
+	<p>Uploading a floorplan for your building will speed up the entire process.
+	If you dont have the floorplan, you can still add the building and upload the
+	floorplan later. But notice that technician hours will increse by at least 100%
+	if there doesn't exist a floorplan for the builing.
+	
+		<form action="UploadFileServlet" method="post" enctype="multipart/form-data">
+		
+			<input type="file" name="file" size="50" />
+			<input type="submit" value="Upload File" />
+			
+		</form>
+	</td></tr>
+</table>
 
 <form class="addbuilding" name="addbuilding" method="post" action="CreateBuilding">
 
@@ -29,10 +45,11 @@
 	<input id="zipcode" type="text" placeholder="Zip code*" Name="zipcode" required>
 	<input id="build_year" type="text" placeholder="Building year*" Name="build_year" required>
 	<input id="floor_area" type="text" placeholder="Floor area in m2*" Name="floor_area" required>
-	
 	<input id="submit" type="submit" value="Send">
       	
 </form>
+
+
         
 </div> 
      
