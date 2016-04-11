@@ -11,7 +11,7 @@ public class RoomReport {
 	int roomNumber;
 	double moistureScanResult;
 	String roomDescription, whatIsDamaged, whatIsRepaired, damageType, measurePoint;
-	String wallsRemark, ceilingRemark, floorRemark, windowRemark, doorsRemark;
+	String wallsRemark, ceilingRemark, floorRemark, windowsRemark, doorsRemark;
 	String conclusion;
 	File wallsImage, ceilingImage, floorImage, windowsImage, doorsImage;
 	Boolean damaged, roomRemarks, moistureScan;
@@ -32,7 +32,7 @@ public class RoomReport {
 		this.wallsRemark = wallsRemark;
 		this.ceilingRemark = ceilingRemark;
 		this.floorRemark = floorRemark;
-		this.windowRemark = windowRemark;
+		this.windowsRemark = windowRemark;
 		this.doorsRemark = doorsRemark;
 		this.conclusion = conclusion;
 		this.wallsImage = wallsImage;
@@ -126,11 +126,11 @@ public class RoomReport {
 	}
 
 	public String getWindowRemark() {
-		return windowRemark;
+		return windowsRemark;
 	}
 
 	public void setWindowRemark(String windowRemark) {
-		this.windowRemark = windowRemark;
+		this.windowsRemark = windowRemark;
 	}
 
 	public String getDoorsRemark() {
