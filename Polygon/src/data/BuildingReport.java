@@ -16,11 +16,13 @@ public class BuildingReport {
 	private ArrayList<RoomConclusion> roomConclusion;
 	private int technicianID;
 	private String facilityManagerName;
-	public enum BuildingCondition {CONDITION0,CONDITION1,CONDITION2,CONDITION3}
+	public enum BuildingCondition {CON0,CON1,CON2,CON3};
+	private BuildingCondition buildingCondition;
+	
 	
 	public BuildingReport(int reportID, int buildingID, String roofRemark, File roofImage, String outerWallRemark,
 			File outerWallImage, ArrayList<RoomReport> roomReports, ArrayList<RoomConclusion> roomConclusion,
-			int technicianID, String facilityManagerName) {
+			int technicianID, String facilityManagerName, BuildingCondition buildingCondition) {
 		super();
 		this.reportID = reportID;
 		this.buildingID = buildingID;
@@ -32,6 +34,7 @@ public class BuildingReport {
 		this.roomConclusion = roomConclusion;
 		this.technicianID = technicianID;
 		this.facilityManagerName = facilityManagerName;
+		this.buildingCondition = buildingCondition;
 	}
 
 	public int getReportID() {
@@ -112,6 +115,14 @@ public class BuildingReport {
 
 	public void setFacilityManagerName(String facilityManagerName) {
 		this.facilityManagerName = facilityManagerName;
+	}
+
+	public BuildingCondition getBuildingCondition() {
+		return buildingCondition;
+	}
+
+	public void setBuildingCondition(BuildingCondition buildingCondition) {
+		this.buildingCondition = buildingCondition;
 	};
 	
 	
