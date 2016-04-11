@@ -10,7 +10,7 @@ public class RoomReport {
 
 	int roomNumber;
 	double moistureScanResult;
-	String roomDescription, whatIsDamaged, whatIsRepaired, damageType, meassurePoint;
+	String roomDescription, whatIsDamaged, whatIsRepaired, damageType, measurePoint;
 	String wallsRemark, ceilingRemark, floorRemark, windowRemark, doorsRemark;
 	String conclusion;
 	File wallsImage, ceilingImage, floorImage, windowsImage, doorsImage;
@@ -28,7 +28,7 @@ public class RoomReport {
 		this.whatIsDamaged = whatIsDamaged;
 		this.whatIsRepaired = whatIsRepaired;
 		this.damageType = damageType;
-		this.meassurePoint = meassurePoint;
+		this.measurePoint = meassurePoint;
 		this.wallsRemark = wallsRemark;
 		this.ceilingRemark = ceilingRemark;
 		this.floorRemark = floorRemark;
@@ -94,11 +94,11 @@ public class RoomReport {
 	}
 
 	public String getMeassurePoint() {
-		return meassurePoint;
+		return measurePoint;
 	}
 
 	public void setMeassurePoint(String meassurePoint) {
-		this.meassurePoint = meassurePoint;
+		this.measurePoint = meassurePoint;
 	}
 
 	public String getWallsRemark() {
