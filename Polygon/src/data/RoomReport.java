@@ -1,217 +1,59 @@
 package data;
 
-import java.text.SimpleDateFormat;
-
-import org.apache.tomcat.jni.File;
-
-import sun.util.calendar.LocalGregorianCalendar.Date;
-
 public class RoomReport {
 
-	int roomNumber;
-	double moistureScanResult;
-	String roomDescription, whatIsDamaged, whatIsRepaired, damageType, measurePoint;
-	String wallsRemark, ceilingRemark, floorRemark, windowsRemark, doorsRemark;
-	String conclusion;
-	File wallsImage, ceilingImage, floorImage, windowsImage, doorsImage;
-	Boolean damaged, roomRemarks, moistureScan;
+	int room_report_id, building_report_id;
 
-	public RoomReport(int roomNumber, double moistureScanResult, String roomDescription, String whatIsDamaged,
-			String whatIsRepaired, String damageType, String meassurePoint, String wallsRemark, String ceilingRemark,
-			String floorRemark, String windowRemark, String doorsRemark, String conclusion, File wallsImage, File ceilingImage,
-			File floorImage, File windowsImage, File doorsImage, Boolean damaged, Boolean roomRemarks,
-			Boolean moistureScan) {
+	String room_name, damage_reperation, moisture_scan;
+
+	public RoomReport(int room_report_id, int building_report_id, String room_name, String damage_reperation,
+			String moisture_scan) {
 		super();
-		this.roomNumber = roomNumber;
-		this.moistureScanResult = moistureScanResult;
-		this.roomDescription = roomDescription;
-		this.whatIsDamaged = whatIsDamaged;
-		this.whatIsRepaired = whatIsRepaired;
-		this.damageType = damageType;
-		this.measurePoint = meassurePoint;
-		this.wallsRemark = wallsRemark;
-		this.ceilingRemark = ceilingRemark;
-		this.floorRemark = floorRemark;
-		this.windowsRemark = windowRemark;
-		this.doorsRemark = doorsRemark;
-		this.conclusion = conclusion;
-		this.wallsImage = wallsImage;
-		this.ceilingImage = ceilingImage;
-		this.floorImage = floorImage;
-		this.windowsImage = windowsImage;
-		this.doorsImage = doorsImage;
-		this.damaged = damaged;
-		this.roomRemarks = roomRemarks;
-		this.moistureScan = moistureScan;
+		this.room_report_id = room_report_id;
+		this.building_report_id = building_report_id;
+		this.room_name = room_name;
+		this.damage_reperation = damage_reperation;
+		this.moisture_scan = moisture_scan;
 	}
 
-	public int getRoomNumber() {
-		return roomNumber;
+	public int getRoom_report_id() {
+		return room_report_id;
 	}
 
-	public void setRoomNumber(int roomNumber) {
-		this.roomNumber = roomNumber;
+	public void setRoom_report_id(int room_report_id) {
+		this.room_report_id = room_report_id;
 	}
 
-	public double getMoistureScanResult() {
-		return moistureScanResult;
+	public int getBuilding_report_id() {
+		return building_report_id;
 	}
 
-	public void setMoistureScanResult(double moistureScanResult) {
-		this.moistureScanResult = moistureScanResult;
+	public void setBuilding_report_id(int building_report_id) {
+		this.building_report_id = building_report_id;
 	}
 
-	public String getRoomDescription() {
-		return roomDescription;
+	public String getRoom_name() {
+		return room_name;
 	}
 
-	public void setRoomDescription(String roomDescription) {
-		this.roomDescription = roomDescription;
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
 	}
 
-	public String getWhatIsDamaged() {
-		return whatIsDamaged;
+	public String getDamage_reperation() {
+		return damage_reperation;
 	}
 
-	public void setWhatIsDamaged(String whatIsDamaged) {
-		this.whatIsDamaged = whatIsDamaged;
+	public void setDamage_reperation(String damage_reperation) {
+		this.damage_reperation = damage_reperation;
 	}
 
-	public String getWhatIsRepaired() {
-		return whatIsRepaired;
+	public String getMoisture_scan() {
+		return moisture_scan;
 	}
 
-	public void setWhatIsRepaired(String whatIsRepaired) {
-		this.whatIsRepaired = whatIsRepaired;
+	public void setMoisture_scan(String moisture_scan) {
+		this.moisture_scan = moisture_scan;
 	}
 
-	public String getDamageType() {
-		return damageType;
-	}
-
-	public void setDamageType(String damageType) {
-		this.damageType = damageType;
-	}
-
-	public String getMeassurePoint() {
-		return measurePoint;
-	}
-
-	public void setMeassurePoint(String meassurePoint) {
-		this.measurePoint = meassurePoint;
-	}
-
-	public String getWallsRemark() {
-		return wallsRemark;
-	}
-
-	public void setWallsRemark(String wallsRemark) {
-		this.wallsRemark = wallsRemark;
-	}
-
-	public String getCeilingRemark() {
-		return ceilingRemark;
-	}
-
-	public void setCeilingRemark(String ceilingRemark) {
-		this.ceilingRemark = ceilingRemark;
-	}
-
-	public String getFloorRemark() {
-		return floorRemark;
-	}
-
-	public void setFloorRemark(String floorRemark) {
-		this.floorRemark = floorRemark;
-	}
-
-	public String getWindowRemark() {
-		return windowsRemark;
-	}
-
-	public void setWindowRemark(String windowRemark) {
-		this.windowsRemark = windowRemark;
-	}
-
-	public String getDoorsRemark() {
-		return doorsRemark;
-	}
-
-	public void setDoorsRemark(String doorsRemark) {
-		this.doorsRemark = doorsRemark;
-	}
-
-	public File getWallsImage() {
-		return wallsImage;
-	}
-
-	public void setWallsImage(File wallsImage) {
-		this.wallsImage = wallsImage;
-	}
-
-	public File getCeilingImage() {
-		return ceilingImage;
-	}
-
-	public void setCeilingImage(File ceilingImage) {
-		this.ceilingImage = ceilingImage;
-	}
-
-	public File getFloorImage() {
-		return floorImage;
-	}
-
-	public void setFloorImage(File floorImage) {
-		this.floorImage = floorImage;
-	}
-
-	public File getWindowsImage() {
-		return windowsImage;
-	}
-
-	public void setWindowsImage(File windowsImage) {
-		this.windowsImage = windowsImage;
-	}
-
-	public File getDoorsImage() {
-		return doorsImage;
-	}
-
-	public void setDoorsImage(File doorsImage) {
-		this.doorsImage = doorsImage;
-	}
-
-	public Boolean getDamaged() {
-		return damaged;
-	}
-
-	public void setDamaged(Boolean damaged) {
-		this.damaged = damaged;
-	}
-
-	public Boolean getRoomRemarks() {
-		return roomRemarks;
-	}
-
-	public void setRoomRemarks(Boolean roomRemarks) {
-		this.roomRemarks = roomRemarks;
-	}
-
-	public Boolean getMoistureScan() {
-		return moistureScan;
-	}
-
-	public void setMoistureScan(Boolean moistureScan) {
-		this.moistureScan = moistureScan;
-	}
-
-	public String getConclusion() {
-		return conclusion;
-	}
-
-	public void setConclusion(String conclusion) {
-		this.conclusion = conclusion;
-	}
-
-	
 }
