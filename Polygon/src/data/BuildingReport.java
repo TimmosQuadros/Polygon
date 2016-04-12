@@ -15,6 +15,8 @@ public class BuildingReport {
 	private BuildingCondition buildingCondition;
 	
 	private ArrayList<BuildingReportImage> buildingReportImage = new ArrayList<>();
+	private ArrayList<RoomReport> roomReport = new ArrayList<>();
+	
 	
 
 	public BuildingReport(int report_id, int tech_id, int building_id, String roof_remark, String outer_wall_remark,
