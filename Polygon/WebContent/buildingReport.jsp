@@ -29,7 +29,7 @@
 	ArrayList<Building> buildings = f.getAllBuildings();
 	
 	Building thisBuilding = null;
-	int thisId = 1; //den skal hente building ID fra sessionen.
+	int thisId = 2; //den skal hente building ID fra sessionen.
 	for (Building b : buildings){
 		if(b.getBuilding_id()==thisId){
 			thisBuilding = b;
@@ -104,7 +104,11 @@ Do you want to add inspection notes on the outer walls?<br>
 		
 	</form>
 </div><br>
-
+<h2>Rooms</h2>
+<p> click add button to add rooms for inspections for this report.</p>
+<div id="rooms">
+<%@include file="roomReport.jsp" %>
+</div>
 
 </body>
 </html>
