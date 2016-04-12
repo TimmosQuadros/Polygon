@@ -136,12 +136,12 @@ DROP TABLE IF EXISTS `polygon`.`building_report` ;
 
 CREATE TABLE IF NOT EXISTS `polygon`.`building_report` (
   `report_id` INT NOT NULL AUTO_INCREMENT,
+  `tech_id` INT(11) NOT NULL,
   `building_id` INT(11) NOT NULL,
-  `roof_remark` VARCHAR(45) NULL,
-  `outer_wall_remark` VARCHAR(45) NULL,
+  `roof_remark` VARCHAR(200) NULL,
+  `outer_wall_remark` VARCHAR(200) NULL,
   `facility_manager_name` VARCHAR(45) NULL,
   `building_condition` ENUM('CON0', 'CON1', 'CON2', 'CON3') NULL,
-  `tech_id` INT(11) NOT NULL,
   PRIMARY KEY (`report_id`),
   INDEX `fk_building_report_buildings1_idx` (`building_id` ASC),
   INDEX `fk_building_report_users1_idx` (`tech_id` ASC),
@@ -193,18 +193,14 @@ DROP TABLE IF EXISTS `polygon`.`room_report` ;
 
 CREATE TABLE IF NOT EXISTS `polygon`.`room_report` (
   `room_report_id` INT NOT NULL AUTO_INCREMENT,
-  `room_number` INT NULL,
-  `moisture_scan_result` DOUBLE NULL,
-  `damage_type` VARCHAR(20) NULL,
-  `measure_point` VARCHAR(45) NULL,
-  `room_remarks` BINARY(1) NULL,
-  `moisture_scan` BINARY(1) NULL,
-  `damaged` BINARY(1) NULL,
-  `building_report_report_id` INT NOT NULL,
+  `building_report_id` INT NOT NULL,
+  `room_name` VARCHAR(20) NULL,
+  `damage_reperation` VARCHAR(200) NULL,
+  `moisture_scan` VARCHAR(400) NULL,
   PRIMARY KEY (`room_report_id`),
-  INDEX `fk_room_report_building_report1_idx` (`building_report_report_id` ASC),
+  INDEX `fk_room_report_building_report1_idx` (`building_report_id` ASC),
   CONSTRAINT `fk_room_report_building_report1`
-    FOREIGN KEY (`building_report_report_id`)
+    FOREIGN KEY (`building_report_id`)
     REFERENCES `polygon`.`building_report` (`report_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -219,9 +215,9 @@ DROP TABLE IF EXISTS `polygon`.`description` ;
 
 CREATE TABLE IF NOT EXISTS `polygon`.`description` (
   `description_id` INT NOT NULL AUTO_INCREMENT,
+  `room_report_id` INT NOT NULL,
   `description` VARCHAR(45) NULL,
   `type` VARCHAR(45) NULL,
-  `room_report_id` INT NOT NULL,
   PRIMARY KEY (`description_id`),
   INDEX `fk_description_room_report1_idx` (`room_report_id` ASC),
   CONSTRAINT `fk_description_room_report1`
@@ -240,9 +236,9 @@ DROP TABLE IF EXISTS `polygon`.`remark` ;
 
 CREATE TABLE IF NOT EXISTS `polygon`.`remark` (
   `remark_id` INT NOT NULL AUTO_INCREMENT,
+  `room_report_id` INT NOT NULL,
   `description` VARCHAR(45) NULL,
   `type` VARCHAR(45) NULL,
-  `room_report_id` INT NOT NULL,
   PRIMARY KEY (`remark_id`),
   INDEX `fk_remark_room_report1_idx` (`room_report_id` ASC),
   CONSTRAINT `fk_remark_room_report1`
@@ -287,8 +283,8 @@ DROP TABLE IF EXISTS `polygon`.`conclusion` ;
 
 CREATE TABLE IF NOT EXISTS `polygon`.`conclusion` (
   `conclusion_id` INT NOT NULL AUTO_INCREMENT,
-  `text` VARCHAR(500) NULL,
   `room_report_id` INT NOT NULL,
+  `text` VARCHAR(500) NULL,
   PRIMARY KEY (`conclusion_id`),
   INDEX `fk_conclusion_room_report1_idx` (`room_report_id` ASC),
   CONSTRAINT `fk_conclusion_room_report1`
