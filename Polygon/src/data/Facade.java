@@ -54,8 +54,16 @@ public class Facade {
 		return um.getUsers();
 	}
 
-	public ArrayList<String> getUserImages(int user_id) throws SQLException, IOException {
-		return im.getUserImages(user_id);
+	public ArrayList<String> getBuildingFloorplans(int building_id) throws SQLException, IOException {
+		return im.getBuildingFloorplans(building_id);
+	}
+	
+	public ArrayList<File> getRoofImages(int report_id) throws SQLException, IOException{
+		return im.getRoofImages(report_id);
+	}
+	
+	public ArrayList<File> getOuterWallImages(int report_id) throws SQLException, IOException{
+		return im.getOuterWallImages(report_id);
 	}
 
 	// update
