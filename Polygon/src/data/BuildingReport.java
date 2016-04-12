@@ -2,109 +2,79 @@ package data;
 
 import java.util.ArrayList;
 
-import org.apache.tomcat.jni.File;
-
 public class BuildingReport {
-	
-	private int reportID;
-	private int buildingID;
-	private String roofRemark;
-	private File roofImage;
-	private String outerWallRemark;
-	private File outerWallImage;
-	private ArrayList<RoomReport> roomReports;
-	private int technicianID;
-	private String facilityManagerName;
-	public enum BuildingCondition {CON0,CON1,CON2,CON3};
+
+	private int report_id, tech_id, building_id;
+
+	private String roof_remark, outer_wall_remark, facility_manager_name;
+
+	public enum BuildingCondition {
+		CON0, CON1, CON2, CON3
+	};
+
 	private BuildingCondition buildingCondition;
 	
+	private ArrayList<BuildingReportImage> buildingReportImage = new ArrayList<>();
 	
-	public BuildingReport(int reportID, int buildingID, String roofRemark, File roofImage, String outerWallRemark,
-			File outerWallImage, ArrayList<RoomReport> roomReports, int technicianID, String facilityManagerName, 
-			BuildingCondition buildingCondition) {
+
+	public BuildingReport(int report_id, int tech_id, int building_id, String roof_remark, String outer_wall_remark,
+			String facility_manager_name, BuildingCondition buildingCondition) {
 		super();
-		this.reportID = reportID;
-		this.buildingID = buildingID;
-		this.roofRemark = roofRemark;
-		this.roofImage = roofImage;
-		this.outerWallRemark = outerWallRemark;
-		this.outerWallImage = outerWallImage;
-		this.roomReports = roomReports;
-		this.technicianID = technicianID;
-		this.facilityManagerName = facilityManagerName;
+		this.report_id = report_id;
+		this.tech_id = tech_id;
+		this.building_id = building_id;
+		this.roof_remark = roof_remark;
+		this.outer_wall_remark = outer_wall_remark;
+		this.facility_manager_name = facility_manager_name;
 		this.buildingCondition = buildingCondition;
 	}
 
-	public int getReportID() {
-		return reportID;
+	public int getReport_id() {
+		return report_id;
 	}
 
-	public void setReportID(int reportID) {
-		this.reportID = reportID;
+	public void setReport_id(int report_id) {
+		this.report_id = report_id;
 	}
 
-	public int getBuildingID() {
-		return buildingID;
+	public int getTech_id() {
+		return tech_id;
 	}
 
-	public void setBuildingID(int buildingID) {
-		this.buildingID = buildingID;
+	public void setTech_id(int tech_id) {
+		this.tech_id = tech_id;
 	}
 
-	public String getRoofRemark() {
-		return roofRemark;
+	public int getBuilding_id() {
+		return building_id;
 	}
 
-	public void setRoofRemark(String roofRemark) {
-		this.roofRemark = roofRemark;
+	public void setBuilding_id(int building_id) {
+		this.building_id = building_id;
 	}
 
-	public File getRoofImage() {
-		return roofImage;
+	public String getRoof_remark() {
+		return roof_remark;
 	}
 
-	public void setRoofImage(File roofImage) {
-		this.roofImage = roofImage;
+	public void setRoof_remark(String roof_remark) {
+		this.roof_remark = roof_remark;
 	}
 
-	public String getOuterWallRemark() {
-		return outerWallRemark;
+	public String getOuter_wall_remark() {
+		return outer_wall_remark;
 	}
 
-	public void setOuterWallRemark(String outerWallRemark) {
-		this.outerWallRemark = outerWallRemark;
+	public void setOuter_wall_remark(String outer_wall_remark) {
+		this.outer_wall_remark = outer_wall_remark;
 	}
 
-	public File getOuterWallImage() {
-		return outerWallImage;
+	public String getFacility_manager_name() {
+		return facility_manager_name;
 	}
 
-	public void setOuterWallImage(File outerWallImage) {
-		this.outerWallImage = outerWallImage;
-	}
-
-	public ArrayList<RoomReport> getRoomReports() {
-		return roomReports;
-	}
-
-	public void setRoomReports(ArrayList<RoomReport> roomReports) {
-		this.roomReports = roomReports;
-	}
-
-	public int getTechnicianID() {
-		return technicianID;
-	}
-
-	public void setTechnicianID(int technicianID) {
-		this.technicianID = technicianID;
-	}
-
-	public String getFacilityManagerName() {
-		return facilityManagerName;
-	}
-
-	public void setFacilityManagerName(String facilityManagerName) {
-		this.facilityManagerName = facilityManagerName;
+	public void setFacility_manager_name(String facility_manager_name) {
+		this.facility_manager_name = facility_manager_name;
 	}
 
 	public BuildingCondition getBuildingCondition() {
@@ -113,8 +83,6 @@ public class BuildingReport {
 
 	public void setBuildingCondition(BuildingCondition buildingCondition) {
 		this.buildingCondition = buildingCondition;
-	};
-	
-	
-	
+	}
+
 }
