@@ -98,5 +98,27 @@ public class ImageMapper {
 		}
 		return files;
 	}
+	
+	public ArrayList<File> getOuterWallImages(int report_id) throws SQLException, IOException{
+		String SQLString = "select image from image natural join building_report_image natural join building_report where report_id=? and image_type='OUTER_WALL' group by image_id";
+		PreparedStatement statement = Connector.prepare(SQLString);
+		statement.setInt(1, report_id);
+		ResultSet resultSet = statement.executeQuery();
+		
+		ArrayList<File> files = new ArrayList<>();
+		
+		while (resultSet.next()) {
+			File file = File.createTempFile("img", ".png");
+			FileOutputStream fos = new FileOutputStream(file);
+			byte[] buffer = new byte[1];
+			InputStream is = resultSet.getBinaryStream(1);
+			while (is.read(buffer) > 0) {
+				fos.write(buffer);
+			}
+			fos.close();
+			files.add(file);
+		}
+		return files;
+	}
 
 }
