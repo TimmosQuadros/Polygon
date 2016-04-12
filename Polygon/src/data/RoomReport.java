@@ -1,10 +1,14 @@
 package data;
 
+import java.util.ArrayList;
+
 public class RoomReport {
 
 	int room_report_id, building_report_id;
 
 	String room_name, damage_reperation, moisture_scan;
+
+	ArrayList<RoomReportImage> roomReportImage = new ArrayList<>();
 
 	public RoomReport(int room_report_id, int building_report_id, String room_name, String damage_reperation,
 			String moisture_scan) {
