@@ -96,3 +96,10 @@ li a:hover {
 	color: white;
 	background-color: #008CBA;
 }
+
+legend {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+} 
