@@ -75,6 +75,23 @@ public class BuildingMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
+	
+	public int getMaxBuildingId() throws SQLException{
+		String SQLString = "select max(building_id) from buildings;";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+		ResultSet resultSet = statement.executeQuery();
+
+		int result;
+		
+		resultSet.next();
+		
+		result=resultSet.getInt(1);
+
+		return result;
+	}
+	
 	//replaces a Building in the database. retrieve Building -> change attribute(s) -> use this method.
 	public void updateBuilding(Building b) throws SQLException {
 

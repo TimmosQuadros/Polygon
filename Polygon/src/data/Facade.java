@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
+
 public class Facade {
 
 	private BuildingMapper bm;
@@ -42,6 +44,10 @@ public class Facade {
 	public void createImage(File file, String image_name) throws SQLException {
 		im.createImage(file, image_name);
 	}
+	
+	public void createFloorplan(int image_id, int building_id) throws SQLException {
+		im.createFloorplan(image_id, building_id);
+	}
 
 	// retrieve
 	public ArrayList<Building> getAllBuildings() throws SQLException {
@@ -50,6 +56,10 @@ public class Facade {
 
 	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
 		return bm.getUserBuildings(user_id);
+	}
+	
+	public int getMaxBuildingId() throws SQLException{
+		return bm.getMaxBuildingId();
 	}
 
 	public ArrayList<Organisation> getOrganisations() throws SQLException {
@@ -60,8 +70,8 @@ public class Facade {
 		return um.getUsers();
 	}
 
-	public ArrayList<String> getBuildingFloorplans(int building_id) throws SQLException, IOException {
-		return im.getBuildingFloorplans(building_id);
+	public ArrayList<String> getBuildingFloorplans(int building_id, ServletContext sc) throws SQLException, IOException {
+		return im.getBuildingFloorplans(building_id,sc);
 	}
 	
 	public ArrayList<File> getRoofImages(int report_id) throws SQLException, IOException{
@@ -74,6 +84,10 @@ public class Facade {
 	
 	public File getImage(int image_id) throws SQLException{
 		return im.getImage(image_id);
+	}
+	
+	public int getMaxImageId() throws SQLException{
+		return im.getMaxImageId();
 	}
 	
 	public ArrayList<RoomReportImage> getRoomReportImages(int report_id, data.RoomReportImage.Type type) throws SQLException{

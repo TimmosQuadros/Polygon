@@ -15,14 +15,7 @@
 </head>
 <body>
 		<%
-		//User user = (User) session.getAttribute("user");
-		//int user_id = user.getUser_id();
-		//Facade facade = new Facade();
-		//ArrayList<String> imgPaths = facade.getUserImages(user_id);
-		ArrayList<String> testPaths = new ArrayList<>();
-		testPaths.add("Resources/Images/Floorplans/Floorplan0.png");
-		testPaths.add("Resources/Images/Floorplans/Floorplan1.png");
-		testPaths.add("Resources/Images/Floorplans/Floorplan2.png");
+		ArrayList<String> imgPaths = (ArrayList<String>)session.getAttribute("paths.floorplans");
 		%>
 		
 <section class="demo">
@@ -32,7 +25,7 @@
 <%
 	int count = 0;
 	//for (String path : imgPaths) {
-	for (String path : testPaths) {
+	for (String path : imgPaths) {
 		if(!path.isEmpty()){
 %>
     <div>

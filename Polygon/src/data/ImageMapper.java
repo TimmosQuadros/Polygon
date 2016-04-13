@@ -11,6 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.Servlet;
+import javax.servlet.ServletContext;
+
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+
 import com.mysql.fabric.xmlrpc.base.Array;
 
 public class ImageMapper {
@@ -37,8 +44,21 @@ public class ImageMapper {
 		statement.executeUpdate();
 	}
 
-	public void createFloorplan(int building_id){
 
+
+	public void createFloorplan(int image_id, int building_id) throws SQLException {
+
+		String SQLString = "INSERT INTO floorplans (image_id, building_id) VALUES (?,?)";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+
+		statement.setInt(1, image_id);
+		statement.setInt(2,building_id);
+
+
+
+		statement.executeUpdate();
 	}
 
 	/**
@@ -48,7 +68,7 @@ public class ImageMapper {
 	 * @throws SQLException
 	 * @throws IOException
 	 */
-	public ArrayList<String> getBuildingFloorplans(int building_id) throws SQLException, IOException{
+	public ArrayList<String> getBuildingFloorplans(int building_id, ServletContext sc) throws SQLException, IOException{
 
 		String SQLString = "Select image from floorplans natural join image where building_id=?";
 
@@ -60,10 +80,17 @@ public class ImageMapper {
 
 		ArrayList<String> images = new ArrayList<>();
 
+		String FilePath = sc.getRealPath("/");
+
+		String ServerPath = FilePath+"Resources\\Images\\Floorplans";
+
+		FileUtils.cleanDirectory(new File(ServerPath));
+
 		int i = 0;
+
 		while (resultSet.next()) {
-			String image_path;
-			File image = new File(image_path="WebContent/Resources/Images/Floorplans/Floorplan"+i+".png");
+			String image_path=FilePath+"Resources\\Images\\Floorplans\\Floorplan"+i+".png";
+			File image = new File(image_path);
 			FileOutputStream fos = new FileOutputStream(image);
 			byte[] buffer = new byte[1];
 			InputStream is = resultSet.getBinaryStream(1);
@@ -77,14 +104,30 @@ public class ImageMapper {
 		return images;
 	}
 
+	public int getMaxImageId() throws SQLException{
+		String SQLString = "select max(image_id) from image;";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+		ResultSet resultSet = statement.executeQuery();
+
+		int result;
+		
+		resultSet.next();
+		
+		result=resultSet.getInt(1);
+
+		return result;
+	}
+
 	public ArrayList<File> getRoofImages(int report_id) throws SQLException, IOException{
 		String SQLString = "select image from image natural join building_report_image natural join building_report where report_id=? and image_type='ROOF' group by image_id";
 		PreparedStatement statement = Connector.prepare(SQLString);
 		statement.setInt(1, report_id);
 		ResultSet resultSet = statement.executeQuery();
-		
+
 		ArrayList<File> files = new ArrayList<>();
-		
+
 		while (resultSet.next()) {
 			File file = File.createTempFile("img", ".png");
 			FileOutputStream fos = new FileOutputStream(file);
@@ -98,15 +141,15 @@ public class ImageMapper {
 		}
 		return files;
 	}
-	
+
 	public ArrayList<File> getOuterWallImages(int report_id) throws SQLException, IOException{
 		String SQLString = "select image from image natural join building_report_image natural join building_report where report_id=? and image_type='OUTER_WALL' group by image_id";
 		PreparedStatement statement = Connector.prepare(SQLString);
 		statement.setInt(1, report_id);
 		ResultSet resultSet = statement.executeQuery();
-		
+
 		ArrayList<File> files = new ArrayList<>();
-		
+
 		while (resultSet.next()) {
 			File file = File.createTempFile("img", ".png");
 			FileOutputStream fos = new FileOutputStream(file);
@@ -120,16 +163,16 @@ public class ImageMapper {
 		}
 		return files;
 	}
-	
+
 	public File getImage(int image_id) throws SQLException{
-		
+
 		String SQLString = "select * from image where image_id=?;";
 		PreparedStatement statement = Connector.prepare(SQLString);
 		statement.setInt(1, image_id);
 		ResultSet resultSet = statement.executeQuery();
-		
+
 		return null;
-		
+
 	}
 
 }

@@ -44,11 +44,18 @@ public class CreateBuildingServlet extends HttpServlet {
 			}catch (NumberFormatException e) {
 				e.printStackTrace();
 			}catch (NullPointerException e) {
-				//
+				e.printStackTrace();
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+
+		try {
+			facade.createFloorplan(facade.getMaxImageId(), facade.getMaxBuildingId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

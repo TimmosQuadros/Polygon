@@ -42,7 +42,7 @@
 		
 	%>
 
-	<form action="" method="get">
+	<form action="ButtonClickedServlet" method="get">
 		<table>
 			<tr>
 				<th>NAME</th>
