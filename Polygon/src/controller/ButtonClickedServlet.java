@@ -49,7 +49,7 @@ public class ButtonClickedServlet extends HttpServlet {
 				if(request.getParameter(String.valueOf(users.get(i).getUser_id())) !=null){
 					FileUtils.cleanDirectory(new File("WebContent/Resources/Images/Floorplans"));
 					session.setAttribute("user.floorplans", users.get(i));
-					f.getUserImages(users.get(i).getUser_id());
+					//f.getBuildingFloorplans(building_id)Images(users.get(i).getUser_id());
 				}
 			}
 		} catch (SQLException e) {
