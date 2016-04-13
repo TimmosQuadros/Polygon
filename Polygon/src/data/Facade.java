@@ -13,6 +13,7 @@ public class Facade {
 	private ImageMapper im;
 	private RoomReportMapper rrm;
 	private RoomReportImageMapper rrim;
+	private BuildingReportImageMapper brim;
 
 	public Facade() {
 		super();
@@ -22,6 +23,7 @@ public class Facade {
 		this.im = new ImageMapper();
 		this.rrm = new RoomReportMapper();
 		this.rrim = new RoomReportImageMapper();
+		this.brim = new BuildingReportImageMapper();
 	}
 
 	// create
