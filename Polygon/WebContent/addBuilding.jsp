@@ -26,8 +26,8 @@
 	<h2>Please make sure to upload a floorplan for the building you want to add!</h2>
 	<p>Uploading a floorplan for your building will speed up the entire process.
 	If you dont have the floorplan, you can still add the building and upload the
-	floorplan later. But notice that technician hours will increse by at least 100%
-	if there doesn't exist a floorplan for the builing.
+	floorplan later. But notice that technician hours will increase by at least 100%
+	if there is no floorplan for the building.
 	
 		<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
 		
