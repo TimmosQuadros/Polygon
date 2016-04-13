@@ -120,5 +120,16 @@ public class ImageMapper {
 		}
 		return files;
 	}
+	
+	public File getImage(int image_id) throws SQLException{
+		
+		String SQLString = "select * from image where image_id=?;";
+		PreparedStatement statement = Connector.prepare(SQLString);
+		statement.setInt(1, image_id);
+		ResultSet resultSet = statement.executeQuery();
+		
+		return null;
+		
+	}
 
 }
