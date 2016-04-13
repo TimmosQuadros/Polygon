@@ -11,13 +11,14 @@ public class RoomReport {
 	ArrayList<RoomReportImage> roomReportImage = new ArrayList<>();
 
 	public RoomReport(int room_report_id, int building_report_id, String room_name, String damage_reperation,
-			String moisture_scan) {
+			String moisture_scan, ArrayList<RoomReportImage> roomReportImage) {
 		super();
 		this.room_report_id = room_report_id;
 		this.building_report_id = building_report_id;
 		this.room_name = room_name;
 		this.damage_reperation = damage_reperation;
 		this.moisture_scan = moisture_scan;
+		
 	}
 
 	public int getRoom_report_id() {
