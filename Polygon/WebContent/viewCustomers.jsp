@@ -16,22 +16,36 @@
 		<table>
 			<tr>
 				<th>User ID</th>
-				<th>Organisation ID</th>
+				<th>Organisation Name</th>
 				<th>Name</th>
 				<th>Password</th>
 				<th>Email</th>
 				<th>Details</th>
 			</tr>
 			<%
-				ArrayList<User> users = new ArrayList<>();
+				String orgName = "";
 				Facade facade = new Facade();
+				ArrayList<Organisation> organisations = facade.getOrganisations();
+				ArrayList<User> users = new ArrayList<>();
 				users = facade.getUsers();
+				
+			
+				
+				
 				for (User u : users) {
 					if (u.getUser_type().name().equalsIgnoreCase("CUST")) {
+					
+				
+						for (Organisation o : organisations){
+							if (o.getId() == u.getOrganisations_id()){
+								orgName = o.getName(); 
+							}
+						}	
+				
 			%>
 			<tr>
 				<td><%=u.getUser_id()%></td>
-				<td><%=u.getOrganisations_id()%></td>
+				<td><%=orgName%></td>
 				<td><%=u.getUsername()%></td>
 				<td><%=u.getPassword()%></td>
 				<td><%=u.getUser_email()%></td>
@@ -40,8 +54,10 @@
 			</tr>
 			<%
 				}
-				}
+			}
 			%>
+			
+			
 		</table>
 	</form>
 </body>
