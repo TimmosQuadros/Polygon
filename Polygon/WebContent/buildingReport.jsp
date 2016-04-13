@@ -112,10 +112,10 @@ Do you want to add inspection notes on the outer walls?<br>
 
 <h2>Overall condition status</h2>
 <form action="healthReportServlet" method="get">
-	 <input type="checkbox" name="conditionLevel" value="con0"> Condition level 0<br>
-	 <input type="checkbox" name="conditionLevel" value="con1"> Condition level 1<br>
-	 <input type="checkbox" name="conditionLevel" value="con2"> Condition level 2<br>
-	 <input type="checkbox" name="conditionLevel" value="con3"> Condition level 3<br>
+	 <input type="radio" name="conditionLevel" value="con0"> Condition level 0<br>
+	 <input type="radio" name="conditionLevel" value="con1"> Condition level 1<br>
+	 <input type="radio" name="conditionLevel" value="con2"> Condition level 2<br>
+	 <input type="radio" name="conditionLevel" value="con3"> Condition level 3<br>
 	 <input type="submit" value="Submit">
 </form>
 </body>

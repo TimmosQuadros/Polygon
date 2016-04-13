@@ -17,7 +17,7 @@ public class Connector {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String URL = "jdbc:mysql://localhost:3306/polygon";
 	private static String id = "root";			
-	private static String pw = "hFHA3YsT,@:p";
+	private static String pw = "HPEJpu98ls";
 
 	private Connector() {
 		try {

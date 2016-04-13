@@ -62,7 +62,7 @@ public class UploadFileServlet extends HttpServlet {
 				File file = File.createTempFile("img", ".png",uploadDir);
 				fileItem.write(file);
 				
-				out.println("File Saved Sucesfully");
+				out.println("File Saved Successfully");
 				
 			}
 			
