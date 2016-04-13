@@ -17,7 +17,7 @@
 			<tr>
 				<th>User ID</th>
 				<th>Organisation ID</th>
-				<th>User Name</th>
+				<th>Name</th>
 				<th>Password</th>
 				<th>Email</th>
 				<th>Details</th>
