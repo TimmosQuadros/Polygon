@@ -65,6 +65,10 @@ public class Facade {
 	public ArrayList<File> getOuterWallImages(int report_id) throws SQLException, IOException{
 		return im.getOuterWallImages(report_id);
 	}
+	
+	public File getImage(int image_id) throws SQLException{
+		return im.getImage(image_id);
+	}
 
 	// update
 	public void updateBuilding(Building b) {
