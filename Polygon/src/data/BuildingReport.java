@@ -17,6 +17,23 @@ public class BuildingReport {
 	private ArrayList<BuildingReportImage> buildingReportImage = new ArrayList<>();
 	private ArrayList<RoomReport> roomReport = new ArrayList<>();
 	
+	public ArrayList<BuildingReportImage> getBuildingReportImage() {
+		return buildingReportImage;
+	}
+
+	public void setBuildingReportImage(ArrayList<BuildingReportImage> buildingReportImage) {
+		this.buildingReportImage = buildingReportImage;
+	}
+
+	public ArrayList<RoomReport> getRoomReport() {
+		return roomReport;
+	}
+
+	public void setRoomReport(ArrayList<RoomReport> roomReport) {
+		this.roomReport = roomReport;
+	}
+
+	
 	
 
 	public BuildingReport(int report_id, int tech_id, int building_id, String roof_remark, String outer_wall_remark,

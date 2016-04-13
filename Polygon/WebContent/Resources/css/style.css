@@ -97,9 +97,6 @@ li a:hover {
 	background-color: #008CBA;
 }
 
-legend {
-    display: block;
-    padding-left: 2px;
-    padding-right: 2px;
-    border: none;
-} 
+.fieldset-auto-width {
+         display: inline-block;
+    }
