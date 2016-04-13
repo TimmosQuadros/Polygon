@@ -11,6 +11,8 @@ public class Facade {
 	private OrganisationMapper om;
 	private UserMapper um;
 	private ImageMapper im;
+	private RoomReportMapper rrm;
+	private RoomReportImageMapper rrim;
 
 	public Facade() {
 		super();
@@ -18,6 +20,8 @@ public class Facade {
 		this.om = new OrganisationMapper();
 		this.um = new UserMapper();
 		this.im = new ImageMapper();
+		this.rrm = new RoomReportMapper();
+		this.rrim = new RoomReportImageMapper();
 	}
 
 	// create
@@ -68,6 +72,14 @@ public class Facade {
 	
 	public File getImage(int image_id) throws SQLException{
 		return im.getImage(image_id);
+	}
+	
+	public ArrayList<RoomReportImage> getRoomReportImages(int report_id, data.RoomReportImage.Type type) throws SQLException{
+		return rrim.getRoomReportImages(report_id, type);
+	}
+	
+	public ArrayList<RoomReportImage> getRoomReportImages(int report_id) throws SQLException{
+		return rrim.getRoomReportImages(report_id);
 	}
 
 	// update
