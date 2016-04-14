@@ -16,6 +16,7 @@ public class Facade {
 	private RoomReportMapper rrm;
 	private RoomReportImageMapper rrim;
 	private BuildingReportImageMapper brim;
+	private CheckupMapper cm;
 
 	public Facade() {
 		super();
@@ -26,6 +27,7 @@ public class Facade {
 		this.rrm = new RoomReportMapper();
 		this.rrim = new RoomReportImageMapper();
 		this.brim = new BuildingReportImageMapper();
+		this.cm = new CheckupMapper();
 	}
 
 	// create
@@ -47,6 +49,9 @@ public class Facade {
 	
 	public void createFloorplan(int image_id, int building_id) throws SQLException {
 		im.createFloorplan(image_id, building_id);
+	}
+	public void createCheckup(Checkup c) throws SQLException{
+		cm.createCheckup(c);
 	}
 
 	// retrieve
@@ -96,6 +101,9 @@ public class Facade {
 	
 	public ArrayList<RoomReportImage> getRoomReportImages(int report_id) throws SQLException{
 		return rrim.getRoomReportImages(report_id);
+	}
+	public ArrayList<Checkup> getCheckups() throws SQLException{
+		return.getCheckups();
 	}
 
 	// update
