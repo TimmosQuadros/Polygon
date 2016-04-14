@@ -32,25 +32,25 @@
 			
 				
 				
-				for (User user : users) {
+				for (User u : users) {
 					if (u.getUser_type().name().equalsIgnoreCase("CUST")) {
 					
 				
 						for (Organisation o : organisations){
-							if (o.getId() == user.getOrganisations_id()){
+							if (o.getId() == u.getOrganisations_id()){
 								orgName = o.getName(); 
 							}
 						}	
 				
 			%>
 			<tr>
-				<td><%=user.getUser_id()%></td>
+				<td><%=u.getUser_id()%></td>
 				<td><%=orgName%></td>
-				<td><%=user.getUsername()%></td>
-				<td><%=user.getPassword()%></td>
-				<td><%=user.getUser_email()%></td>
+				<td><%=u.getUsername()%></td>
+				<td><%=u.getPassword()%></td>
+				<td><%=u.getUser_email()%></td>
 				<td><input class="btn-class" type="submit" value="view"
-					name="<%=user.getUser_id()%>" /></td>
+					name="<%=u.getUser_id()%>" /></td>
 			</tr>
 			<%
 				}

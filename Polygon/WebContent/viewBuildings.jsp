@@ -51,6 +51,7 @@
 				<th>BUILD YEAR</th>
 				<th>AREA m<sup>2</sup></th>
 				<th>DETAILS</th>
+				<th>ORDER REPORT</th>
 			</tr>
 
 			<%
@@ -63,6 +64,8 @@
 				<td><%=b.getBuild_year()%></td>
 				<td><%=b.getFloor_area()%></td>
 				<td><input class="btn-class" type="submit" value="view"
+					name="<%=b.getBuilding_id()%>" /></td>
+				<td><input class="btn-class" type="submit" value="order report"
 					name="<%=b.getBuilding_id()%>" /></td>
 			</tr>
 			<%
