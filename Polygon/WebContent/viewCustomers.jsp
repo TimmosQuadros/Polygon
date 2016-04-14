@@ -11,7 +11,8 @@
 </head>
 <body>
 	<%@include file="header.jsp"%>
-	<a href="createUser.jsp">Create User</a>
+	
+	<div style="margin-top: 25px;"><a href="createUser.jsp">Create User</a></div>
 	<form action="" method="get">
 		<table>
 			<tr>

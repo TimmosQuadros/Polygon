@@ -22,7 +22,7 @@
 </head>
 <body>
 	<%@include file="header.jsp"%>
-	<a class="click-me" href="addBuilding.jsp">Add building</a>
+	<div style="margin-top: 25px;"><a class="click-me" href="addBuilding.jsp">Add building</a></div>
 
 	<%
 		Facade fac = new Facade();
@@ -39,7 +39,6 @@
 		}else{
 			buildings = fac.getAllBuildings();
 		}
-		
 	%>
 
 	<form action="ButtonClickedServlet" method="get">

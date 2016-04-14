@@ -14,7 +14,7 @@
 
 	
 	<form action="" method="get">
-	<table>
+	<table style="margin-top: 25px;">
 		<tr>
 			<th>User ID</th>
 			<th>Organisation ID</th>
