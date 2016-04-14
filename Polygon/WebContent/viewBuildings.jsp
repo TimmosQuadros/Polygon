@@ -67,11 +67,13 @@
 					name="<%=b.getBuilding_id()%>" /></td>
 				<td><input class="btn-class" type="submit" value="order report"
 					name="<%=b.getBuilding_id()%>" /></td>
+					
 			</tr>
 			<%
 				}
 			%>
 		</table>
+		
 	</form>
 </body>
 </html>
