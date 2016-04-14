@@ -27,13 +27,14 @@
 <%
 	Facade f = new Facade();
 	ArrayList<Building> buildings = f.getAllBuildings();
-	
 	Building thisBuilding = null;
-	int thisId = 2; //den skal hente building ID fra sessionen.
+	int bID=0;
+	
 	for (Building b : buildings){
-		if(b.getBuilding_id()==thisId){
+		if(request.getParameter(String.valueOf(b.getBuilding_id()))!=null){ 
 			thisBuilding = b;
-		} 
+			bID=b.getBuilding_id();
+		}
 	}
 %>
 <table>
@@ -69,7 +70,7 @@ Do you want to add inspection notes on the roof?<br>
 <div id="roof"><br>
 	
 	
-	<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
+	<form action="" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Add picture of roof:</legend>
 				<input type="file" name="file" size="50" value="select images..." />
@@ -90,13 +91,13 @@ Do you want to add inspection notes on the outer walls?<br>
 <button id="hideOuterWalls">Hide</button>
 <div id="outerWalls"><br>
 	Write notes about outer walls:
-		<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
+		<form action="" method="post" enctype="multipart/form-data">
 		
 		<input type="file" name="file" size="50" value="select images..." />
 		<input type="submit" value="Upload File" />
 			
 	</form><br>
-	Write notes about roof:
+	Write notes about outer walls:
 	<form action="healthReportServlet" method="post">
 	
 		<input id="comment" type="text" placeholder="Write comments here*" Name="outerWalls_comment" required><br>

@@ -78,7 +78,7 @@ Remember to include: Moist, rot/mold and fire damages</p>
 				<input id="comment" type="text" placeholder="Write comments here*" Name="wall_comment"><br>
 			</td>
 			<td>
-				<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data">
 					<input type="file" name="file" size="25" value="select images..." />
 					<input id="UlBtn" type="submit" value="Upload image" />
 				</form>
@@ -93,7 +93,7 @@ Remember to include: Moist, rot/mold and fire damages</p>
 				<input id="comment" type="text" placeholder="Write comments here*" Name="ceiling_comment"><br>
 			</td>
 			<td>
-				<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data">
 					<input type="file" name="file" size="25" value="select images..." />
 					<input id="UlBtn" type="submit" value="Upload image" />
 				</form>
@@ -108,7 +108,7 @@ Remember to include: Moist, rot/mold and fire damages</p>
 				<input id="comment" type="text" placeholder="Write comments here*" Name="floor_comment"><br>
 			</td>
 			<td>
-				<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data">
 					<input type="file" name="file" size="25" value="select images..." />
 					<input id="UlBtn" type="submit" value="Upload image" />
 				</form>
@@ -123,7 +123,7 @@ Remember to include: Moist, rot/mold and fire damages</p>
 				<input id="comment" type="text" placeholder="Write comments here*" Name="WD_comment"><br>
 			</td>
 			<td>
-				<form action="${pageContext.request.contextPath}/UploadFileServlet" method="post" enctype="multipart/form-data">
+				<form action="" method="post" enctype="multipart/form-data">
 					<input type="file" name="file" size="25" value="select images..." />
 					<input id="UlBtn" type="submit" value="Upload image" />
 				</form>

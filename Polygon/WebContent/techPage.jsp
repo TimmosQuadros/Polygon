@@ -14,7 +14,7 @@
 </head>
 <body>
 	<h1>Tech Page</h1>
-	<form action="ChooseBuilding.jsp" method="get">
+	<form action="chooseBuilding.jsp" method="get">
 		<fieldset>
 			<legend> Select Organisation</legend>
 			<select name="orgID">
