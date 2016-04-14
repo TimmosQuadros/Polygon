@@ -47,6 +47,10 @@ public class BuildingReport {
 		this.facility_manager_name = facility_manager_name;
 		this.buildingCondition = buildingCondition;
 	}
+	
+	public BuildingReport() {
+		
+	}
 
 	public int getReport_id() {
 		return report_id;
