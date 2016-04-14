@@ -65,7 +65,7 @@
 				<td><%=b.getFloor_area()%></td>
 				<td><input class="btn-class" type="submit" value="view"
 					name="<%=b.getBuilding_id()%>" /></td>
-				<td><input class="btn-class" type="submit" onclick="form.action='CheckupServlet' value="order checkup"
+				<td><input class="btn-class" type="submit" onclick="form.action='CheckupServlet'; value="order checkup"
 					name="<%=b.getBuilding_id()%>" /></td>
 					
 			</tr>
