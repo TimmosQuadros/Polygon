@@ -34,7 +34,7 @@ public class CheckupMapper {
 	}
 
 	public void createCheckup(Checkup c) throws SQLException {
-		String SQLString = "INSERT INTO checkup (building_id, customer_id, tech_id, date_issued, date_processed, order_status) VALUES (?,?,?,?,?,?)";
+		String SQLString = "INSERT INTO checkup (building_id, customer_id, tech_id, date_issued, order_status) VALUES (?,?,?,?,?,?)";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
@@ -42,8 +42,8 @@ public class CheckupMapper {
 		statement.setInt(2, c.getCustomerID());
 		statement.setInt(3, c.getTechID());
 		statement.setString(4, c.getDateIssued());
-		statement.setNString(5, c.getDateProcessed());
-		statement.setObject(6, c.getStatus().toString());
+		//statement.setNString(5, c.getDateProcessed());
+		statement.setObject(5, c.getStatus().toString());
 
 		statement.executeUpdate();
 	}

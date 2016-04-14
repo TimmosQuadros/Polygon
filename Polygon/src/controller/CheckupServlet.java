@@ -58,16 +58,19 @@ public class CheckupServlet extends HttpServlet {
 
 		DateFormat df = new SimpleDateFormat("YYYY/DD/MM");
 		Date today = Calendar.getInstance().getTime();
+		String dateToInsert = "";
+		dateToInsert = df.format(today);
 		ArrayList<Building> buildingList = new ArrayList<>();
 		
-		//df.format(today)
+		
+		
 
 		try {
 
 			buildingList = fac.getAllBuildings();
 			for (Building b : buildingList) {
 				if (request.getParameter(String.valueOf(b.getBuilding_id())) != null) {
-					fac.createCheckup(new Checkup(b.getBuilding_id(), checkupUser.getUser_id(), "1234"));
+					fac.createCheckup(new Checkup(b.getBuilding_id(), checkupUser.getUser_id(), dateToInsert));
 				}
 			}
 		} catch (SQLException e) {
