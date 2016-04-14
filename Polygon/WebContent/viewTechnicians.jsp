@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<a href="adminPage.jsp">Home</a>
+	<a href="header.jsp">Home</a>
 	<form action="" method="get">
 	<table>
 		<tr>

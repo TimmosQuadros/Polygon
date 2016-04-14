@@ -10,7 +10,7 @@
 <title>Tech Page</title>
 <link href="Resources/css/style.css" rel="stylesheet"
 	type="text/css">
-	<%@include file="techHeader.jsp" %>
+	<%@include file="header.jsp" %>
 </head>
 <body>
 	<h1>Tech Page</h1>

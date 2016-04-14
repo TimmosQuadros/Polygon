@@ -10,7 +10,7 @@
 <title>Users</title>
 </head>
 <body>
-	<%@include file="adminHeader.jsp"%>
+	<%@include file="header.jsp"%>
 	<a href="createUser.jsp">Create User</a>
 	<form action="" method="get">
 		<table>
