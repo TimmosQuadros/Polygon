@@ -34,7 +34,7 @@ public class CheckupMapper {
 	}
 	public void createCheckup(Checkup c) throws SQLException {
 
-		String SQLString = "INSERT INTO checkups (building_id, customer_id, technician_id, date_issued, order_status) VALUES (?,?,?,?,?)";
+		String SQLString = "INSERT INTO checkup (building_id, customer_id, technician_id, date_issued, order_status) VALUES (?,?,?,?,?)";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
@@ -49,7 +49,7 @@ public class CheckupMapper {
 	
 	public void updateCheckup(Checkup c) throws SQLException {
 
-		String SQLString = "UPDATE checkups SET building_id = ?, customer_id = ?, technician_id = ?, date_issued = ?, date_processed = ?, status = ? WHERE checkup = ?";
+		String SQLString = "UPDATE checkup SET building_id = ?, customer_id = ?, technician_id = ?, date_issued = ?, date_processed = ?, status = ? WHERE checkup = ?";
 		
 		PreparedStatement statement = Connector.prepare(SQLString);
 		
@@ -66,7 +66,7 @@ public class CheckupMapper {
 	
 	public void deleteCheckup(int id) throws SQLException {
 
-		String SQLString = "DELETE FROM checkups WHERE checkup_id = ?";
+		String SQLString = "DELETE FROM checkup WHERE checkup_id = ?";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
