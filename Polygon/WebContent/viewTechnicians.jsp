@@ -10,8 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 
-	<a href="header.jsp">Home</a>
+	
 	<form action="" method="get">
 	<table>
 		<tr>
