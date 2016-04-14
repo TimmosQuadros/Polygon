@@ -25,7 +25,7 @@ public class BuildingReportImageMapper {
 
 			File image = new Facade().getImage(image_id);
 
-			report_images.add(new BuildingReportImage(image_id, report_id, type));
+			report_images.add(new BuildingReportImage(image_id, report_id, type, image));
 		}
 
 		return report_images;
@@ -46,7 +46,7 @@ public class BuildingReportImageMapper {
 
 			File image = new Facade().getImage(image_id);
 
-			report_images.add(new BuildingReportImage(image_id, report_id, type));
+			report_images.add(new BuildingReportImage(image_id, report_id, type, image));
 		}
 
 		return report_images;
