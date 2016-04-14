@@ -78,10 +78,10 @@ Do you want to add inspection notes on the roof?<br>
 		</fieldset>	
 	</form><br>
 	Write notes about roof:
-	<form action="healthReportServlet" method="post">
+	<form action="ReportServlet" method="post">
 	
 		<input id="comment" type="text" placeholder="Write comments here*" Name="roof_comment" required><br>
-		<input id="submitRoof" type="submit" value="Save roof comments">
+		<input type="submit" value="Save roof comments" name="rc">
 		
 	</form>
 </div><br>
@@ -98,10 +98,10 @@ Do you want to add inspection notes on the outer walls?<br>
 			
 	</form><br>
 	Write notes about outer walls:
-	<form action="healthReportServlet" method="post">
+	<form action="ReportServlet" method="post">
 	
 		<input id="comment" type="text" placeholder="Write comments here*" Name="outerWalls_comment" required><br>
-		<input id="submitOuterWalls" type="submit" value="Save outer walls comments">
+		<input type="submit" value="Save outer walls comments" name="owc">
 		
 	</form>
 </div><br>
@@ -112,12 +112,12 @@ Do you want to add inspection notes on the outer walls?<br>
 </div>
 
 <h2>Overall condition status</h2>
-<form action="healthReportServlet" method="get">
+<form action="ReportServlet" method="get">
 	 <input type="radio" name="conditionLevel" value="con0"> Condition level 0<br>
 	 <input type="radio" name="conditionLevel" value="con1"> Condition level 1<br>
 	 <input type="radio" name="conditionLevel" value="con2"> Condition level 2<br>
 	 <input type="radio" name="conditionLevel" value="con3"> Condition level 3<br>
-	 <input type="submit" value="Submit">
+	 <input type="submit" value="Submit" name="cLevel">
 </form>
 </body>
 </html>
