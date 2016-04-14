@@ -34,7 +34,22 @@ public class BuildingReportMapper {
 		}
 		
 		return null;
+	}
+	
+	public void createReport(BuildingReport report) throws SQLException{
+		String SQLString = "INSERT INTO building_report (report_id, building_id, tech_id, roof_remark, outer_wall_remark, facility_manager_name, ) VALUES (?,?,?,?,?,?,?)";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
 		
+		statement.setInt(1, report.getReport_id());
+		statement.setInt(2, report.getBuilding_id());
+		statement.setInt(3, report.getTech_id());
+		statement.setString(4, report.getRoof_remark());
+		statement.setString(5, report.getOuter_wall_remark());
+		statement.setString(6, report.getFacility_manager_name());
+		statement.setString(7,report.getBuildingCondition().name());
+
+		statement.executeUpdate();
 	}
 
 }

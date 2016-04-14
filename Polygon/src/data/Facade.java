@@ -17,6 +17,7 @@ public class Facade {
 	private RoomReportImageMapper rrim;
 	private BuildingReportImageMapper brim;
 	private CheckupMapper cm;
+	private BuildingReportMapper brm;
 
 	public Facade() {
 		super();
@@ -28,11 +29,20 @@ public class Facade {
 		this.rrim = new RoomReportImageMapper();
 		this.brim = new BuildingReportImageMapper();
 		this.cm = new CheckupMapper();
+		this.brm = new BuildingReportMapper();
 	}
 
 	// create
 	public void createBuilding(Building b, int id) throws SQLException {
 		bm.createBuilding(b, id);
+	}
+	
+	public void createReport(BuildingReport report) throws SQLException{
+		brm.createReport(report);
+	}
+	
+	public ArrayList<BuildingReport> getBuildingReports(int building_id) throws SQLException{
+		return brm.getBuildingReports(building_id);
 	}
 
 	public void createOrganisation(Organisation o) throws SQLException {
