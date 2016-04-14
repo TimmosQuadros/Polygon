@@ -34,6 +34,7 @@
 		if(request.getParameter(String.valueOf(b.getBuilding_id()))!=null){ 
 			thisBuilding = b;
 			bID=b.getBuilding_id();
+			session.setAttribute("building.id", bID);
 		}
 	}
 %>
@@ -113,11 +114,11 @@ Do you want to add inspection notes on the outer walls?<br>
 
 <h2>Overall condition status</h2>
 <form action="ReportServlet" method="get">
-	 <input type="radio" name="conditionLevel" value="con0"> Condition level 0<br>
-	 <input type="radio" name="conditionLevel" value="con1"> Condition level 1<br>
-	 <input type="radio" name="conditionLevel" value="con2"> Condition level 2<br>
-	 <input type="radio" name="conditionLevel" value="con3"> Condition level 3<br>
-	 <input type="submit" value="Submit" name="cLevel">
+	 <input type="radio" name="conditionLevel" value="CON0"> Condition level 0<br>
+	 <input type="radio" name="conditionLevel" value="CON1"> Condition level 1<br>
+	 <input type="radio" name="conditionLevel" value="CON2"> Condition level 2<br>
+	 <input type="radio" name="conditionLevel" value="CON3"> Condition level 3<br>
+	 <input type="submit" value="Complete report!" name="cLevel">
 </form>
 </body>
 </html>
