@@ -4,8 +4,8 @@
 
 
 <%
-		User u = (User)session.getAttribute("user");
-		switch(u.getUser_type()){
+		User headerU = (User)session.getAttribute("user");
+		switch(headerU.getUser_type()){
 		case ADMIN:
 %>			
 		
