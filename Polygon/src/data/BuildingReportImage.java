@@ -1,18 +1,36 @@
 package data;
 
+import java.io.File;
+
 public class BuildingReportImage {
 
 	private int image_id;
 	private int report_id;
 	public enum Type{ROOF,OUTER_WALL};
 	public Type type;
+	public File image;
 	
-	public BuildingReportImage(int image_id, int report_id, Type type) {
+	public BuildingReportImage(int image_id, int report_id, Type type,File image) {
 		super();
 		this.image_id = image_id;
 		this.report_id = report_id;
 		this.type = type;
+		this.image = image;
 	}
+	
+	
+
+	public File getImage() {
+		return image;
+	}
+
+
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+
+
 
 	public int getImage_id() {
 		return image_id;
