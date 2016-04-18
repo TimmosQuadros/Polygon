@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import data.Checkup.OrderStatus;
+import data.User.User_type;
 
 public class CheckupMapper {
 	public ArrayList<Checkup> getCheckups() throws SQLException {
@@ -34,16 +35,14 @@ public class CheckupMapper {
 	}
 
 	public void createCheckup(Checkup c) throws SQLException {
-		String SQLString = "INSERT INTO checkup (building_id, customer_id, tech_id, date_issued, order_status) VALUES (?,?,?,?,?,?)";
+		String SQLString = "INSERT INTO checkup (building_id, customer_id, date_issued, order_status) VALUES (?,?,?,?)";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
 		statement.setInt(1, c.getBuildingID());
 		statement.setInt(2, c.getCustomerID());
-		statement.setInt(3, c.getTechID());
-		statement.setString(4, c.getDateIssued());
-		//statement.setNString(5, c.getDateProcessed());
-		statement.setObject(5, c.getStatus().toString());
+		statement.setString(3, c.getDateIssued());
+		statement.setObject(4, c.getStatus().toString());
 
 		statement.executeUpdate();
 	}
@@ -64,6 +63,23 @@ public class CheckupMapper {
 
 		statement.executeUpdate();
 	}
+
+	public void addTech(Checkup c, int tech_id) throws SQLException {
+
+		String SQLString = "UPDATE checkup SET tech_id = ?, status = ? WHERE checkup = ?";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+		c.setStatus(OrderStatus.PROGRESSING);
+		statement.setInt(1, tech_id);
+		
+		statement.setObject(2, c.getStatus().toString());
+		statement.setInt(3, c.getCheckupID());
+
+		statement.executeUpdate();
+	}
+	
+	public void 
 
 	public void deleteCheckup(int id) throws SQLException {
 

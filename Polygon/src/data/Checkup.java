@@ -29,6 +29,10 @@ public class Checkup {
 	
 	
 
+	
+
+	
+
 	public Checkup(int buildingID, int customerID, String dateIssued) {
 		super();
 		this.buildingID = buildingID;
@@ -36,6 +40,8 @@ public class Checkup {
 		this.dateIssued = dateIssued;
 		this.status = OrderStatus.valueOf("PENDING");
 	}
+	
+
 
 	public int getCheckupID() {
 		return checkupID;

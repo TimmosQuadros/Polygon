@@ -1,12 +1,12 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -56,28 +56,41 @@ public class CheckupServlet extends HttpServlet {
 
 		User checkupUser = (User) session.getAttribute("user");
 
-		DateFormat df = new SimpleDateFormat("YYYY/DD/MM");
-		Date today = Calendar.getInstance().getTime();
-		String dateToInsert = "";
-		dateToInsert = df.format(today);
 		ArrayList<Building> buildingList = new ArrayList<>();
-		
-		
-		
+
+		Calendar now = Calendar.getInstance();
+		int year = now.get(Calendar.YEAR);
+		int date = now.get(Calendar.DAY_OF_MONTH);
+		int month = now.get(Calendar.MONTH) + 1;
+		String tmpdate = "", tmpmonth = "", tmpyear = "";
+		if (month < 10) {
+			tmpmonth = "0" + month;
+		} else {
+			tmpmonth = String.valueOf(month);
+		}
+		if (date < 10) {
+			tmpdate = "0" + date;
+		} else {
+			tmpdate = String.valueOf(date);
+		}
+
+		tmpyear = String.valueOf(year);
+
+		String formattedDate = tmpyear + "/" + tmpdate + "/" + tmpmonth;
 
 		try {
 
 			buildingList = fac.getAllBuildings();
 			for (Building b : buildingList) {
 				if (request.getParameter(String.valueOf(b.getBuilding_id())) != null) {
-					fac.createCheckup(new Checkup(b.getBuilding_id(), checkupUser.getUser_id(), dateToInsert));
+					fac.createCheckup(new Checkup(b.getBuilding_id(), checkupUser.getUser_id(), formattedDate));
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		forward(request, response, "/viewBuildings.jsp");
+		forward(request, response, "/viewOrders.jsp");
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
