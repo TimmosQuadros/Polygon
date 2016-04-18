@@ -1,13 +1,7 @@
 package controller;
 
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -20,11 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.http.fileupload.FileUtils;
-
 import data.Building;
 import data.Facade;
-import data.User;
 
 /**
  * Servlet implementation class ButtonClickedServlet

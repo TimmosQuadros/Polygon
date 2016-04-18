@@ -82,15 +82,16 @@ public class ImageMapper {
 
 		String FilePath = sc.getRealPath("/");
 
-		String ServerPath = FilePath+"Resources\\Images\\Floorplans";
+		String ServerPath = FilePath+"Resources/Images/Floorplans";
 
 		FileUtils.cleanDirectory(new File(ServerPath));
 
 		int i = 0;
 
 		while (resultSet.next()) {
-			String image_path=FilePath+"Resources\\Images\\Floorplans\\Floorplan"+i+".png";
+			String image_path=FilePath+"Resources/Images/Floorplans/Floorplan"+i+".png";
 			File image = new File(image_path);
+			String relative_path = sc.getContextPath()+"/Resources/Images/Floorplans/Floorplan"+i+".png";
 			FileOutputStream fos = new FileOutputStream(image);
 			byte[] buffer = new byte[1];
 			InputStream is = resultSet.getBinaryStream(1);
@@ -98,7 +99,7 @@ public class ImageMapper {
 				fos.write(buffer);
 			}
 			fos.close();
-			images.add(image_path);
+			images.add(relative_path);
 			i++;
 		}
 		return images;
