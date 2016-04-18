@@ -22,7 +22,7 @@
 </head>
 <body>
 	<%@include file="header.jsp"%>
-	<div style="margin-top: 25px;"><a class="click-me" href="addBuilding.jsp">Add building</a></div>
+	<a class="click-me" href="addBuilding.jsp">Add building</a>
 
 	<%
 		Facade fac = new Facade();

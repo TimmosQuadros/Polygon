@@ -113,7 +113,7 @@ public class Facade {
 		return rrim.getRoomReportImages(report_id);
 	}
 	public ArrayList<Checkup> getCheckups() throws SQLException{
-		return getCheckups();
+		return cm.getCheckups();
 	}
 
 	// update

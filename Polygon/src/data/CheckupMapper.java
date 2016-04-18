@@ -11,7 +11,7 @@ public class CheckupMapper {
 	public ArrayList<Checkup> getCheckups() throws SQLException {
 		ArrayList<Checkup> result = new ArrayList<>();
 
-		String SQLString = "SELECT * FROM checkups;";
+		String SQLString = "SELECT * FROM checkup;";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
@@ -79,7 +79,7 @@ public class CheckupMapper {
 		statement.executeUpdate();
 	}
 	
-	public void 
+
 
 	public void deleteCheckup(int id) throws SQLException {
 
