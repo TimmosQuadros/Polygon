@@ -47,7 +47,7 @@
 	<div style="margin-top: 80px;">
 		<fieldset>
 			<legend>Upload floorplan</legend>
-			<form action="${pageContext.request.contextPath}/UploadFileServlet"
+			<form action="${pageContext.request.contextPath}/AttachImageServlet"
 				method="post" enctype="multipart/form-data">
 
 				<input type="file" name="file" size="50" value="select images..." />
