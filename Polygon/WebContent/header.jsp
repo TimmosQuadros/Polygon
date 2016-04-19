@@ -15,7 +15,6 @@
 	<li><a href="viewOrders.jsp">View orders</a></li>
 	<li><a href="viewCustomers.jsp">View customers</a></li>
 	<li><a href="viewTechnicians.jsp">View technicians</a></li>
-	<li><a href="Sendnewsletter">Send newsletter</a></li>
 	<li style="float: right"><a class="active" href="LogoutServlet">Logout</a></li>
 </ul>
 <div style="margin-bottom: 30px;"></div>
