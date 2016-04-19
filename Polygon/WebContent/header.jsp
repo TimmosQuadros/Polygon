@@ -15,6 +15,7 @@
 	<li><a href="viewOrders.jsp">View orders</a></li>
 	<li><a href="viewCustomers.jsp">View customers</a></li>
 	<li><a href="viewTechnicians.jsp">View technicians</a></li>
+	<li><a href="sortetReports.jsp">View reports</a></li>
 	<li style="float: right"><a class="active" href="LogoutServlet">Logout</a></li>
 </ul>
 <div style="margin-bottom: 30px;"></div>
@@ -26,6 +27,7 @@
 <ul>
 	<li><a href="techPage.jsp">Home</a></li>
 	<li><a href="viewBuildings.jsp">View buildings</a></li>
+	<li><a href="sortetReports.jsp">View reports</a></li>
 	<li><a href="viewOrders.jsp">View orders</a></li>
 
 	<li style="float: right"><a class="active" href="LogoutServlet">Logout</a></li>

@@ -1,3 +1,4 @@
+<%@page import="java.util.Collections"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="data.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -10,22 +11,51 @@
 <link href="Resources/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<h2>Reports/buildings sorted by condition level</h2>
+<p>Keep in mind that ONLY buildings that have had an health checkup will appear on thils list<br>
+if you want to add a building to the list please order a helth checkup and a technician will<br>
+make a report, and the building will then get a condition level, and appear in this list</p>
 <%
 	Facade fac = new Facade();
-	ArrayList<BuildingReport> reports = fac.getBuildingReports(building_id)
+	ArrayList<BuildingReport> reports = fac.getBuildingReports();
+	ArrayList<BuildingReport> sortedReports = new ArrayList<>();
+	
+		for(BuildingReport r : reports){
+			if(r.getBuildingCondition().name().equalsIgnoreCase("CON0")){
+				sortedReports.add(r);
+			}
+		}
+		for(BuildingReport r : reports){
+			if(r.getBuildingCondition().name().equalsIgnoreCase("CON1")){
+				sortedReports.add(r);
+			}
+		}
+		for(BuildingReport r : reports){
+			if(r.getBuildingCondition().name().equalsIgnoreCase("CON2")){
+				sortedReports.add(r);
+			}
+		}
+		for(BuildingReport r : reports){
+			if(r.getBuildingCondition().name().equalsIgnoreCase("CON3")){
+				sortedReports.add(r);
+			}
+		}
 %>
 
 <table>
-	<th>
-		<td>Building</td><td></td>Technician<td>Roof remark</td><td>Outer walls remark</td><td>Condition level</td>
-	</th>
+	<tr>
+		<th>Building</th><th>Technician</th><th>Roof remark</th><th>Outer walls remark</th><th>Condition level</th>
+	</tr>
 <%
-
+	for(BuildingReport r : sortedReports){
 	
 %>
 	<tr>
+		<td><%=r.getBuilding_id() %></td><td><%=r.getTech_id() %></td><td><%=r.getRoof_remark() %></td><td><%=r.getOuter_wall_remark() %></td><td><%=r.getBuildingCondition() %></td>
 	</tr>
+<%
+	}
+%>
 </table>
 
 
