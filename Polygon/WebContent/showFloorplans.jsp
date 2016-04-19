@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script src="Resources/js/min.js"></script>
+<script src="Resources/js/imageSlider.js"></script>
 <link href="Resources/css/imageSlider.css" rel="stylesheet" type="text/css">
 <link href="Resources/js/imageSlider.js" type="text/javascript">
 
@@ -44,5 +46,3 @@
 
 </body>
 </html>
-<script src="Resources/js/min.js"></script>
-<script src="Resources/js/imageSlider.js"></script>
