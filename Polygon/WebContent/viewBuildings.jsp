@@ -49,7 +49,7 @@
 				<th>ZIP CODE</th>
 				<th>BUILD YEAR</th>
 				<th>AREA m<sup>2</sup></th>
-				<th>DETAILS</th>
+				<th>FLOORPLAN</th>
 				<th>ORDER CHECKUP</th>
 			</tr>
 
