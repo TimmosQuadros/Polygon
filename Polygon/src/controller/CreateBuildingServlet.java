@@ -51,6 +51,7 @@ public class CreateBuildingServlet extends HttpServlet {
 		}
 
 		try {
+			//keep it in the session instead. 
 			facade.createFloorplan(facade.getMaxImageId(), facade.getMaxBuildingId());
 		} catch (SQLException e) {
 			e.printStackTrace();
