@@ -43,10 +43,12 @@ public class ButtonClickedServlet extends HttpServlet {
 				try {
 					Facade f = new Facade();
 					buildings = f.getAllBuildings();
+					
 					for (int i = 0; i < buildings.size(); i++) {
 						if(request.getParameter(String.valueOf(buildings.get(i).getBuilding_id())) !=null){
 							paths=f.getBuildingFloorplans(buildings.get(i).getBuilding_id(),this.getServletContext());
 							session.setAttribute("paths.floorplans",paths);
+							session.setAttribute("building_id", buildings.get(i).getBuilding_id());
 						}
 					}
 				} catch (SQLException e) {

@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
+import org.apache.catalina.ant.SessionsTask;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
@@ -46,6 +50,8 @@ public class AttachImageServlet extends HttpServlet {
 		
 		
 		PrintWriter out = response.getWriter();
+		Facade facade = new Facade();
+		HttpSession session = request.getSession(true);
 		
 		if(!ServletFileUpload.isMultipartContent(request)){
 			out.println("Nothing to upload");
@@ -73,10 +79,15 @@ public class AttachImageServlet extends HttpServlet {
 				
 				fileItem.write(file);
 				
-				Facade fc = new Facade();
 				
-				fc.createImage(new File(ServerPath+"\\"+file.getName()), "Abe");
+				facade.createImage(new File(ServerPath+"\\"+file.getName()), "Abe");
 				
+				try {
+					//keep it in the session instead. 
+					facade.createFloorplan(facade.getMaxImageId(),(int)session.getAttribute("building_id"));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				forward(request, response, "/viewBuildings.jsp");
 				
 			}
@@ -89,8 +100,12 @@ public class AttachImageServlet extends HttpServlet {
 			out.println("Can't save");
 		}
 
+		
 	}
 
+	
+	
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

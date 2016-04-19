@@ -12,7 +12,6 @@ import data.Building;
 import data.Facade;
 import data.User;
 
-
 @WebServlet("/CreateBuilding")
 public class CreateBuildingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -52,7 +51,7 @@ public class CreateBuildingServlet extends HttpServlet {
 
 		try {
 			//keep it in the session instead. 
-			facade.createFloorplan(facade.getMaxImageId(), facade.getMaxBuildingId());
+			if(true){facade.createFloorplan(facade.getMaxImageId(), facade.getMaxBuildingId());}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +59,8 @@ public class CreateBuildingServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

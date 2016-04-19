@@ -19,6 +19,10 @@
 <body>
 	<%
 		ArrayList<String> imgPaths = (ArrayList<String>) session.getAttribute("paths.floorplans");
+		Facade fac = new Facade();
+		User user = (User) session.getAttribute("user");
+		ArrayList<Building> buildings = new ArrayList<>();
+		buildings = fac.getUserBuildings(user.getUser_id());
 	%>
 
 	<section class="demo">
@@ -42,7 +46,7 @@
 			}
 		%>
 	</div>
-	
+
 	</section>
 	<div style="margin-top: 80px;">
 		<fieldset>
@@ -50,8 +54,9 @@
 			<form action="${pageContext.request.contextPath}/AttachImageServlet"
 				method="post" enctype="multipart/form-data">
 
-				<input type="file" name="file" size="50" value="select images..." />
+				<input type="file" name="file" size="50" value="select image..." />
 				<input type="submit" value="Upload File" />
+				
 
 			</form>
 		</fieldset>
