@@ -19,7 +19,7 @@
 <div id="subscribeBox">
 	<a class="click-me" href="viewBuildings.jsp">View buildings</a>
 	<h2><span class="thin">Add New</span> Building</h2>
-    <p>Please fill out the following information to add a new building. please allow 1-2 working days for building to be added to the DB.</p>
+    <p>Please fill out the following information to add a new building.</p>
 
 <table>
 	<tr><td>
