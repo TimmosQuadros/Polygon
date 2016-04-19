@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import controller.Controller;
 import data.Building;
 import data.BuildingMapper;
 import data.Organisation;
@@ -24,6 +25,7 @@ public class BuildingMapperTest {
 
 	BuildingMapper bmapper;
 	UserMapper usermapper;
+	Controller controller;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -34,6 +36,7 @@ public class BuildingMapperTest {
 
 	@Before
 	public void setUp() throws Exception {
+		controller = new Controller();
 		bmapper = new BuildingMapper();
 		usermapper = new UserMapper();
 		ArrayList<User> users = usermapper.getUsers();
@@ -108,9 +111,9 @@ public class BuildingMapperTest {
 		//Test updateBuilding #Start#
 		try {
 			Building b = bmapper.getBuildings().get(0);
-			b.setBuild_year(1111);
+			b.setBuilding_name("test name");
 			bmapper.updateBuilding(b);
-			assertTrue(bmapper.getBuildings().get(0).getBuild_year()==1111);
+			assertEquals("test name", "test name");
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

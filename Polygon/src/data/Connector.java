@@ -17,7 +17,7 @@ public class Connector {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String URL = "jdbc:mysql://localhost:3306/polygon";
 	private static String id = "root";			
-	private static String pw = "HPEJpu98ls";
+	private static String pw = "pw";
 
 	private Connector() {
 		try {
@@ -63,6 +63,15 @@ public class Connector {
 		}
 		//Don't close con object stored on DB singleton instance
 		//GC will take care of it upon program termination
+	}
+	public static void setAutoCommit(boolean b) throws SQLException {
+		getInstance().con.setAutoCommit(b);
+	}
+	public static void commit() throws SQLException {
+		getInstance().con.commit();
+	}
+	public static void rollback() throws SQLException {
+		getInstance().con.rollback();
 	}
 
 }

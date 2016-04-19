@@ -117,8 +117,8 @@ public class Facade {
 	}
 
 	// update
-	public void updateBuilding(Building b) {
-		System.out.println("not yet implemented");
+	public void updateBuilding(Building b) throws SQLException {
+		bm.updateBuilding(b);
 	}
 
 	public void updateOrganisation(Organisation o) {
