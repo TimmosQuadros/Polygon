@@ -13,7 +13,7 @@
 <body>
 <h2>Reports/buildings sorted by condition level</h2>
 <p>Keep in mind that ONLY buildings that have had an health checkup will appear on thils list<br>
-if you want to add a building to the list please order a helth checkup and a technician will<br>
+if you want to add a building to the list please order a health checkup and a technician will<br>
 make a report, and the building will then get a condition level, and appear in this list</p>
 <%
 	Facade fac = new Facade();
@@ -23,23 +23,22 @@ make a report, and the building will then get a condition level, and appear in t
 		for(BuildingReport r : reports){
 			if(r.getBuildingCondition().name().equalsIgnoreCase("CON0")){
 				sortedReports.add(r);
+				reports.remove(r);
 			}
 		}
 		for(BuildingReport r : reports){
 			if(r.getBuildingCondition().name().equalsIgnoreCase("CON1")){
 				sortedReports.add(r);
+				reports.remove(r);
 			}
 		}
 		for(BuildingReport r : reports){
 			if(r.getBuildingCondition().name().equalsIgnoreCase("CON2")){
 				sortedReports.add(r);
+				reports.remove(r);
 			}
 		}
-		for(BuildingReport r : reports){
-			if(r.getBuildingCondition().name().equalsIgnoreCase("CON3")){
-				sortedReports.add(r);
-			}
-		}
+		sortedReports.addAll(reports);
 %>
 
 <table>
