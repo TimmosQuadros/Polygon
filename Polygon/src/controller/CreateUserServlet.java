@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import data.Facade;
+import data.ILogin;
+import data.LoginController;
 import data.User;
 import data.User.User_type;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Servlet implementation class CreateUser
@@ -21,7 +27,7 @@ import data.User.User_type;
 public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Facade facade;
-
+	ILogin login;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -31,9 +37,10 @@ public class CreateUserServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-
+		
 		super.init();
 		facade = new Facade();
+		login = new LoginController();
 	}
 
 	/**
@@ -79,9 +86,12 @@ public class CreateUserServlet extends HttpServlet {
 		}
 
 		try {
-			facade.createUser(new User(user_type, username, password, user_email),organisation_name);
+			facade.createUser(new User(user_type, username, login.md5(password), user_email),organisation_name);
 
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
