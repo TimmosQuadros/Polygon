@@ -1,4 +1,4 @@
-<%@page import="java.util.Collections"%>
+<%@page import="java.awt.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="data.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -20,25 +20,27 @@ make a report, and the building will then get a condition level, and appear in t
 	ArrayList<BuildingReport> reports = fac.getBuildingReports();
 	ArrayList<BuildingReport> sortedReports = new ArrayList<>();
 	
-		for(BuildingReport r : reports){
-			if(r.getBuildingCondition().name().equalsIgnoreCase("CON0")){
-				sortedReports.add(r);
-				reports.remove(r);
+		for(int i = 0; i<reports.size(); i++){
+			if(reports.get(i).getBuildingCondition().name().equalsIgnoreCase("CON0")){
+				sortedReports.add(reports.get(i));
+				reports.remove(reports.get(i));
 			}
 		}
-		for(BuildingReport r : reports){
-			if(r.getBuildingCondition().name().equalsIgnoreCase("CON1")){
-				sortedReports.add(r);
-				reports.remove(r);
+		for(int i = 0; i<reports.size(); i++){
+			if(reports.get(i).getBuildingCondition().name().equalsIgnoreCase("CON1")){
+				sortedReports.add(reports.get(i));
+				reports.remove(reports.get(i));
 			}
 		}
-		for(BuildingReport r : reports){
-			if(r.getBuildingCondition().name().equalsIgnoreCase("CON2")){
-				sortedReports.add(r);
-				reports.remove(r);
+		for(int i = 0; i<reports.size(); i++){
+			if(reports.get(i).getBuildingCondition().name().equalsIgnoreCase("CON2")){
+				sortedReports.add(reports.get(i));
+				reports.remove(reports.get(i));
 			}
 		}
 		sortedReports.addAll(reports);
+		
+		
 %>
 
 <table>
