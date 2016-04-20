@@ -23,7 +23,7 @@
 		checkupOrders = facade.getCheckups();
 		buildingsList = facade.getAllBuildings();
 	%>
-	<form action="" method="get">
+	<form action="AddTechServlet" method="post">
 		<table class="spacing">
 			<tr>
 				<th>ORDER ID</th>
