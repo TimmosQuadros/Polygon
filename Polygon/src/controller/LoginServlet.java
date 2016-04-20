@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ import data.*;
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-//	ILogin login;
+	ILogin login;
 	Facade facade;
 	
     public LoginServlet() {
@@ -26,7 +27,7 @@ public class LoginServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-//    	login = new data.LoginController();
+    	login = new data.LoginController();
     	facade = new Facade();
     	super.init();
     }
@@ -41,10 +42,17 @@ public class LoginServlet extends HttpServlet {
 		ArrayList<User> users = null;
 		try {
 			users = facade.getUsers();
+			user = login.correctPassword(username, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
+		
 		for (User u : users) {
 			if(u.getUsername().equals(username)){
 				if(u.getPassword().equals(password)){
