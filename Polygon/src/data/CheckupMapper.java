@@ -66,7 +66,7 @@ public class CheckupMapper {
 
 	public void addTech(Checkup c, int tech_id) throws SQLException {
 
-		String SQLString = "UPDATE checkup SET tech_id = ?, status = ? WHERE checkup = ?";
+		String SQLString = "UPDATE checkup SET tech_id = ?, order_status = ? WHERE checkup_id = ?";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
