@@ -81,7 +81,7 @@ Do you want to add inspection notes on the roof?<br>
 	Write notes about roof:
 	<form action="ReportServlet" method="post">
 	
-		<input id="comment" type="text" placeholder="Write comments here*" Name="roof_comment" required><br>
+		<input id="comment" type="text" placeholder="Write comments here*" name="roof_comment" required><br>
 		<input type="submit" value="Save roof comments" name="rc">
 		
 	</form>
@@ -101,7 +101,7 @@ Do you want to add inspection notes on the outer walls?<br>
 	Write notes about outer walls:
 	<form action="ReportServlet" method="post">
 	
-		<input id="comment" type="text" placeholder="Write comments here*" Name="outerWalls_comment" required><br>
+		<input id="comment" type="text" placeholder="Write comments here*" name="outerWalls_comment" required><br>
 		<input type="submit" value="Save outer walls comments" name="owc">
 		
 	</form>

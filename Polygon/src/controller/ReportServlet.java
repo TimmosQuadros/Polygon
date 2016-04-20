@@ -19,6 +19,7 @@ public class ReportServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Facade fac;
 	BuildingReport report;
+	RoomReport roomReport;
 	HttpSession session;
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -38,21 +39,29 @@ public class ReportServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession(true);
 		BuildingReport tmp_report;
+		RoomReport tmp_roomReport;
 		tmp_report = (BuildingReport) session.getAttribute("building.report");
+		tmp_roomReport = (RoomReport) session.getAttribute("room.report");
 		if(tmp_report!=null){
 			report=tmp_report;
 		}else{
 			report = new BuildingReport();
 		}
+		if(tmp_roomReport!=null){
+			roomReport=tmp_roomReport;
+		}else{
+			roomReport = new RoomReport();
+		}
+
 		if(request.getParameter("rc")!=null){
-			report.setRoof_remark(request.getParameter("rc"));
+			report.setRoof_remark(request.getParameter("roof_comment"));
 			session.setAttribute("building.report", report);
 		}else if(request.getParameter("owc")!=null){
-			report.setOuter_wall_remark(request.getParameter("owc"));
+			report.setOuter_wall_remark(request.getParameter("outerWalls_comment"));
 			session.setAttribute("building.report", report);
 		}else if(request.getParameter("conditionLevel")!=null){
-			
-			report.setBuildingCondition(BuildingReport.BuildingCondition.valueOf(request.getParameter("cLevel")));
+
+			report.setBuildingCondition(BuildingReport.BuildingCondition.valueOf(request.getParameter("conditionLevel")));
 			session.setAttribute("building.report", report);
 			try {
 				User user = (User) session.getAttribute("user");
@@ -67,6 +76,30 @@ public class ReportServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if(request.getParameter("add_room_name")!=null){
+			roomReport.setRoom_name(request.getParameter("room_name"));
+		}else if(request.getParameter("damage_check")!=null){
+			roomReport.setDamage_reperation(request.getParameter("damage"));
+		}else if(request.getParameter("save_notes")!=null){
+			String wall_comment,ceiling_comment,floor_comment,WD_comment;
+			wall_comment=request.getParameter("wall_comment");
+			ceiling_comment=request.getParameter("ceiling_comment");
+			floor_comment=request.getParameter("floor_comment");
+			WD_comment=request.getParameter("WD_comment");
+			
+			if(wall_comment!=null){
+
+			}
+			if(ceiling_comment!=null){
+
+			}
+			if(floor_comment!=null){
+
+			}
+			if(WD_comment!=null){
+
+			}
+
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

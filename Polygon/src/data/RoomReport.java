@@ -10,6 +10,10 @@ public class RoomReport {
 
 	ArrayList<RoomReportImage> roomReportImage = new ArrayList<>();
 
+	public RoomReport() {
+	
+	}
+	
 	public RoomReport(int room_report_id, int building_report_id, String room_name, String damage_reperation,
 			String moisture_scan, ArrayList<RoomReportImage> roomReportImage) {
 		super();

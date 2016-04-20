@@ -18,6 +18,7 @@ public class Facade {
 	private BuildingReportImageMapper brim;
 	private CheckupMapper cm;
 	private BuildingReportMapper brm;
+	private RemarkMapper rm;
 
 	public Facade() {
 		super();
@@ -33,6 +34,11 @@ public class Facade {
 	}
 
 	// create
+	
+	public void createRemark(Remark r) throws SQLException{
+		rm.createRemark(r);
+	}
+	
 	public void createBuilding(Building b, int id) throws SQLException {
 		bm.createBuilding(b, id);
 	}

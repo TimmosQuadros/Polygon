@@ -37,7 +37,7 @@ public ArrayList<BuildingReport> getBuildingReports() throws SQLException{
 	
 	
 	public void createReport(BuildingReport report) throws SQLException{
-		String SQLString = "INSERT INTO building_report (report_id, building_id, tech_id, roof_remark, outer_wall_remark, facility_manager_name, ) VALUES (?,?,?,?,?,?,?)";
+		String SQLString = "INSERT INTO building_report (report_id, building_id, tech_id, roof_remark, outer_wall_remark, facility_manager_name, building_condition) VALUES (?,?,?,?,?,?,?)";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 		

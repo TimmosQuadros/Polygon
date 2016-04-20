@@ -49,7 +49,7 @@ $(document).ready(function(){
 				<input type="text" placeholder="Room*" Name="room_name" required><br>
 			</td>
 			<td>
-				<input id="submitRoom" type="submit" value="Add room">
+				<input id="submitRoom" type="submit" value="Add room" name="add_room_name">
 			</td>
 		</form>
 	</tr>
@@ -59,8 +59,8 @@ $(document).ready(function(){
 any earlier damages have been repaired or restored.<br>
 Remember to include: Moist, rot/mold and fire damages</p>
 	<form action="roomReportServlet" method="post">
-	<input id="comment" type="text" placeholder="Write comments here*" Name="wall_comment"><br>
-	<input id="submitWallComment" type="submit" value="Save wall comments">
+	<input id="comment" type="text" placeholder="Write comments here*" name="damage"><br>
+	<input id="submitWallComment" type="submit" value="Save wall comments" name="damage_check">
 	</form>
 <br>
 <h2>Examination of:</h2>
@@ -132,7 +132,7 @@ Remember to include: Moist, rot/mold and fire damages</p>
 		
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="Save notes" />		
+				<input type="submit" value="Save notes" name="save_notes" />		
 			</td>
 		</tr>
 	</table>
