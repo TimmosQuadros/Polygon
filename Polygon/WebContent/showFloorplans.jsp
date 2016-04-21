@@ -29,8 +29,6 @@
 			int count = 0;
 			//for (String path : imgPaths) {
 			for (String path : imgPaths) {
-				response.getWriter().append(path);
-
 				if (!path.isEmpty()) {
 		%>
 		<div>
