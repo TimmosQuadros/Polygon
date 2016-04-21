@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 	</tr>
 	<tr>
-		<form action="roomReportServlet" method="post">
+		<form action="ReportServlet" method="post">
 			<td>
 				<input type="text" placeholder="Room*" Name="room_name" required><br>
 			</td>
@@ -58,13 +58,13 @@ $(document).ready(function(){
 <p>please fill out information about damages in this room, followed by (if) 
 any earlier damages have been repaired or restored.<br>
 Remember to include: Moist, rot/mold and fire damages</p>
-	<form action="roomReportServlet" method="post">
+	<form action="ReportServlet" method="post">
 	<input id="comment" type="text" placeholder="Write comments here*" name="damage"><br>
 	<input id="submitWallComment" type="submit" value="Save wall comments" name="damage_check">
 	</form>
 <br>
 <h2>Examination of:</h2>
-<form action="roomReportServlet" method="post">
+<form action="ReportServlet" method="post">
 	<table id="examination">
 		<tr>
 			<th colspan="2">Comments section</th>
@@ -141,9 +141,9 @@ Remember to include: Moist, rot/mold and fire damages</p>
 
 <h2>Moisture scanning</h2>
 <p>If a moisture scanning have been conducted please wirte notes here:
-<form action="roomReportServlet" method="post">
-<input id="comment" type="text" placeholder="Write comments here*" Name="WD_comment"><br>
-<input type="submit" value="Save notes" />
+<form action="ReportServlet" method="post">
+<input id="comment" type="text" placeholder="Write comments here*" Name="Moisture_comment"><br>
+<input type="submit" value="Save notes" name="save_notes_m" />
 </form><br>
 <button id="hide2">Hide</button> Click hide when this room report is done.
 </div>

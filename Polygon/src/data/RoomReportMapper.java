@@ -6,6 +6,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RoomReportMapper {
+	
+	public void createRoomReport(RoomReport r) throws SQLException{
+		String SQLString = "INSERT INTO room_report (building_report_id,room_name,damage_reperation,moisture_scan) VALUES (?,?,?,?);";
+		
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+		statement.setInt(1, r.getBuilding_report_id());
+		statement.setString(2, r.room_name);
+		statement.setString(3, r.damage_reperation);
+		statement.setString(4, r.getMoisture_scan());
+		
+		statement.executeUpdate();
+	}
 
 	public ArrayList<RoomReport> getRoomReports(int building_report_report_id) throws SQLException{
 

@@ -35,6 +35,10 @@ public class Facade {
 
 	// create
 	
+	public void createRoomReport(RoomReport r) throws SQLException{
+		rrm.createRoomReport(r);
+	}
+	
 	public void createRemark(Remark r) throws SQLException{
 		rm.createRemark(r);
 	}
