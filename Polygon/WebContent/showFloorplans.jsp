@@ -7,14 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<script src="Resources/js/min.js"></script>
-<script src="Resources/js/imageSlider.js"></script>
 <link href="Resources/css/imageSlider.css" rel="stylesheet"
 	type="text/css">
-<link href="Resources/js/imageSlider.js" type="text/javascript">
-
-
-
+	<script src="Resources/js/min.js"></script>
+<link href="Resources/js/min.js" type="text/javascript">
 </head>
 <body>
 	<%
@@ -53,15 +49,14 @@
 			<legend>Upload floorplan</legend>
 			<form action="${pageContext.request.contextPath}/AttachImageServlet"
 				method="post" enctype="multipart/form-data">
-
 				<input type="file" name="file" size="50" value="select image..." />
 				<input type="submit" value="Upload File" />
-				
-
 			</form>
 		</fieldset>
 	</div>
 
 
 </body>
+<script src="Resources/js/imageSlider.js"></script>
+<link href="Resources/js/imageSlider.js" type="text/javascript">
 </html>
