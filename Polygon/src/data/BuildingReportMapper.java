@@ -11,30 +11,30 @@ import data.BuildingReportImage.Type;
 
 public class BuildingReportMapper {
 	
-	public ArrayList<BuildingReport> getBuildingReports(int building_id) throws SQLException{
+	
+public ArrayList<BuildingReport> getBuildingReports() throws SQLException{
 		
-		String SQLString = "select * from building_report where building_id=?;";
+		String SQLString = "select * from building_report;";
 		PreparedStatement statement = Connector.prepare(SQLString);
-		statement.setInt(1, building_id);
 		ResultSet rs = statement.executeQuery();
 		ArrayList<BuildingReport> reports = new ArrayList<>();
 		
 		while (rs.next()) {
 
 			int report_id = rs.getInt(1);
-			int tech_id = rs.getInt(2);
-			String roof_remark = rs.getString(4);
-			
-			
+			int building_id = rs.getInt(2);
+			int tech_id = rs.getInt(3);
+			String roof_remarks = rs.getString(4);
+			String outer_wall_remark = rs.getString(5);
+			String facility_manager_name = rs.getString(6);
 			BuildingCondition condition = BuildingCondition.valueOf((String)rs.getObject(7));
+			reports.add(new BuildingReport(report_id, building_id, tech_id, roof_remarks, outer_wall_remark, facility_manager_name, condition));
 
-			//File image = new Facade().getImage(image_id);
-
-			//report_images.add(new BuildingReportImage(image_id, report_id, type,image));
 		}
 		
-		return null;
+		return reports;
 	}
+	
 	
 	public void createReport(BuildingReport report) throws SQLException{
 		String SQLString = "INSERT INTO building_report (report_id, building_id, tech_id, roof_remark, outer_wall_remark, facility_manager_name, ) VALUES (?,?,?,?,?,?,?)";

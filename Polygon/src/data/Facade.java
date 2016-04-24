@@ -41,8 +41,8 @@ public class Facade {
 		brm.createReport(report);
 	}
 	
-	public ArrayList<BuildingReport> getBuildingReports(int building_id) throws SQLException{
-		return brm.getBuildingReports(building_id);
+	public ArrayList<BuildingReport> getBuildingReports() throws SQLException{
+		return brm.getBuildingReports();
 	}
 
 	public void createOrganisation(Organisation o) throws SQLException {

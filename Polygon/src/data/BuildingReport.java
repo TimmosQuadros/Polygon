@@ -3,8 +3,8 @@ package data;
 import java.util.ArrayList;
 
 public class BuildingReport {
-
-	private int report_id, tech_id, building_id;
+	
+	private int report_id, building_id, tech_id;
 
 	private String roof_remark, outer_wall_remark, facility_manager_name;
 
@@ -36,12 +36,12 @@ public class BuildingReport {
 	
 	
 
-	public BuildingReport(int report_id, int tech_id, int building_id, String roof_remark, String outer_wall_remark,
+	public BuildingReport(int report_id, int building_id, int tech_id, String roof_remark, String outer_wall_remark,
 			String facility_manager_name, BuildingCondition buildingCondition) {
 		super();
 		this.report_id = report_id;
-		this.tech_id = tech_id;
 		this.building_id = building_id;
+		this.tech_id = tech_id;
 		this.roof_remark = roof_remark;
 		this.outer_wall_remark = outer_wall_remark;
 		this.facility_manager_name = facility_manager_name;
