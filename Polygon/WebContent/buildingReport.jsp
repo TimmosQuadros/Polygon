@@ -28,15 +28,18 @@
 	Facade f = new Facade();
 	ArrayList<Building> buildings = f.getAllBuildings();
 	Building thisBuilding = null;
-	int bID=0;
-	
+if(session.getAttribute("building")==null){
 	for (Building b : buildings){
 		if(request.getParameter(String.valueOf(b.getBuilding_id()))!=null){ 
 			thisBuilding = b;
-			bID=b.getBuilding_id();
-			session.setAttribute("building.id", bID);
+			session.setAttribute("building", thisBuilding);
 		}
 	}
+}else{
+	thisBuilding = (Building)session.getAttribute("building");
+}
+
+	
 %>
 <table>
 	<tr>
@@ -113,7 +116,7 @@ Do you want to add inspection notes on the outer walls?<br>
 </div>
 
 <h2>Overall condition status</h2>
-<form action="ReportServlet" method="get">
+<form action="ReportServlet" method="post">
 	 <input type="radio" name="conditionLevel" value="CON0"> Condition level 0<br>
 	 <input type="radio" name="conditionLevel" value="CON1"> Condition level 1<br>
 	 <input type="radio" name="conditionLevel" value="CON2"> Condition level 2<br>

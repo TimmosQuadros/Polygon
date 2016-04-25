@@ -31,6 +31,7 @@ public class Facade {
 		this.brim = new BuildingReportImageMapper();
 		this.cm = new CheckupMapper();
 		this.brm = new BuildingReportMapper();
+		this.rm = new RemarkMapper();
 	}
 
 	// create
@@ -40,7 +41,7 @@ public class Facade {
 	}
 	
 	public void createRemark(Remark r) throws SQLException{
-		rm.createRemark(r);
+			rm.createRemark(r);
 	}
 	
 	public void createBuilding(Building b, int id) throws SQLException {
@@ -75,6 +76,10 @@ public class Facade {
 	}
 
 	// retrieve
+	public ArrayList<RoomReport> getRoomReports() throws SQLException{
+		return rrm.getRoomReports();
+	}
+	
 	public ArrayList<Building> getAllBuildings() throws SQLException {
 		return bm.getBuildings();
 	}

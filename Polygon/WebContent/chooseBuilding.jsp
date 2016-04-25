@@ -18,7 +18,7 @@
 		
 	%>
 
-	<form action="buildingReport.jsp" method="get" >
+	<form action="buildingReport.jsp" method="post" >
 		<table>
 			<tr>
 				<th>NAME</th>

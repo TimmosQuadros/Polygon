@@ -1,7 +1,13 @@
 package data;
 
-public class Remark {
+import java.io.Serializable;
+
+public class Remark implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int remarkId;
 	private int roomReportId;
 	private String description;
