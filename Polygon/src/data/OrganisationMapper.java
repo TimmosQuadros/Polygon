@@ -54,7 +54,7 @@ public class OrganisationMapper {
 		
 		for (Organisation organisation : organisations) {
 			if(organisation.getName().equalsIgnoreCase(organisation_name)){
-				return organisation.id;
+				return organisation.getId();
 			}
 		}
 		
@@ -82,5 +82,17 @@ public class OrganisationMapper {
 		}
 
 		return true;
+	}
+	
+	public void deleteOrganisation(String organisation_name) throws SQLException {
+
+		String SQLString = "DELETE FROM organisations WHERE organisation_name = ?";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+		statement.setString(1, organisation_name);
+
+		statement.executeUpdate();
+
 	}
 }

@@ -4,15 +4,12 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Random;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import controller.Controller;
 import data.Building;
 import data.BuildingMapper;
 import data.Organisation;
@@ -27,8 +24,9 @@ public class BuildingMapperTest {
 	private OrganisationMapper omapper;
 	private UserMapper umapper;
 	private ArrayList<Building> buildings;
-	private ArrayList<Organisation> organisations;
-	private String orgName;
+	private ArrayList<User> users;
+	private String organisationName;
+	private Building testBuilding;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		
@@ -44,87 +42,105 @@ public class BuildingMapperTest {
 		omapper = new OrganisationMapper();
 		umapper = new UserMapper();
 		buildings = bmapper.getBuildings();
-		organisations = omapper.getOrganisations();
-		if(organisations.isEmpty()){
-			orgName = "testOrg";
-			omapper.createOrganisation(new Organisation(orgName));
-		}else{
-			orgName = organisations.get(0).getName();
-		}
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		
+		bmapper=null;
+		omapper=null;
+		umapper=null;
+		buildings=null;
 	}
 
-	@Test
+	
 	public void createBuilding() {
 		try {
 			int numberOfBuildings = buildings.size();
-			
-			bmapper.createBuilding(new Building("TestBuilding", "test", 2800, 1978, 999999), organisations.get(0).getId());
-			Building b = bmapper.getBuildings().get(numberOfBuildings);
+			organisationName = "test";
+			String building_name = "testBuilding";
+			String street_address = "testvej";
+			int zip = 1000;
+			int build_year = 1000;
+			int floor_area = 1;
+			testBuilding = new Building(building_name, street_address, zip, build_year, floor_area);
+			omapper.createOrganisation(new Organisation(organisationName));
+			bmapper.createBuilding(testBuilding,omapper.getID(organisationName));
 			buildings = bmapper.getBuildings();
-			assertTrue((numberOfBuildings+1)==bmapper.getBuildings().size());
-			assertEquals("TestBuilding",b.getBuilding_name());
-			assertEquals("test",b.getStreet_address());
-			assertEquals(2800,b.getZip());
-			assertEquals(1978,b.getBuild_year());
-			assertEquals(999999,b.getFloor_area());
+			testBuilding=buildings.get(buildings.size()-1);
+			
+			assertTrue(buildings.size()==numberOfBuildings+1);
+			assertEquals(building_name, testBuilding.getBuilding_name());
+			assertEquals(street_address, testBuilding.getStreet_address());
+			assertEquals(zip, testBuilding.getZip());
+			assertEquals(build_year, testBuilding.getBuild_year());
+			assertEquals(floor_area, testBuilding.getFloor_area());
+			
 		} catch (SQLException e) {
-			fail(e.getMessage());
 			e.printStackTrace();
+			fail(e.getMessage());
 		}
 	}
 	
 	@Test
 	public void updateBuilding() {
+		createBuilding();
+		System.out.println(buildings.size()+" update");
 		try {
+			
+			for (Building building : buildings) {
+				if(building.getBuilding_name().equalsIgnoreCase("testBuilding")) testBuilding = building;
+			}
+			if(testBuilding==null)fail();
+			String building_name = "testBuildingUpdated";
+			String street_address = "testvejUpdated";
+			int zip = 1001;
+			int build_year = 1001;
+			int floor_area = 2;
+			testBuilding.setBuilding_name(building_name);
+			testBuilding.setStreet_address(street_address);
+			testBuilding.setZip(zip);
+			testBuilding.setBuild_year(build_year);
+			testBuilding.setFloor_area(floor_area);
+			bmapper.updateBuilding(testBuilding);
 			buildings = bmapper.getBuildings();
-			int numberOfBuildings = buildings.size();
-			Building updatedBuilding = buildings.get(numberOfBuildings-1);
-			updatedBuilding.setBuilding_name("testUpdateBuildingName");
-			updatedBuilding.setStreet_address("testUpdateStreet");
-			updatedBuilding.setZip(2900);
-			updatedBuilding.setBuild_year(1979);
-			updatedBuilding.setFloor_area(9);
-			bmapper.updateBuilding(updatedBuilding);
-			
-			Building b = bmapper.getBuildings().get(numberOfBuildings-1);
-			
-			assertEquals("testUpdateBuildingName",b.getBuilding_name());
-			assertEquals("testUpdateStreet",b.getStreet_address());
-			assertEquals(2900,b.getZip());
-			assertEquals(1979,b.getBuild_year());
-			assertEquals(9,b.getFloor_area());
-			
+			testBuilding=buildings.get(buildings.size()-1);
+			assertEquals(building_name, testBuilding.getBuilding_name());
+			assertEquals(street_address, testBuilding.getStreet_address());
+			assertEquals(zip, testBuilding.getZip());
+			assertEquals(build_year, testBuilding.getBuild_year());
+			assertEquals(floor_area, testBuilding.getFloor_area());
 		} catch (SQLException e) {
-			fail(e.getMessage());
 			e.printStackTrace();
+			fail(e.getMessage());
 		}
 	}
 	
-	@Test
+	//@Test
 	public void getUserBuilding() {
 		try {
-			User user = new User(User_type.CUST, "test", "123456", "test@org.com");
-			umapper.createUser(user, orgName);
-			ArrayList<User> users = umapper.getUsers();
-			user = users.get(users.size()-1);
-			ArrayList<Building> buildingss = bmapper.getUserBuildings(user.getUser_id());
-			assertTrue(buildingss.size()==1);
-			
-			Building b = buildingss.get(buildings.size()-1);
-			
-			assertEquals("testUpdateBuildingName",b.getBuilding_name());
-			assertEquals("testUpdateStreet",b.getStreet_address());
-			assertEquals(2900,b.getZip());
-			assertEquals(1979,b.getBuild_year());
-			assertEquals(9,b.getFloor_area());
-			
+			buildings = bmapper.getBuildings();
+			String username = "test";
+			String password = "123456";
+			String email = "user@user.dk";
+			User user = null;
+			umapper.createUser(new User(User_type.CUST, username, password, email), organisationName);
+			umapper.getUsers();
+			for (User us : users) {
+				if(us.getUsername().equalsIgnoreCase(username)){
+					user = us;
+				}
+			}
+			if(user==null)fail("user is null");
+			ArrayList<Building> userBuildings = bmapper.getUserBuildings(user.getUser_id());
+			Building userBuilding = userBuildings.get(0);
+			assertTrue(userBuilding!=null);
+			assertEquals(testBuilding.getBuilding_name(), userBuilding.getBuilding_name());
+			assertEquals(testBuilding.getStreet_address(), userBuilding.getStreet_address());
+			assertEquals(testBuilding.getZip(), userBuilding.getZip());
+			assertEquals(testBuilding.getBuild_year(), userBuilding.getBuild_year());
+			assertEquals(testBuilding.getFloor_area(), userBuilding.getFloor_area());
+			//Clean up
 			umapper.deleteUser(user.getUser_id());
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
@@ -134,12 +150,28 @@ public class BuildingMapperTest {
 	@Test
 	public void deleteBuilding() {
 		try {
-			int numberOfBuildings = buildings.size(); 
-			bmapper.deleteBuilding(bmapper.getMaxBuildingId());
-			assertTrue(numberOfBuildings-1==bmapper.getBuildings().size());
+			System.out.println(buildings.size()+" delete");
+			int numberOfBuildings = buildings.size();
+			for (Building building : buildings) {
+				if(building.getBuilding_name().equalsIgnoreCase("testBuildingUpdated")) testBuilding = building;
+			}
+			if(testBuilding==null)fail();
+			bmapper.deleteBuilding(testBuilding.getBuilding_id());
+			buildings = bmapper.getBuildings();
+			assertTrue(numberOfBuildings-1==buildings.size());
+			//Clean up
+			omapper.deleteOrganisation("test");
 		} catch (SQLException e) {
-			fail(e.getMessage());
 			e.printStackTrace();
+			fail(e.getMessage());
 		}
+	}
+	
+	public Building getBuilding(String name){
+		for (Building building : buildings) {
+			System.out.println("abe");
+			if(building.getBuilding_name().equalsIgnoreCase(name)) return building;
+		}
+		return null;
 	}
 }
