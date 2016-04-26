@@ -23,11 +23,15 @@ import data.UserMapper;
 
 public class BuildingMapperTest {
 
-	BuildingMapper bmapper;
-	UserMapper usermapper;
-	Controller controller;
+	private BuildingMapper bmapper;
+	private OrganisationMapper omapper;
+	private UserMapper umapper;
+	private ArrayList<Building> buildings;
+	private ArrayList<Organisation> organisations;
+	private String orgName;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		
 	}
 
 	@AfterClass
@@ -36,102 +40,106 @@ public class BuildingMapperTest {
 
 	@Before
 	public void setUp() throws Exception {
-		controller = new Controller();
 		bmapper = new BuildingMapper();
-		usermapper = new UserMapper();
-		ArrayList<User> users = usermapper.getUsers();
-		for (User u : users) {
-			usermapper.deleteUser(u.getUser_id());
+		omapper = new OrganisationMapper();
+		umapper = new UserMapper();
+		buildings = bmapper.getBuildings();
+		organisations = omapper.getOrganisations();
+		if(organisations.isEmpty()){
+			orgName = "testOrg";
+			omapper.createOrganisation(new Organisation(orgName));
+		}else{
+			orgName = organisations.get(0).getName();
 		}
-		usermapper.createUser(new User(User_type.ADMIN, "testname", "testpw", "test@mail.com"), "testorg");
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		ArrayList<User> users = usermapper.getUsers();
-		for (User u : users) {
-			if (u.getUsername().equals("testname")) {
-				usermapper.deleteUser(u.getUser_id());
-			}
-		}
+		
 	}
 
 	@Test
-	public void mapperTest() {
-		boolean didThrowSQLException=false;
-		ArrayList<Building> buildings = null;
+	public void createBuilding() {
 		try {
-			ArrayList<User> users;
-
-			users = usermapper.getUsers();
-
-			User user= users.get(0);
-
-			//Test create building #Start#
-			String building_name="DTU",street_address="Ankerenglundsvej nr. 1";
-			int zip=2800,build_year=1978,floor_area=2050,organisation_id=user.getOrganisations_id();
-
-			bmapper.createBuilding(new Building(building_name, street_address, zip, build_year, floor_area),organisation_id);
-
-			buildings = bmapper.getBuildings();
-
-			assertTrue(!buildings.isEmpty());
-			Building b = buildings.get(0);
-			assertEquals(building_name, b.getBuilding_name());
-			assertEquals(street_address, b.getStreet_address());
-			assertEquals(zip, b.getZip());
-			assertEquals(floor_area, b.getFloor_area());
-			assertEquals(organisation_id, b.getOrganisation_id());
-			//Test create building #End#
-
-			//Test getUserBuilding #Start#
-			ArrayList<Building> userBuildings;
-
-			userBuildings = bmapper.getUserBuildings(user.getUser_id());
-
-			Building userB = userBuildings.get(0);
-
-			assertTrue(!userBuildings.isEmpty());
-			assertEquals(building_name, userB.getBuilding_name());
-			assertEquals(street_address, userB.getStreet_address());
-			assertEquals(zip, userB.getZip());
-			assertEquals(floor_area, userB.getFloor_area());
-			assertEquals(organisation_id, userB.getOrganisation_id());
-			//Test getUserBuilding #End#
+			int numberOfBuildings = buildings.size();
 			
-		//Test SQLException #Start#
-			b.setBuilding_name("DTU");
-			bmapper.createBuilding(b, organisation_id+1);
-		} catch (SQLException e) {
-			didThrowSQLException=true;
-		}
-		assertTrue(didThrowSQLException);
-		//Test SQLException #End#
-
-		//Test updateBuilding #Start#
-		try {
-			Building b = bmapper.getBuildings().get(0);
-			b.setBuilding_name("test name");
-			bmapper.updateBuilding(b);
-			assertEquals("test name", "test name");
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		//Test delete building #Start#
-		int id = buildings.get(0).getBuilding_id();
-
-		try {
-			bmapper.deleteBuilding(id);
+			bmapper.createBuilding(new Building("TestBuilding", "test", 2800, 1978, 999999), organisations.get(0).getId());
+			Building b = bmapper.getBuildings().get(numberOfBuildings);
 			buildings = bmapper.getBuildings();
-			assertTrue(buildings.size()==0);
+			assertTrue((numberOfBuildings+1)==bmapper.getBuildings().size());
+			assertEquals("TestBuilding",b.getBuilding_name());
+			assertEquals("test",b.getStreet_address());
+			assertEquals(2800,b.getZip());
+			assertEquals(1978,b.getBuild_year());
+			assertEquals(999999,b.getFloor_area());
+		} catch (SQLException e) {
+			fail(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void updateBuilding() {
+		try {
+			buildings = bmapper.getBuildings();
+			int numberOfBuildings = buildings.size();
+			Building updatedBuilding = buildings.get(numberOfBuildings-1);
+			updatedBuilding.setBuilding_name("testUpdateBuildingName");
+			updatedBuilding.setStreet_address("testUpdateStreet");
+			updatedBuilding.setZip(2900);
+			updatedBuilding.setBuild_year(1979);
+			updatedBuilding.setFloor_area(9);
+			bmapper.updateBuilding(updatedBuilding);
+			
+			Building b = bmapper.getBuildings().get(numberOfBuildings-1);
+			
+			assertEquals("testUpdateBuildingName",b.getBuilding_name());
+			assertEquals("testUpdateStreet",b.getStreet_address());
+			assertEquals(2900,b.getZip());
+			assertEquals(1979,b.getBuild_year());
+			assertEquals(9,b.getFloor_area());
+			
+		} catch (SQLException e) {
+			fail(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void getUserBuilding() {
+		try {
+			User user = new User(User_type.CUST, "test", "123456", "test@org.com");
+			umapper.createUser(user, orgName);
+			ArrayList<User> users = umapper.getUsers();
+			user = users.get(users.size()-1);
+			ArrayList<Building> buildingss = bmapper.getUserBuildings(user.getUser_id());
+			assertTrue(buildingss.size()==1);
+			
+			Building b = buildingss.get(buildings.size()-1);
+			
+			assertEquals("testUpdateBuildingName",b.getBuilding_name());
+			assertEquals("testUpdateStreet",b.getStreet_address());
+			assertEquals(2900,b.getZip());
+			assertEquals(1979,b.getBuild_year());
+			assertEquals(9,b.getFloor_area());
+			
+			umapper.deleteUser(user.getUser_id());
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}
-		//Test delete building #End#
 	}
-
+	
+	@Test
+	public void deleteBuilding() {
+		try {
+			int numberOfBuildings = buildings.size(); 
+			bmapper.deleteBuilding(bmapper.getMaxBuildingId());
+			assertTrue(numberOfBuildings-1==bmapper.getBuildings().size());
+		} catch (SQLException e) {
+			fail(e.getMessage());
+			e.printStackTrace();
+		}
+	}
 }
