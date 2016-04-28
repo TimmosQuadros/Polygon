@@ -20,47 +20,33 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ILogin login;
 	Facade facade;
-
-	public LoginServlet() {
-		super();
-	}
-
-	@Override
-	public void init() throws ServletException {
-		login = new data.LoginController();
-		facade = new Facade();
-		super.init();
-	}
+	
+    public LoginServlet() {
+        super();
+    }
+    
+    @Override
+    public void init() throws ServletException {
+    	login = new data.LoginController();
+    	facade = new Facade();
+    	super.init();
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		HttpSession session = request.getSession(true);
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		User user = null;
-
+		
 		ArrayList<User> users = null;
 		try {
-			users = facade.getUsers();
 			user = login.correctPassword(username, password);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		for (User u : users) {
-			if(u.getUsername().equals(username)){
-				if(u.getPassword().equals(password)){
-					user = u;
-					break;
-				}
-			}
-		}
-
-		session.setAttribute("user", user);
+		
+			session.setAttribute("user", user);
 		if (user != null) {
 			switch (user.getUser_type()) {
 			case ADMIN:
@@ -87,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	
 	private void forward(HttpServletRequest req, HttpServletResponse res, String path) throws IOException, ServletException {
 		ServletContext sc = getServletContext();
 		RequestDispatcher rd = sc.getRequestDispatcher(path);
