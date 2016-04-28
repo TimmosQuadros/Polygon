@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema polygon
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `polygon` ;
@@ -18,19 +21,23 @@ USE `polygon` ;
 -- -----------------------------------------------------
 -- Table `polygon`.`organisations`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`organisations` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`organisations` (
   `organisations_id` INT(11) NOT NULL AUTO_INCREMENT,
   `organisation_name` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`organisations_id`),
   UNIQUE INDEX `organisation_name_UNIQUE` (`organisation_name` ASC))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `polygon`.`buildings`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`buildings` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`buildings` (
   `building_id` INT(11) NOT NULL AUTO_INCREMENT,
   `organisations_id` INT(11) NOT NULL,
@@ -48,12 +55,15 @@ CREATE TABLE IF NOT EXISTS `polygon`.`buildings` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `polygon`.`users`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`users` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `user_id` INT(11) NOT NULL AUTO_INCREMENT,
   `organisations_id` INT(11) NOT NULL,
@@ -63,58 +73,26 @@ CREATE TABLE IF NOT EXISTS `polygon`.`users` (
   `user_email` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
-  INDEX `fk_users_organisations_idx` (`organisations_id` ASC),
-  CONSTRAINT `fk_users_organisations`
+  INDEX `fk_users_organisations1_idx` (`organisations_id` ASC),
+  CONSTRAINT `fk_users_organisations1`
     FOREIGN KEY (`organisations_id`)
     REFERENCES `polygon`.`organisations` (`organisations_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `polygon`.`checkup`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `polygon`.`checkup` (
-  `checkup_id` INT NOT NULL,
-  `building_id` INT(11) NOT NULL,
-  `customer_id` INT(11) NOT NULL,
-  `tech_id` INT(11) NOT NULL,
-  `date_issued` VARCHAR(45) NULL,
-  `date_processed` VARCHAR(45) NULL,
-  `order_status` ENUM('PENDING', 'FINISHED', 'CANCELLED', 'PROGRESSING') NULL,
-  PRIMARY KEY (`checkup_id`),
-  INDEX `fk_checkup_buildings_idx` (`building_id` ASC),
-  INDEX `fk_checkup_users1_idx` (`customer_id` ASC),
-  INDEX `fk_checkup_users2_idx` (`tech_id` ASC),
-  CONSTRAINT `fk_checkup_buildings`
-    FOREIGN KEY (`building_id`)
-    REFERENCES `polygon`.`buildings` (`building_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_checkup_users1`
-    FOREIGN KEY (`customer_id`)
-    REFERENCES `polygon`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_checkup_users2`
-    FOREIGN KEY (`tech_id`)
-    REFERENCES `polygon`.`users` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-USE `polygon` ;
-
--- -----------------------------------------------------
 -- Table `polygon`.`building_report`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`building_report` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`building_report` (
   `report_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `tech_id` INT(11) NOT NULL,
   `building_id` INT(11) NOT NULL,
+  `tech_id` INT(11) NOT NULL,
   `roof_remark` VARCHAR(200) NULL DEFAULT NULL,
   `outer_wall_remark` VARCHAR(200) NULL DEFAULT NULL,
   `facility_manager_name` VARCHAR(45) NULL DEFAULT NULL,
@@ -133,12 +111,15 @@ CREATE TABLE IF NOT EXISTS `polygon`.`building_report` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `polygon`.`image`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`image` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`image` (
   `image_id` TINYINT(3) NOT NULL AUTO_INCREMENT,
   `image_type` VARCHAR(25) NULL DEFAULT NULL,
@@ -148,12 +129,15 @@ CREATE TABLE IF NOT EXISTS `polygon`.`image` (
   `image_name` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`image_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `polygon`.`building_report_image`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`building_report_image` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`building_report_image` (
   `image_id` TINYINT(3) NOT NULL AUTO_INCREMENT,
   `report_id` INT(11) NOT NULL,
@@ -176,8 +160,47 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `polygon`.`checkup`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`checkup` ;
+
+CREATE TABLE IF NOT EXISTS `polygon`.`checkup` (
+  `checkup_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `building_id` INT(11) NOT NULL,
+  `customer_id` INT(11) NOT NULL,
+  `tech_id` INT(11) NULL DEFAULT NULL,
+  `date_issued` VARCHAR(45) NULL DEFAULT NULL,
+  `date_processed` VARCHAR(45) NULL DEFAULT NULL,
+  `order_status` ENUM('PENDING', 'FINISHED', 'CANCELLED', 'PROGRESSING') NULL DEFAULT NULL,
+  PRIMARY KEY (`checkup_id`),
+  INDEX `fk_checkup_buildings_idx` (`building_id` ASC),
+  INDEX `fk_checkup_users1_idx` (`customer_id` ASC),
+  INDEX `fk_checkup_users2_idx` (`tech_id` ASC),
+  CONSTRAINT `fk_checkup_buildings`
+    FOREIGN KEY (`building_id`)
+    REFERENCES `polygon`.`buildings` (`building_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_checkup_users1`
+    FOREIGN KEY (`customer_id`)
+    REFERENCES `polygon`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_checkup_users2`
+    FOREIGN KEY (`tech_id`)
+    REFERENCES `polygon`.`users` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 0
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `polygon`.`room_report`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`room_report` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`room_report` (
   `room_report_id` INT(11) NOT NULL AUTO_INCREMENT,
   `building_report_id` INT(11) NOT NULL,
@@ -192,12 +215,15 @@ CREATE TABLE IF NOT EXISTS `polygon`.`room_report` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `polygon`.`conclusion`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`conclusion` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`conclusion` (
   `conclusion_id` INT(11) NOT NULL AUTO_INCREMENT,
   `room_report_id` INT(11) NOT NULL,
@@ -216,6 +242,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `polygon`.`description`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`description` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`description` (
   `description_id` INT(11) NOT NULL AUTO_INCREMENT,
   `room_report_id` INT(11) NOT NULL,
@@ -235,15 +263,17 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `polygon`.`floorplans`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`floorplans` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`floorplans` (
   `idfloorplans` INT(11) NOT NULL AUTO_INCREMENT,
   `image_id` TINYINT(3) NOT NULL,
-  `buildings_building_id` INT(11) NOT NULL,
+  `building_id` INT(11) NOT NULL,
   PRIMARY KEY (`idfloorplans`),
   INDEX `fk_floorplans_image1_idx` (`image_id` ASC),
-  INDEX `fk_floorplans_buildings1_idx` (`buildings_building_id` ASC),
+  INDEX `fk_floorplans_buildings1_idx` (`building_id` ASC),
   CONSTRAINT `fk_floorplans_buildings1`
-    FOREIGN KEY (`buildings_building_id`)
+    FOREIGN KEY (`building_id`)
     REFERENCES `polygon`.`buildings` (`building_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -253,12 +283,15 @@ CREATE TABLE IF NOT EXISTS `polygon`.`floorplans` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 0
 DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
 -- Table `polygon`.`remark`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`remark` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`remark` (
   `remark_id` INT(11) NOT NULL AUTO_INCREMENT,
   `room_report_id` INT(11) NOT NULL,
@@ -278,6 +311,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `polygon`.`room_report_image`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `polygon`.`room_report_image` ;
+
 CREATE TABLE IF NOT EXISTS `polygon`.`room_report_image` (
   `report_id` INT(11) NOT NULL AUTO_INCREMENT,
   `image_id` TINYINT(3) NOT NULL,
