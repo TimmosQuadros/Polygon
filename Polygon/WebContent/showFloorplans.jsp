@@ -13,6 +13,7 @@
 <link href="Resources/js/min.js" type="text/javascript">
 </head>
 <body>
+<%@include file="header.jsp"%>
 	<%
 		ArrayList<String> imgPaths = (ArrayList<String>) session.getAttribute("paths.floorplans");
 		Facade fac = new Facade();
