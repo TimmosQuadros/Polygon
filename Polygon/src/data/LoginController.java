@@ -22,16 +22,14 @@ public class LoginController implements ILogin{
 				}
 			}
 		} catch (SQLException e) {
-			//TODO Handle the exception
+			//If user is null -> Write: "wrong password or username"
 			return null;
 		}
-
 		return null;
 	}
 	
 	public String md5(String yourString) throws UnsupportedEncodingException, NoSuchAlgorithmException{
 		byte[] bytesOfMessage = yourString.getBytes("UTF-8");
-
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		byte[] thedigest = md.digest(bytesOfMessage);
 		BigInteger bigInt = new BigInteger(1,thedigest);
