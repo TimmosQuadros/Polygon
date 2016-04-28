@@ -28,17 +28,16 @@ public class LoginController implements ILogin{
 		return null;
 	}
 	
-	public String md5(String yourString) throws UnsupportedEncodingException, NoSuchAlgorithmException{
-		byte[] bytesOfMessage = yourString.getBytes("UTF-8");
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		byte[] thedigest = md.digest(bytesOfMessage);
-		BigInteger bigInt = new BigInteger(1,thedigest);
-		String hashText = bigInt.toString(16);
-		//Zero padding to 32 char
-		while(hashText.length() < 32 ){
-			hashText = "0"+hashText;
+	public String md5(String textToBeConverted) throws UnsupportedEncodingException, NoSuchAlgorithmException{
+		byte[] bytesMessage = textToBeConverted.getBytes("UTF-8");
+		MessageDigest mesd = MessageDigest.getInstance("MD5");
+		byte[] digest = mesd.digest(bytesMessage);
+		BigInteger bigInteger = new BigInteger(1,digest);
+		String hashString = bigInteger.toString(16);
+		while(hashString.length() < 32 ){
+			hashString = "0"+hashString;
 		}
-		return hashText;
+		return hashString;
 	}
 
 }
