@@ -9,6 +9,7 @@
 	case ADMIN:
 %>
 
+
 <ul>
 	<li><a href="adminPage.jsp">Home</a></li>
 	<li><a href="viewBuildings.jsp">View buildings</a></li>
@@ -46,6 +47,7 @@
 	<li style="float: right"><a class="active" href="LogoutServlet">Logout</a></li>
 </ul>
 <div style="margin-bottom: 30px;"></div>
+
 
 <%
 	break;
