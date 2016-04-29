@@ -19,7 +19,6 @@ import data.*;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ILogin login;
-	Facade facade;
 	
     public LoginServlet() {
         super();
@@ -28,7 +27,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
     	login = new data.LoginController();
-    	facade = new Facade();
     	super.init();
     }
 
@@ -39,32 +37,15 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		User user = null;
 		
-		ArrayList<User> users = null;
 		try {
-			users = facade.getUsers();
 			user = login.correctPassword(username, password);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		
-		for (User u : users) {
-			if(u.getUsername().equals(username)){
-				if(u.getPassword().equals(password)){
-					user = u;
-					break;
-				}
-			}
-		}
-		
-//		if((user = login.correctPassword(username, password))!=null){
-		
-			session.setAttribute("user", user);
+				
+		session.setAttribute("user", user);
 		if (user != null) {
 			switch (user.getUser_type()) {
 			case ADMIN:

@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class LoginController implements ILogin{
 
-	UserMapper userMapper = new UserMapper();
+	Facade fac = new Facade();
 	
 	public User correctPassword(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException{
 		try {
-			ArrayList<User> users = userMapper.getUsers();
+			ArrayList<User> users = fac.getUsers();
 			for (User user : users) {
 				if(user.getUsername().equals(username)){
 					if(user.getPassword().equalsIgnoreCase(md5(password))){
