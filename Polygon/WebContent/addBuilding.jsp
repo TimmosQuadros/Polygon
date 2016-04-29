@@ -13,11 +13,11 @@
 </head>
 
 <body>
-
+<%@include file="header.jsp"%>
 <div id="wrapper">
         	
 <div id="subscribeBox">
-	<a class="click-me" href="viewBuildings.jsp">View buildings</a>
+	<!-- <a class="click-me" href="viewBuildings.jsp">View buildings</a> -->
 	<h2><span class="thin">Add New</span> Building</h2>
     <p>Please fill out the following information to add a new building.</p>
 

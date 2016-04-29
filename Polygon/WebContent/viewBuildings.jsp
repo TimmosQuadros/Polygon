@@ -41,7 +41,7 @@
 		}
 	%>
 
-	<form action="ButtonClickedServlet" method="get">
+	<form action="ButtonClickedServlet" method="post">
 		<table>
 			<tr>
 				<th>NAME</th>
