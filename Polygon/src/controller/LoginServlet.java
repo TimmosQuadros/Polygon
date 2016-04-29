@@ -40,12 +40,10 @@ public class LoginServlet extends HttpServlet {
 		try {
 			user = login.correctPassword(username, password);
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-				
-		session.setAttribute("user", user);
+			session.setAttribute("user", user);
 		if (user != null) {
 			switch (user.getUser_type()) {
 			case ADMIN:
