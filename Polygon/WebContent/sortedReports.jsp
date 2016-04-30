@@ -23,19 +23,19 @@ make a report, and the building will then get a condition level, and appear in t
 		for(int i = 0; i<reports.size(); i++){
 			if(reports.get(i).getBuildingCondition().name().equalsIgnoreCase("CON0")){
 				sortedReports.add(reports.get(i));
-				reports.remove(reports.get(i));
+				reports.remove(i);
 			}
 		}
 		for(int i = 0; i<reports.size(); i++){
 			if(reports.get(i).getBuildingCondition().name().equalsIgnoreCase("CON1")){
 				sortedReports.add(reports.get(i));
-				reports.remove(reports.get(i));
+				reports.remove(i);
 			}
 		}
 		for(int i = 0; i<reports.size(); i++){
 			if(reports.get(i).getBuildingCondition().name().equalsIgnoreCase("CON2")){
 				sortedReports.add(reports.get(i));
-				reports.remove(reports.get(i));
+				reports.remove(i);
 			}
 		}
 		sortedReports.addAll(reports);
