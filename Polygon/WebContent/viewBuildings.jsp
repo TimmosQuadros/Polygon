@@ -35,7 +35,7 @@
 		if(user.getUser_type().toString().equalsIgnoreCase("ADMIN")){
 			buildings = fac.getAllBuildings();
 		}else if (user.getUser_type().toString().equalsIgnoreCase("CUST")){
-			buildings = fac.getUserBuildings(user.getUser_id());	
+			buildings = fac.getUserBuildings(user.getOrganisations_id());	
 		}else{
 			buildings = fac.getAllBuildings();
 		}

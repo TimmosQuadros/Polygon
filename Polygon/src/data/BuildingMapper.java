@@ -52,14 +52,14 @@ public class BuildingMapper {
 	}
 	//returns a list of Buildings belonging to a SPECIFIC USER (consider using User object as parameter)
 	//(consider handling this logic at a higher layer. getBuildings() -> then extract Buildings belonging to user)
-	public ArrayList<Building> getUserBuildings(int user_id) throws SQLException {
+	public ArrayList<Building> getUserBuildings(int organisations_id) throws SQLException {
 		ArrayList<Building> result = new ArrayList<>();
 
-		String SQLString = "select building_id,organisations_id,building_name,street_address,zipcode,build_year,floor_area from buildings natural join users where organisations_id=(select organisations_id from users where user_id=?) group by building_id;";
+		String SQLString = "select * from buildings where organisations_id = ?;";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
-		statement.setInt(1, user_id);
+		statement.setInt(1, organisations_id);
 
 		ResultSet rs = statement.executeQuery();
 
