@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<% 
+	String message = (String)session.getAttribute("user.message");
+  	if(message == null){
+	  message = "";
+  	}
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -26,6 +33,7 @@
       	<option value="ADMIN">Administrator</option>
 	  </select>
 	  </div>
+	  <p><label class="message"><%=message%></label></p>
       <button type="submit" value="Check" >Create</button>
 </form>
 </div>

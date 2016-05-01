@@ -67,13 +67,13 @@ public class OrganisationMapper {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean organisationExists(String organisation_name) throws SQLException{
+	public boolean organisationExists(int organisation_id) throws SQLException{
 
-		String SQLString = "SELECT * FROM organisations WHERE organisation_name=?";
+		String SQLString = "SELECT * FROM organisations WHERE organisations_id=?";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
 
-		statement.setString(1, organisation_name);
+		statement.setInt(1, organisation_id);
 		
 		ResultSet rs = statement.executeQuery();
 

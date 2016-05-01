@@ -2,17 +2,15 @@ package data;
 
 public class Organisation {
 	
-	int id;
-	String name;
+	private int id;
+	private String name;
 
 	public Organisation(int id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
 	
 	public Organisation(String name) {
-		super();
 		this.name = name;
 	}
 

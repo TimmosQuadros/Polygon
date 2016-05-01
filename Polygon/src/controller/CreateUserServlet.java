@@ -10,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import data.Facade;
 import data.ILogin;
 import data.LoginController;
@@ -27,7 +29,7 @@ import java.security.NoSuchAlgorithmException;
 public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Facade facade;
-	ILogin login;
+	private ILogin login;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -49,27 +51,25 @@ public class CreateUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		HttpSession session = request.getSession(true);
 		String organisation_name = request.getParameter("organisation");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String user_email = request.getParameter("email");
 		String usertype = request.getParameter("usertype");
 		
-		ArrayList<User> users = null;
-		try {
-			users = facade.getUsers();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		for (User u : users){
-			if (u.getUsername().equals(username)) {
-				forward(request, response, "/login.jsp");
-
-				return;
-			}
-		}
+//		ArrayList<User> users = null;
+//		try {
+//			users = facade.getUsers();
+//		} catch (SQLException e1) {
+//			e1.printStackTrace();
+//		}
+//		for (User u : users){
+//			if (u.getUsername().equals(username)) {
+//				forward(request, response, "/login.jsp");
+//				return;
+//			}
+//		}
  		
 		User.User_type user_type = null;
 
@@ -89,15 +89,18 @@ public class CreateUserServlet extends HttpServlet {
 			facade.createUser(new User(user_type, username, login.md5(password), user_email),organisation_name);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			String message = "username already exists, try another username";
+			session.setAttribute("user.message", message);
+			forward(request,response,"/createUser.jsp");
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		forward(request,response,"/adminPage.jsp");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+			forward(request,response,"/adminPage.jsp");
+		} catch (IllegalStateException e) {
+			//Cannot forward after response has been committed
+		}
+		
 	}
 
 	/**
