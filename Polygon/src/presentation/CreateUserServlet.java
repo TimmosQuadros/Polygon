@@ -1,4 +1,4 @@
-package controller;
+package presentation;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import controller.ILogin;
+import controller.LoginController;
 import data.Facade;
-import data.ILogin;
-import data.LoginController;
 import data.User;
 import data.User.User_type;
 import java.io.UnsupportedEncodingException;

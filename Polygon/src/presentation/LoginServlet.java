@@ -1,4 +1,4 @@
-package controller;
+package presentation;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import controller.ILogin;
 import data.*;
 
 @WebServlet("/Login")
@@ -26,7 +28,7 @@ public class LoginServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-    	login = new data.LoginController();
+    	login = new controller.LoginController();
     	super.init();
     }
 

@@ -1,7 +1,9 @@
-package data;
+package controller;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+
+import data.User;
 
 public interface ILogin {
 	/**

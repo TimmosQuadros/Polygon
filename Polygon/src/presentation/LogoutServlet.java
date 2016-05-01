@@ -1,8 +1,7 @@
-package controller;
+package presentation;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -13,50 +12,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import data.Building;
-import data.Facade;
-
 /**
- * Servlet implementation class InspectBuildingServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/Inspect")
-public class InspectBuildingServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       Facade facade;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InspectBuildingServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
-    }
-    
-    @Override
-    public void init() throws ServletException {
-    	super.init();
-    	facade = new Facade();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		try {
-			HttpSession session = request.getSession(true);
-			ArrayList<Building> buildings = facade.getAllBuildings();
-			for (Building building : buildings) {
-				if(request.getParameter(String.valueOf(building.getBuilding_id()))!=null){
-					session.setAttribute("building.inspect", building);
-				}
-			}
-			forward(request, response, "/buildingReport1.jsp"/*change to buildingReport*/);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+		  response.setContentType("text/html");  
+            
+         //request.getRequestDispatcher("login.jsp").include(request, response);  
+            
+          HttpSession session=request.getSession();  
+          session.invalidate();  
+            
+          forward(request, response, "/login.jsp"); 
+  }  
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
