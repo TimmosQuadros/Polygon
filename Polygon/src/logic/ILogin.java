@@ -1,4 +1,4 @@
-package controller;
+package logic;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
