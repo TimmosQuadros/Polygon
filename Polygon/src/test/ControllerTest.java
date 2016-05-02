@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.Controller;
+import presentation.Controller;
 import data.Building;
 import data.Facade;
 

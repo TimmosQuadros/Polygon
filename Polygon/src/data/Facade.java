@@ -99,6 +99,10 @@ public class Facade {
 	public ArrayList<User> getUsers() throws SQLException {
 		return um.getUsers();
 	}
+	
+	public User getUser(String username, String password) throws SQLException {
+		return um.getUser(username,password);
+	}
 
 	public ArrayList<String> getBuildingFloorplans(int building_id, ServletContext sc) throws SQLException, IOException {
 		return im.getBuildingFloorplans(building_id,sc);

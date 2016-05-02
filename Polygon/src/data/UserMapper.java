@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import data.User.User_type;
 
 public class UserMapper {
-	
+
 	//returns an ArrayList of ALL users in the database
 	public ArrayList<User> getUsers() throws SQLException {
 		ArrayList<User> result = new ArrayList<>();
@@ -32,6 +32,35 @@ public class UserMapper {
 		Connector.cleanUp(statement, rs);
 		return result;
 	}
+
+	public User getUser(String username_2, String password_2) throws SQLException {
+
+		String SQLString = "SELECT * FROM Users where username=? and password=?;";
+
+		PreparedStatement statement = Connector.prepare(SQLString);
+
+		statement.setString(1, username_2);
+		statement.setString(2, password_2);
+
+		ResultSet rs = statement.executeQuery();
+
+		User result=null;
+
+		while (rs.next()) {
+			int user_id = rs.getInt(1);
+			int organisations_id = rs.getInt(2);
+			User_type user_type = User_type.valueOf(rs.getString(3));
+			String username = rs.getString(4);
+			String password = rs.getString(5);
+			String user_email = rs.getString(6);
+
+			result = new User(user_id, organisations_id, user_type, username, password, user_email);
+		}
+		Connector.cleanUp(statement, rs);
+		result.getUsername();
+		return result;
+	}
+
 	//adds a NEW user to the database. (consider adding the organisation to user object at a higher layer?)
 	public void createUser(User user, String organisation_name) throws SQLException {
 
@@ -89,16 +118,16 @@ public class UserMapper {
 		statement.executeUpdate();
 
 	}
-	
+
 	public boolean userExists(User u) throws SQLException{
 		String SQLString = "SELECT * FROM Users where username=?;";
 
 		PreparedStatement statement = Connector.prepare(SQLString);
-		
+
 		statement.setString(1, u.getUsername());
 
 		ResultSet rs = statement.executeQuery();
-		
+
 		if(rs.next()){
 			return true;
 		}

@@ -15,20 +15,15 @@ public class LoginController implements ILogin{
 	Facade fac = new Facade();
 	
 	public User correctPassword(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException{
+		User user = null;
 		try {
-			ArrayList<User> users = fac.getUsers();
-			for (User user : users) {
-				if(user.getUsername().equals(username)){
-					if(user.getPassword().equalsIgnoreCase(md5(password))){
-						return user;
-					}
-				}
-			}
+			user = fac.getUser(username, md5(password));
 		} catch (SQLException e) {
+			
 			//If user is null -> Write: "wrong password or username"
 			return null;
 		}
-		return null;
+		return user;
 	}
 	
 	public String md5(String textToBeConverted) throws UnsupportedEncodingException, NoSuchAlgorithmException{
