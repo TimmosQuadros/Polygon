@@ -57,7 +57,6 @@ public class UserMapper {
 			result = new User(user_id, organisations_id, user_type, username, password, user_email);
 		}
 		Connector.cleanUp(statement, rs);
-		result.getUsername();
 		return result;
 	}
 
