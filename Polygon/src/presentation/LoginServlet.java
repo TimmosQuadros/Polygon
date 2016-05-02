@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import controller.ILogin;
 import data.*;
+import logic.ILogin;
 
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-    	login = new controller.LoginController();
+    	login = new logic.LoginController();
     	super.init();
     }
 

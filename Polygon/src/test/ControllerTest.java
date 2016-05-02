@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import presentation.Controller;
 import data.Building;
 import data.Facade;
+import logic.Controller;
 
 public class ControllerTest {
 	

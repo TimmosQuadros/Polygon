@@ -12,11 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import controller.ILogin;
-import controller.LoginController;
 import data.Facade;
 import data.User;
 import data.User.User_type;
+import logic.ILogin;
+import logic.LoginController;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
